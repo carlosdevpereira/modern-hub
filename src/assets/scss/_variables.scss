@@ -1,0 +1,25 @@
+@use 'sass:color';
+@use 'sass:map';
+
+// ============================
+//  Theme Colors
+// ============================
+
+// Basics
+$whiteColor: #fff;
+$textColor: #141414;
+
+// Accents
+$primaryColor: #0768df;
+$primaryInverse: $whiteColor !default;
+$primaryHovering: fade-out($whiteColor, 0.9);
+$primaryLighter: color.adjust($primaryColor, $lightness: 15%);
+
+@if color.lightness($primaryColor) >= 80 {
+	$primaryInverse: $textColor;
+}
+
+// ============================
+//         UI Values
+// ============================
+$borderRadius: 6px;
