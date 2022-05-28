@@ -23,18 +23,23 @@
 		</div>
 
 		<Workspace-Teams />
+
+		<Workspace-Repositories />
 	</div>
 </template>
 
 <script lang="ts">
 import { useCurrentUserStore } from '@/stores/CurrentUserStore'
 import { defineComponent } from '@vue/runtime-core'
+import WorkspaceRepositories from './SelectedWorkspace/Repositories.vue'
 import WorkspaceTeams from './SelectedWorkspace/Teams.vue'
 
 export default defineComponent({
 	components: {
 		WorkspaceTeams,
+		WorkspaceRepositories,
 	},
+
 	setup() {
 		const currentUser = useCurrentUserStore()
 
