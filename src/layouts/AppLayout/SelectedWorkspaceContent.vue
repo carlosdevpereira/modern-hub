@@ -22,14 +22,19 @@
 			</router-link>
 		</div>
 
+		<Workspace-Teams />
 	</div>
 </template>
 
 <script lang="ts">
 import { useCurrentUserStore } from '@/stores/CurrentUserStore'
 import { defineComponent } from '@vue/runtime-core'
+import WorkspaceTeams from './SelectedWorkspace/Teams.vue'
 
 export default defineComponent({
+	components: {
+		WorkspaceTeams,
+	},
 	setup() {
 		const currentUser = useCurrentUserStore()
 

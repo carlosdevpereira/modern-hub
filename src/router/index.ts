@@ -21,6 +21,11 @@ const router = createRouter({
 					name: 'WorkspaceDashboard',
 					component: () => import('@/views/Guarded/Dashboard/DashboardView.vue'),
 				},
+				{
+					path: '/workspace/:workspaceId/team/:teamSlug',
+					name: 'WorkspaceTeamDashboard',
+					component: () => import('@/views/Guarded/Dashboard/DashboardView.vue'),
+				},
 			]
 		},
 		{
