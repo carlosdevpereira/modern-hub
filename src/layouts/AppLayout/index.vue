@@ -12,7 +12,7 @@
 		</template>
 
 		<template #sidebar>
-			Sidebar content
+			<Aside-Workspaces />
 		</template>
 
 		<Router-View />
@@ -24,6 +24,7 @@ import { useCurrentUserStore } from '@/stores/CurrentUserStore'
 import { useNavigationStore } from '@/stores/NavigationStore'
 import { HeaderLayoutWithSidebar } from '@carlosdevpereira/mr-components'
 import { defineComponent } from '@vue/runtime-core'
+import AsideWorkspaces from './AsideWorkspaces.vue'
 import AppBrand from './Brand.vue'
 import UserMenu from './UserMenu.vue'
 
@@ -34,6 +35,7 @@ export default defineComponent({
 		HeaderLayoutWithSidebar,
 		AppBrand,
 		UserMenu,
+		AsideWorkspaces,
 	},
 
 	setup() {
