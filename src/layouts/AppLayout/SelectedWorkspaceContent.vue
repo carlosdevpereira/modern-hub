@@ -25,12 +25,15 @@
 		<Workspace-Teams />
 
 		<Workspace-Repositories />
+
+		<Workspace-People />
 	</div>
 </template>
 
 <script lang="ts">
 import { useCurrentUserStore } from '@/stores/CurrentUserStore'
 import { defineComponent } from '@vue/runtime-core'
+import WorkspacePeople from './SelectedWorkspace/People.vue'
 import WorkspaceRepositories from './SelectedWorkspace/Repositories.vue'
 import WorkspaceTeams from './SelectedWorkspace/Teams.vue'
 
@@ -38,6 +41,7 @@ export default defineComponent({
 	components: {
 		WorkspaceTeams,
 		WorkspaceRepositories,
+		WorkspacePeople
 	},
 
 	setup() {
