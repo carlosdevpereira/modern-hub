@@ -13,6 +13,8 @@
 
 		<template #sidebar>
 			<Aside-Workspaces />
+
+			<Selected-Workspace-Content />
 		</template>
 
 		<Router-View />
@@ -26,6 +28,7 @@ import { HeaderLayoutWithSidebar } from '@carlosdevpereira/mr-components'
 import { defineComponent } from '@vue/runtime-core'
 import AsideWorkspaces from './AsideWorkspaces.vue'
 import AppBrand from './Brand.vue'
+import SelectedWorkspaceContent from './SelectedWorkspaceContent.vue'
 import UserMenu from './UserMenu.vue'
 
 export default defineComponent({
@@ -36,6 +39,7 @@ export default defineComponent({
 		AppBrand,
 		UserMenu,
 		AsideWorkspaces,
+		SelectedWorkspaceContent
 	},
 
 	setup() {
