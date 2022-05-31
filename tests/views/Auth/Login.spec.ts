@@ -1,7 +1,7 @@
 import LoginView from '@/views/Auth/Login.vue'
 import { mount } from '@vue/test-utils'
 
-describe('Login View', () => {
+describe.concurrent('Login View', () => {
 	const routerPushFn = vi.fn()
 
 	const wrapper = mount(LoginView, {
@@ -17,10 +17,6 @@ describe('Login View', () => {
 				}
 			}
 		},
-	})
-
-	beforeEach(() => {
-		vi.clearAllMocks()
 	})
 
 	it('renders app title', () => {
@@ -45,9 +41,11 @@ describe('Login View', () => {
 		expect(window.localStorage.__proto__.setItem).toHaveBeenCalledWith('_access_token_', 'PAT')
 	})
 
-	it('redirects the user to the dashboard', async () => {
+	it('redirects the user to the dashboard', () => {
+		routerPushFn.mockClear()
+
 		wrapper.setData({ personalAccessToken: 'PAT' })
-		await wrapper.find(".sign-in-button").trigger('click')
+		wrapper.find(".sign-in-button").trigger('click')
 
 		expect(routerPushFn).toHaveBeenCalledOnce()
 		expect(routerPushFn).toHaveBeenCalledWith({ name: 'Dashboard' })
