@@ -4,6 +4,7 @@
 
 A custom Github front-end application, built with Vue 3 and Typescript.
 
+![Tests](https://github.com/carlosdevpereira/modern-hub/actions/workflows/on-push-test-and-build.yml/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen)](https://opensource.org/licenses/MIT)
 
 </div>
