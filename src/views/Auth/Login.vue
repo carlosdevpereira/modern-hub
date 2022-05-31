@@ -12,14 +12,14 @@
 
 				<Input
 					v-model="personalAccessToken"
-					class="mt-3"
+					class="mt-3 personal-access-token-field"
 					icon="key-2-line"
 					type="password"
 					label="Personal Access Token"
 				/>
 
 				<Button
-					class="mt-3"
+					class="mt-3 sign-in-button"
 					label="Sign In"
 					icon="github-fill"
 					@click="signIn"
