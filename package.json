@@ -42,7 +42,7 @@
 		"unocss": "^0.33.5",
 		"unplugin-auto-import": "^0.7.2",
 		"vite": "^2.9.5",
-		"vitest": "^0.9.3",
+		"vitest": "^0.13.0",
 		"vue-tsc": "^0.34.7"
 	}
 }
