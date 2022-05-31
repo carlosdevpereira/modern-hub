@@ -10,8 +10,6 @@ A custom Github front-end application, built with Vue 3 and Typescript.
 
 ---
 
-<br>
-
 ## Introduction
 
 As a developer, member of a team, I use Github every day and feel like I don’t have enough visibility on what PR’s I need to review, and personally don’t find Github UI very appealing.
