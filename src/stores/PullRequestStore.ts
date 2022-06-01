@@ -25,14 +25,6 @@ export const usePullRequestStore = defineStore({
 
 	getters: {
 		orderedReviewablePullRequests: (state) => {
-			// When a review is requested, it will be available inside
-			// `review.requested_reviewers`, and so the logic is the following:
-			// whenever the requested_reviewers includes the current user,
-			// that pull request appears in the top of the list!
-			// after those pull requests that await my review,
-			// I want to see the PR's that haven't been reviewed by anyone yet,
-			// followed by the PR's that have changes requested and in
-			// the end of the list the approved PR's
 			return state.reviewable.sort((a, b) => {
 				const bDate = new Date(b.updated_at)
 				const aDate = new Date(a.updated_at)
