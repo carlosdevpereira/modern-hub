@@ -18,6 +18,7 @@
 				}
 			}"
 			class="text-item decoration-none text-sm py-1 hover:bg-gray-100 color-gray-800 pl-5 flex items-center"
+			:class="{'bg-sky-100 !hover:bg-sky-100 !color-sky-700': $route.params.teamSlug === team.slug}"
 		>
 			<img
 				:src="organizationAvatar"
