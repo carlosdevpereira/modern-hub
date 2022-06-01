@@ -3,7 +3,7 @@
 		<div
 			v-for="branch in commits.recentBranches"
 			:key="branch.name"
-			class="mr-message variant-info mb-1"
+			class="recent-branch mr-message variant-info mb-1"
 		>
 			<div class="mr-message-title !font-normal !flex-row !justify-between items-center !pr-0">
 				<div>
@@ -20,6 +20,7 @@
 
 				<div class="flex">
 					<Button
+						class="open-pull-request-button"
 						label="Open pull request"
 						@click="openPullRequest(branch)"
 					/>
