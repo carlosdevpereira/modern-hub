@@ -1,5 +1,5 @@
-import type { Octokit as OctokitInstance } from 'octokit'
 import { Octokit } from 'https://cdn.skypack.dev/@octokit/rest'
+import type { Octokit as OctokitInstance } from 'octokit'
 
 export default class $Github {
 	rest

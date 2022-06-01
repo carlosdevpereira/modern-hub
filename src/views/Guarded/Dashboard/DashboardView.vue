@@ -13,6 +13,7 @@ import ReviewablePullRequests from './ReviewablePullRequests.vue'
 
 export default defineComponent({
 	name: "DashboardView",
+
 	components: {
 		RecentCommitsWithoutPullRequest,
 		ReviewablePullRequests

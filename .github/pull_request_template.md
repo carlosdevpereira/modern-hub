@@ -1,6 +1,6 @@
 ## Description
 
-Fixes # (issue)
+Fixes: # (issue)
 
 Please include a summary of the change and which issue it fixes. Please also include information and context on why this change is relevant. List any dependencies that are required for this change.
 

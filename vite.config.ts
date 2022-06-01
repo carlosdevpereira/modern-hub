@@ -1,9 +1,9 @@
-import { fileURLToPath, URL } from 'url'
-import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import VueJsx from '@vitejs/plugin-vue-jsx'
-import AutoImport from 'unplugin-auto-import/vite'
 import Unocss from 'unocss/vite'
+import AutoImport from 'unplugin-auto-import/vite'
+import { fileURLToPath, URL } from 'url'
+import { defineConfig } from 'vite'
 
 export default defineConfig({
 	resolve: {
@@ -22,4 +22,10 @@ export default defineConfig({
 		}),
 		Unocss({}),
 	],
+
+	test: {
+		globals: true,
+		environment: 'jsdom',
+		setupFiles: './tests/globals.ts'
+	}
 })
