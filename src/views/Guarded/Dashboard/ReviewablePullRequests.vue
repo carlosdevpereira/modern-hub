@@ -9,15 +9,14 @@
 			:key="pullRequest.id"
 			:title="pullRequest.title"
 			:number="pullRequest.number"
+			:status="pullRequest.Status"
 			:is-draft="pullRequest.draft"
+			:reviewers="pullRequest.Reviewers"
 			:html-url="pullRequest.html_url"
+			:comments="pullRequest.CommentCount"
 			:created-at="pullRequest.created_at"
-			:author="pullRequest.user?.name?.toString()"
 			:author-tag="pullRequest.user?.login?.toString()"
 			:author-avatar="pullRequest.user?.avatar_url?.toString()"
-			:status="pullRequests.pullRequestStatus(pullRequest.number)"
-			:reviews="pullRequests.pullRequestReviewers(pullRequest.number)"
-			:comments="pullRequests.pullRequestComments(pullRequest.number)"
 		/>
 	</div>
 </template>
@@ -31,19 +30,19 @@ import { defineComponent } from '@vue/runtime-core';
 import PullRequestRow from './ReviewablePullRequests/PullRequestRow.vue';
 
 export default defineComponent({
-	components: { PullRequestRow },
+	components: {
+		PullRequestRow
+	},
 
 	setup() {
 		const navigation = useNavigationStore();
-		const repositories = useRepositoryStore();
+		const repositoryStore = useRepositoryStore();
 		const pullRequests = usePullRequestStore();
-		const accessibleRepositories = computed(() => repositories.repositories);
-		const openPullRequest = (pullRequest: string) => window.open(pullRequest, "_blank");
+		const accessibleRepositories = computed(() => repositoryStore.repositories);
+
 		return {
 			navigation,
-			repositories,
 			pullRequests,
-			openPullRequest,
 			accessibleRepositories,
 		};
 	},
@@ -51,10 +50,16 @@ export default defineComponent({
 	watch: {
 		accessibleRepositories: {
 			immediate: true,
-			async handler() {
+
+			async handler(repositories) {
 				if (this.navigation.workspace === "") return;
 
-				await this.pullRequests.getReviewablePullRequests();
+				this.pullRequests.reviewable = []
+
+				await this.pullRequests.getReviewablePullRequests(
+					this.navigation.workspace,
+					repositories
+				);
 			}
 		}
 	}

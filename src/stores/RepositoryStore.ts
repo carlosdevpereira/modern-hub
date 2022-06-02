@@ -4,13 +4,13 @@ import $Github from '../api';
 
 type WorkspaceType = 'user' | 'org'
 
-type accessibleRepositories = Endpoints["GET /search/repositories"]['response']['data']['items']
+export type AccessibleRepositories = Endpoints["GET /search/repositories"]['response']['data']['items']
 
 export const useRepositoryStore = defineStore({
 	id: 'Repositories',
 
 	state: () => ({
-		repositories: [] as accessibleRepositories,
+		repositories: [] as AccessibleRepositories,
 	}),
 
 	getters: {},
@@ -40,7 +40,7 @@ export const useRepositoryStore = defineStore({
 
 			let currentPage = 1
 			let isIncomplete = true
-			const allRepos = [] as accessibleRepositories
+			const allRepos = [] as AccessibleRepositories
 
 			do {
 				const searchRepositories = await new $Github().request('GET /search/repositories', {
