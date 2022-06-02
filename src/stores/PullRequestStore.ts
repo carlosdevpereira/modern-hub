@@ -8,10 +8,14 @@ import { useRepositoryStore } from './RepositoryStore';
 const reviewersStatusOrder = ['CHANGES_REQUESTED', 'APPROVED', 'DISMISSED', 'COMMENTED']
 
 type PullRequests = Endpoints["GET /repos/{owner}/{repo}/pulls"]['response']['data']
-type PullRequestReviews = Endpoints['GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews']['response']['data']
+export type PullRequestReviews = Endpoints['GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews']['response']['data']
 
 export interface Reviews {
 	[number: number]: PullRequestReviews
+}
+
+export interface Comments {
+	[number: number]: number
 }
 
 export const usePullRequestStore = defineStore({
@@ -20,6 +24,7 @@ export const usePullRequestStore = defineStore({
 	state: () => ({
 		reviewable: [] as PullRequests,
 		reviews: {} as Reviews,
+		comments: {} as Comments,
 		currentQuery: ''
 	}),
 
@@ -57,11 +62,18 @@ export const usePullRequestStore = defineStore({
 			})
 		},
 
-		pullRequestComments: (state) => (pullRequestNumber: number) => {
+		pullRequestReviews: (state) => (pullRequestNumber: number) => {
 			const reviews = state.reviews[pullRequestNumber]
 			if (!reviews) return []
 
-			return state.reviews[pullRequestNumber]
+			return reviews
+		},
+
+		pullRequestComments: (state) => (pullRequestNumber: number) => {
+			const comments = state.comments[pullRequestNumber]
+			if (!comments) return 0
+
+			return comments
 		},
 
 		pullRequestStatus(state) {
@@ -100,7 +112,7 @@ export const usePullRequestStore = defineStore({
 					owner: navigation.workspace,
 					repo: repo.name,
 					state: 'open',
-					per_page: 15,
+					per_page: 100,
 				})
 
 				this.reviewable.push(...pullRequestsResponse.data)
@@ -113,15 +125,40 @@ export const usePullRequestStore = defineStore({
 					if (JSON.stringify(repositories.repositories) !== this.currentQuery) break
 
 					const pullRequest = pullRequestsResponse.data[indexReviews]
-					const reviewsResponse = await new $Github().request('GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews', {
-						owner: navigation.workspace,
-						repo: repo.name,
-						pull_number: pullRequest.number,
-						per_page: 100
-					})
 
-					if (reviewsResponse.data.length > 0) {
-						this.reviews[pullRequest.number] = reviewsResponse.data
+					const reviews = await Promise.all([
+						new $Github().request('GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews', {
+							owner: navigation.workspace,
+							repo: repo.name,
+							pull_number: pullRequest.number,
+							per_page: 100
+						}),
+
+						new $Github().request('GET /repos/{owner}/{repo}/pulls/{pull_number}/comments', {
+							owner: navigation.workspace,
+							repo: repo.name,
+							pull_number: pullRequest.number,
+							per_page: 100
+						}),
+
+						new $Github().request('GET /repos/{owner}/{repo}/pulls/{pull_number}', {
+							owner: navigation.workspace,
+							repo: repo.name,
+							pull_number: pullRequest.number
+						}),
+					])
+
+					const pullRequestCommentActivity = reviews[1].data.length
+					const pullRequestCommentCount = reviews[2].data.comments
+					const pullRequestReviewCommentsCount = reviews[0].data.filter(r => r.body !== '').length
+
+					this.comments[pullRequest.number]
+						= pullRequestCommentActivity
+						+ pullRequestCommentCount
+						+ pullRequestReviewCommentsCount
+
+					if (reviews[0].data.length > 0) {
+						this.reviews[pullRequest.number] = reviews[0].data
 					}
 				}
 			}
