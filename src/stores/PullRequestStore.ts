@@ -2,23 +2,72 @@ import type { PullRequest } from '@/typings/PullRequest.type';
 import uniqBy from 'lodash/uniqBy';
 import { defineStore } from 'pinia';
 import $Github from '../api';
+import { useCurrentUserStore } from './CurrentUserStore';
 import type { AccessibleRepositories } from './RepositoryStore';
+
+type SortingSolutions = 'priority' | 'latest_updated' | 'oldest' | 'newest'
 
 export const usePullRequestStore = defineStore({
 	id: 'PullRequests',
 
 	state: () => ({
 		reviewable: [] as PullRequest[],
+		sortedBy: 'priority' as SortingSolutions,
 		currentQuery: ''
 	}),
 
 	getters: {
-		orderedReviewablePullRequests: (state) => {
+		prioritySort: (state) => {
+			const currentUser = useCurrentUserStore()
+
 			return state.reviewable.sort((a, b) => {
-				const bDate = new Date(b.updated_at)
-				const aDate = new Date(a.updated_at)
-				return bDate.getTime() - aDate.getTime();
+				console.log(a, b)
+
+				// Draft PR's always appear last
+				if (b.draft) return -1
+				else if (a.draft) return 1
+
+				// Approved PR's reviewed by the current user
+				if (b.Status === 'Approved' && (b.Reviewers && b.Reviewers.find(r => r.user?.login === currentUser.tag))) return -1
+				if (a.Status === 'Approved' && (a.Reviewers && a.Reviewers.find(r => r.user?.login === currentUser.tag))) return 1
+
+				// Pull Requests that are waiting for
+				// the current user review specifically
+				if (b.requested_reviewers
+					&& b.requested_reviewers.find(r => r.login === currentUser.tag)) return 1
+				if (a.requested_reviewers
+					&& a.requested_reviewers.find(r => r.login === currentUser.tag)) return 1
+
+				// Pull requests currently being reviewed by other people
+				if ((b.CommentCount && b.CommentCount > 0) || (
+					b.Reviews
+					&& !b.Reviews.find(r => r.user?.login === currentUser.tag)
+				)) return -1
+
+				if ((a.CommentCount && a.CommentCount > 0) || (
+					a.Reviews
+					&& !a.Reviews.find(r => r.user?.login === currentUser.tag)
+				)) return 1
+
+				// Current user PR's
+				if (b.user?.login === currentUser.tag) return -1
+				else if (a.user?.login === currentUser.tag) return 1
+
+				// Pull Requests that haven't been reviewed by anyone yet
+				if (b.CommentCount === 0
+					&& (!b.Reviews || b.Reviews.length === 0)) return -1
+				else if (a.CommentCount === 0
+					&& (!a.Reviews || a.Reviews.length === 0)) return 1
+
+				return 0
 			});
+		},
+
+		orderedReviewablePullRequests() {
+			// When sorting solution Select Field is implemented
+			// alternate between the sorting function here
+
+			return this.prioritySort
 		},
 	},
 
