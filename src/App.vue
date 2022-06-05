@@ -2,7 +2,9 @@
 	<Router-View />
 </template>
 
-<style>
+<style lang="scss">
+@import '@/assets/scss/variables';
+
 html,
 body,
 #app {
@@ -15,5 +17,13 @@ body,
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+::-webkit-scrollbar {
+	width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: $primaryLighter;
 }
 </style>
