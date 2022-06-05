@@ -1,9 +1,15 @@
 {
-  "extends": "./tsconfig.app.json",
-  "exclude": [],
-  "compilerOptions": {
-    "composite": true,
-    "lib": [],
-    "types": ["node", "jsdom", "vitest/globals"]
-  }
+	"extends": "./tsconfig.app.json",
+	"exclude": [],
+	"compilerOptions": {
+		"composite": true,
+		"lib": [],
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
+		"types": ["node", "jsdom", "vitest/globals"],
+		"paths": {
+			"@/*": ["./src/*"],
+			"@tests/*": ["./tests/*"]
+		}
+	}
 }

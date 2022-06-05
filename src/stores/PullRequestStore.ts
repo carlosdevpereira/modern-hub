@@ -21,8 +21,6 @@ export const usePullRequestStore = defineStore({
 			const currentUser = useCurrentUserStore()
 
 			return state.reviewable.sort((a, b) => {
-				console.log(a, b)
-
 				// Draft PR's always appear last
 				if (b.draft) return -1
 				else if (a.draft) return 1
@@ -63,7 +61,7 @@ export const usePullRequestStore = defineStore({
 			});
 		},
 
-		orderedReviewablePullRequests() {
+		orderedReviewablePullRequests(): PullRequest[] {
 			// When sorting solution Select Field is implemented
 			// alternate between the sorting function here
 

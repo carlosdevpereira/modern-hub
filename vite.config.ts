@@ -9,12 +9,15 @@ export default defineConfig({
 	resolve: {
 		alias: {
 			'@': fileURLToPath(new URL('./src', import.meta.url)),
+			'@tests': fileURLToPath(new URL('./tests', import.meta.url)),
 		},
 	},
 	test: {
+		globals: true,
 		environment: 'jsdom',
+		setupFiles: './tests/globals.ts',
 		coverage: {
-			reporter: ['text-summary', 'clover', 'lcov'],
+			reporter: ['text-summary', 'clover', 'lcov', 'html'],
 			all: true,
 			include: ['src/**'],
 			exclude: ["src/typings/**", "dist/**", "coverage/**", "packages/*/test{,s}/**", "**/*.d.ts", "test{,s}/**", "test{,-*}.{js, cjs, mjs, ts, tsx, jsx}", "**/*{.,-}test.{js,cjs,mjs,ts,tsx,jsx}", "**/__tests__ /** ", " ** /{ava,babel,nyc}.config.{js,cjs,mjs}", "**/jest.config.{ js, cjs, mjs, ts }", "**/{karma,rollup,webpack}.config.js", "**/.{eslint,mocha}rc.{js,cjs}"]
@@ -30,5 +33,5 @@ export default defineConfig({
 			dts: true,
 		}),
 		Unocss({}),
-	],
+	]
 })
