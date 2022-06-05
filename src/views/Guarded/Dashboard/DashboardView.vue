@@ -9,7 +9,7 @@
 <script lang="ts">
 import { defineComponent } from '@vue/runtime-core'
 import RecentCommitsWithoutPullRequest from './RecentCommitsWithoutPullRequest.vue'
-import ReviewablePullRequests from './ReviewablePullRequests.vue'
+import ReviewablePullRequests from './ReviewablePullRequests/ReviewablePullRequests.vue'
 
 export default defineComponent({
 	name: "DashboardView",

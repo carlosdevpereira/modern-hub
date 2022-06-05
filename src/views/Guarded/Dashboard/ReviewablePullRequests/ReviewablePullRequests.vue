@@ -27,7 +27,7 @@ import { usePullRequestStore } from '@/stores/PullRequestStore';
 import { useRepositoryStore } from '@/stores/RepositoryStore';
 import { computed } from '@vue/reactivity';
 import { defineComponent } from '@vue/runtime-core';
-import PullRequestRow from './ReviewablePullRequests/PullRequestRow.vue';
+import PullRequestRow from './PullRequestRow.vue';
 
 export default defineComponent({
 	components: {
