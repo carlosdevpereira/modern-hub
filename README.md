@@ -5,6 +5,7 @@
 A custom Github front-end application, built with Vue 3 and Typescript.
 
 ![Tests](https://github.com/carlosdevpereira/modern-hub/actions/workflows/on-push-test-and-build.yml/badge.svg)
+![Coverage](https://img.shields.io/codecov/c/github/carlosdevpereira/modern-hub?label=Coverage&token=RVK2A8T11L)
 [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen)](https://opensource.org/licenses/MIT)
 
 <a href="https://modern-hub.carlosdevpereira.com" target="_blank">Demo</a>

@@ -1,50 +1,126 @@
-import type { Endpoints } from '@octokit/types';
+import type { PullRequest } from '@/typings/PullRequest.type';
 import uniqBy from 'lodash/uniqBy';
 import { defineStore } from 'pinia';
 import $Github from '../api';
-import { useNavigationStore } from './NavigationStore';
-import { useRepositoryStore } from './RepositoryStore';
+import { useCurrentUserStore } from './CurrentUserStore';
+import type { AccessibleRepositories } from './RepositoryStore';
 
-const reviewersStatusOrder = ['CHANGES_REQUESTED', 'APPROVED', 'DISMISSED', 'COMMENTED']
-
-type PullRequests = Endpoints["GET /repos/{owner}/{repo}/pulls"]['response']['data']
-type PullRequestReviews = Endpoints['GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews']['response']['data']
-
-export interface Reviews {
-	[number: number]: PullRequestReviews
-}
+type SortingSolutions = 'priority' | 'latest_updated' | 'oldest' | 'newest'
 
 export const usePullRequestStore = defineStore({
 	id: 'PullRequests',
 
 	state: () => ({
-		reviewable: [] as PullRequests,
-		reviews: {} as Reviews,
+		reviewable: [] as PullRequest[],
+		sortedBy: 'priority' as SortingSolutions,
 		currentQuery: ''
 	}),
 
 	getters: {
-		orderedReviewablePullRequests: (state) => {
-			// When a review is requested, it will be available inside
-			// `review.requested_reviewers`, and so the logic is the following:
-			// whenever the requested_reviewers includes the current user,
-			// that pull request appears in the top of the list!
-			// after those pull requests that await my review,
-			// I want to see the PR's that haven't been reviewed by anyone yet,
-			// followed by the PR's that have changes requested and in
-			// the end of the list the approved PR's
+		prioritySort: (state) => {
+			const currentUser = useCurrentUserStore()
+
 			return state.reviewable.sort((a, b) => {
-				const bDate = new Date(b.updated_at)
-				const aDate = new Date(a.updated_at)
-				return bDate.getTime() - aDate.getTime();
+				console.log(a, b)
+
+				// Draft PR's always appear last
+				if (b.draft) return -1
+				else if (a.draft) return 1
+
+				// Approved PR's reviewed by the current user
+				if (b.Status === 'Approved' && (b.Reviewers && b.Reviewers.find(r => r.user?.login === currentUser.tag))) return -1
+				if (a.Status === 'Approved' && (a.Reviewers && a.Reviewers.find(r => r.user?.login === currentUser.tag))) return 1
+
+				// Pull Requests that are waiting for
+				// the current user review specifically
+				if (b.requested_reviewers
+					&& b.requested_reviewers.find(r => r.login === currentUser.tag)) return 1
+				if (a.requested_reviewers
+					&& a.requested_reviewers.find(r => r.login === currentUser.tag)) return 1
+
+				// Pull requests currently being reviewed by other people
+				if ((b.CommentCount && b.CommentCount > 0) || (
+					b.Reviews
+					&& !b.Reviews.find(r => r.user?.login === currentUser.tag)
+				)) return -1
+
+				if ((a.CommentCount && a.CommentCount > 0) || (
+					a.Reviews
+					&& !a.Reviews.find(r => r.user?.login === currentUser.tag)
+				)) return 1
+
+				// Current user PR's
+				if (b.user?.login === currentUser.tag) return -1
+				else if (a.user?.login === currentUser.tag) return 1
+
+				// Pull Requests that haven't been reviewed by anyone yet
+				if (b.CommentCount === 0
+					&& (!b.Reviews || b.Reviews.length === 0)) return -1
+				else if (a.CommentCount === 0
+					&& (!a.Reviews || a.Reviews.length === 0)) return 1
+
+				return 0
 			});
 		},
 
-		pullRequestReviewers: (state) => (pullRequestNumber: number) => {
-			const reviews = state.reviews[pullRequestNumber]
-			if (!reviews) return []
+		orderedReviewablePullRequests() {
+			// When sorting solution Select Field is implemented
+			// alternate between the sorting function here
 
-			return uniqBy(state.reviews[pullRequestNumber].sort((a, b) => {
+			return this.prioritySort
+		},
+	},
+
+	actions: {
+		async getPullRequests(owner: string, repo: string) {
+			const { data } = await new $Github().request('GET /repos/{owner}/{repo}/pulls', {
+				owner: owner,
+				repo: repo,
+				state: 'open',
+				per_page: 100,
+			})
+
+			return data
+		},
+
+		async getPullRequestReviews(owner: string, repo: string, pullNumber: number) {
+			const { data } = await new $Github().request('GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews', {
+				owner: owner,
+				repo: repo,
+				pull_number: pullNumber,
+				per_page: 100
+			})
+
+			return data
+		},
+
+		async getPullRequestComments(owner: string, repo: string, pullNumber: number) {
+			const { data } = await new $Github().request('GET /repos/{owner}/{repo}/pulls/{pull_number}/comments', {
+				owner: owner,
+				repo: repo,
+				pull_number: pullNumber,
+				per_page: 100
+			})
+
+			return data
+		},
+
+		async getPullRequestDetails(owner: string, repo: string, pullNumber: number) {
+			const { data } = await new $Github().request('GET /repos/{owner}/{repo}/pulls/{pull_number}', {
+				owner: owner,
+				repo: repo,
+				pull_number: pullNumber
+			})
+
+			return data
+		},
+
+		resolvePullRequestReviewers(pullRequest: PullRequest) {
+			if (!pullRequest.Reviews || pullRequest.Reviews.length === 0) return []
+
+			const reviewersStatusOrder = ['CHANGES_REQUESTED', 'APPROVED', 'DISMISSED', 'COMMENTED']
+
+			const sortedReviews = pullRequest.Reviews.sort((a, b) => {
 				if (b.submitted_at && a.submitted_at) {
 					const bDate = new Date(b.submitted_at)
 					const aDate = new Date(a.submitted_at)
@@ -52,9 +128,13 @@ export const usePullRequestStore = defineStore({
 				}
 
 				return 0
-			}), (review) => {
+			})
+
+			const uniqueReviews = uniqBy(sortedReviews, (review) => {
 				return review.user?.id
-			}).sort((a, b) => {
+			})
+
+			const sortedReviewsByStatus = uniqueReviews.sort((a, b) => {
 				if (reviewersStatusOrder.indexOf(b.state) > -1
 					&& reviewersStatusOrder.indexOf(a.state) > -1) {
 					return reviewersStatusOrder.indexOf(b.state)
@@ -63,73 +143,61 @@ export const usePullRequestStore = defineStore({
 
 				return 999
 			})
+
+			return sortedReviewsByStatus
 		},
 
-		pullRequestComments: (state) => (pullRequestNumber: number) => {
-			const reviews = state.reviews[pullRequestNumber]
-			if (!reviews) return []
+		resolvePullRequestStatus(pullRequest: PullRequest) {
+			if (!pullRequest.Reviewers || pullRequest.Reviewers.length === 0) return ''
 
-			return state.reviews[pullRequestNumber]
+			const isApproved = pullRequest.Reviewers.filter(r => r.state !== 'APPROVED').length === 0
+			const hasChangesRequested = pullRequest.Reviewers.filter(r => r.state === 'CHANGES_REQUESTED').length > 0
+
+			if (isApproved) return 'Approved'
+			else if (hasChangesRequested) return 'Changes requested'
+			return ''
 		},
 
-		pullRequestStatus(state) {
-			return (pullRequestNumber: number): string => {
-				const reviews = state.reviews[pullRequestNumber]
-				if (!reviews) return ''
+		async getReviewablePullRequests(owner: string, repositories: AccessibleRepositories) {
+			if (owner === '') throw new Error('The owner of the repository is required')
 
-				const reviewers = this.pullRequestReviewers(pullRequestNumber)
+			this.currentQuery = JSON.stringify(repositories)
 
-				const isApproved = reviewers.filter(r => r.state !== 'APPROVED').length === 0
-				const hasChangesRequested = reviewers.filter(r => r.state === 'CHANGES_REQUESTED').length > 0
+			for (const repo of repositories) {
+				if (JSON.stringify(repositories) !== this.currentQuery) break
 
-				if (isApproved) return 'Approved'
-				else if (hasChangesRequested) return 'Changes requested'
-				return ''
-			}
-		}
-	},
+				const pullRequests = await this.getPullRequests(owner, repo.name)
 
-	actions: {
-		async getReviewablePullRequests() {
-			this.reviewable = []
-			this.reviews = {}
+				this.reviewable.push(...pullRequests)
 
-			const navigation = useNavigationStore()
-			if (navigation.workspace === '') throw new Error('The owner of the repository is required to retrieve recent commits')
+				for (const pullRequest of pullRequests) {
+					if (JSON.stringify(repositories) !== this.currentQuery) break
 
-			const repositories = useRepositoryStore()
-			this.currentQuery = JSON.stringify(repositories.repositories)
+					const reviews = await Promise.all([
+						this.getPullRequestReviews(owner, repo.name, pullRequest.number),
+						this.getPullRequestComments(owner, repo.name, pullRequest.number),
+						this.getPullRequestDetails(owner, repo.name, pullRequest.number),
+					])
 
-			for (let index = 0; index < repositories.repositories.length; index++) {
-				if (JSON.stringify(repositories.repositories) !== this.currentQuery) break
+					const reviewablePr = this.
+						reviewable
+						.find(reviewable => reviewable.id === pullRequest.id)
 
-				const repo = repositories.repositories[index]
-				const pullRequestsResponse = await new $Github().request('GET /repos/{owner}/{repo}/pulls', {
-					owner: navigation.workspace,
-					repo: repo.name,
-					state: 'open',
-					per_page: 15,
-				})
+					if (reviewablePr) {
+						if (reviews[0].length > 0) reviewablePr.Reviews = reviews[0]
+						if (reviews[1].length > 0) reviewablePr.Comments = reviews[1]
 
-				this.reviewable.push(...pullRequestsResponse.data)
+						reviewablePr.Reviewers = this.resolvePullRequestReviewers(pullRequest)
+						reviewablePr.Status = this.resolvePullRequestStatus(pullRequest)
 
-				for (
-					let indexReviews = 0;
-					indexReviews < pullRequestsResponse.data.length;
-					indexReviews++
-				) {
-					if (JSON.stringify(repositories.repositories) !== this.currentQuery) break
+						const pullRequestReviewCommentsCount = reviews[0].filter(r => r.body !== '').length
+						const pullRequestCommentActivity = reviews[1].length
+						const pullRequestCommentCount = reviews[2].comments
 
-					const pullRequest = pullRequestsResponse.data[indexReviews]
-					const reviewsResponse = await new $Github().request('GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews', {
-						owner: navigation.workspace,
-						repo: repo.name,
-						pull_number: pullRequest.number,
-						per_page: 100
-					})
-
-					if (reviewsResponse.data.length > 0) {
-						this.reviews[pullRequest.number] = reviewsResponse.data
+						reviewablePr.CommentCount
+							= pullRequestReviewCommentsCount
+							+ pullRequestCommentActivity
+							+ pullRequestCommentCount
 					}
 				}
 			}
