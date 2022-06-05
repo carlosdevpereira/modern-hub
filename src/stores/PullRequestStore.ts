@@ -63,7 +63,7 @@ export const usePullRequestStore = defineStore({
 			});
 		},
 
-		orderedReviewablePullRequests() {
+		orderedReviewablePullRequests(): PullRequest[] {
 			// When sorting solution Select Field is implemented
 			// alternate between the sorting function here
 

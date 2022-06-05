@@ -35,7 +35,7 @@ import type { RecentBranch } from '@/stores/CommitStore'
 import { useCommitStore } from '@/stores/CommitStore'
 import { useCurrentUserStore } from '@/stores/CurrentUserStore'
 import { useNavigationStore } from '@/stores/NavigationStore'
-import { useRepositoryStore } from '@/stores/RepositoryStore'
+import { useRepositoryStore, type AccessibleRepositories } from '@/stores/RepositoryStore'
 import { computed } from '@vue/reactivity'
 import { defineComponent } from '@vue/runtime-core'
 
@@ -63,18 +63,7 @@ export default defineComponent({
 			immediate: true,
 
 			async handler(repositories) {
-				this.commits.recentBranches = []
-
-				for (let index = 0; index < repositories.length; index++) {
-					if (this.commits.recentBranches.length === 5) break
-
-					const repo = repositories[index];
-					await this.commits.getRecentCommits(
-						this.navigation.workspace,
-						repo.name,
-						this.currentUser.tag
-					)
-				}
+				await this.fetchBranches(repositories)
 			}
 		}
 	},
@@ -83,6 +72,21 @@ export default defineComponent({
 		openPullRequest(branch: RecentBranch) {
 			window.open(`https://github.com/${branch.owner}/${branch.repo}/compare/${branch.name}?expand=1`, "_blank")
 		},
+
+		async fetchBranches(repositories: AccessibleRepositories) {
+			this.commits.recentBranches = []
+
+			for (let index = 0; index < repositories.length; index++) {
+				if (this.commits.recentBranches.length >= 5) break
+
+				const repo = repositories[index];
+				await this.commits.getRecentCommits(
+					this.navigation.workspace,
+					repo.name,
+					this.currentUser.tag
+				)
+			}
+		}
 	},
 })
 </script>

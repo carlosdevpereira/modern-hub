@@ -1,5 +1,5 @@
 <template>
-	<div class="recent-commits-without-pull-request">
+	<div class="reviewable-pull-requests">
 		<h2 class="mt-0 text-xs uppercase tracking-tight">
 			Reviews
 		</h2>

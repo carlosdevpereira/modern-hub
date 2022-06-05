@@ -1,7 +1,9 @@
-import RecentCommitsWithoutPullRequest from '@/views/Guarded/Dashboard/RecentCommitsWithoutPullRequest.vue'
-import { shallowMount } from '@vue/test-utils'
-import { createTestingPinia } from '@pinia/testing'
 import { useCommitStore } from '@/stores/CommitStore'
+import { useRepositoryStore } from '@/stores/RepositoryStore'
+import RecentCommitsWithoutPullRequest from '@/views/Guarded/Dashboard/RecentCommitsWithoutPullRequest.vue'
+import { createTestingPinia } from '@pinia/testing'
+import RepositoryFixture from '@tests/__fixtures__/RepositoryFixture.json'
+import { shallowMount } from '@vue/test-utils'
 
 describe.concurrent('Recent commits without pull request', () => {
 	const wrapper = shallowMount(RecentCommitsWithoutPullRequest, {
@@ -53,5 +55,42 @@ describe.concurrent('Recent commits without pull request', () => {
 
 		// Restore window.open to its original value
 		window.open = originalWindowOpen
+	})
+
+	it('fetches recent commits when accessible repositories change', async () => {
+		const commitStore = useCommitStore()
+		expect(commitStore.getRecentCommits).not.toHaveBeenCalled()
+
+		const getRecentCommitsSpy = vi.spyOn(commitStore, 'getRecentCommits')
+		// Simulates that there are a lot of branches for
+		// a specific repository
+		getRecentCommitsSpy.mockImplementationOnce(async (): Promise<{
+			name: string;
+			owner: string;
+			repo: string;
+		}[]> => {
+			commitStore.recentBranches = [
+				{ name: 'branch_1', owner: 'test_owner', repo: 'test_repo' },
+				{ name: 'branch_2', owner: 'test_owner', repo: 'test_repo' },
+				{ name: 'branch_3', owner: 'test_owner', repo: 'test_repo' },
+				{ name: 'branch_4', owner: 'test_owner', repo: 'test_repo' },
+				{ name: 'branch_5', owner: 'test_owner', repo: 'test_repo' },
+				{ name: 'branch_6', owner: 'test_owner', repo: 'test_repo' },
+			]
+
+			return commitStore.recentBranches
+		})
+
+		// When the repositories are updated the
+		// component must fetch the branches
+		const repositoryStore = useRepositoryStore()
+		repositoryStore.repositories = [RepositoryFixture, RepositoryFixture]
+
+		await wrapper.vm.$nextTick()
+
+		// There are 2 repositories but because the first
+		// will get a lot of recent branches it only gets
+		// called once (breaks out the loop)
+		expect(commitStore.getRecentCommits).toHaveBeenCalledTimes(1)
 	})
 })
