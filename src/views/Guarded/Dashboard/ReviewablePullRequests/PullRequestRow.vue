@@ -1,6 +1,6 @@
 <template>
 	<div
-		class="rounded mb-1 pr-5 p-2 flex justify-between items-center bg-slate-100 divide-y cursor-pointer border-l-4 border-transparent hover:border-l-4 hover:border-blue-600 hover:-translate-x-1 hover:bg-slate-200 transition ease-in-out duration-100"
+		class="pull-request-row rounded mb-1 pr-5 p-2 flex justify-between items-center bg-slate-100 divide-y cursor-pointer border-l-4 border-transparent hover:border-l-4 hover:border-blue-600 hover:-translate-x-1 hover:bg-slate-200 transition ease-in-out duration-100"
 		:class="classes"
 		@click="openPullRequest(htmlUrl)"
 	>
@@ -8,7 +8,7 @@
 			<img
 				:src="authorAvatar"
 				:title="authorTag"
-				class="h-9 ml-1 mr-4 rounded"
+				class="pull-request-author-avatar h-9 ml-1 mr-4 rounded"
 			>
 
 			<div class="flex flex-col justify-content-center">

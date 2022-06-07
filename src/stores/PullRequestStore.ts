@@ -26,30 +26,30 @@ export const usePullRequestStore = defineStore({
 				else if (a.draft) return 1
 
 				// Approved PR's reviewed by the current user
-				if (b.Status === 'Approved' && (b.Reviewers && b.Reviewers.find(r => r.user?.login === currentUser.tag))) return -1
-				if (a.Status === 'Approved' && (a.Reviewers && a.Reviewers.find(r => r.user?.login === currentUser.tag))) return 1
+				if (b.Status === 'Approved' && (b.Reviewers && b.Reviewers.find(r => r.user?.login === currentUser.user.login))) return -1
+				if (a.Status === 'Approved' && (a.Reviewers && a.Reviewers.find(r => r.user?.login === currentUser.user.login))) return 1
 
 				// Pull Requests that are waiting for
 				// the current user review specifically
 				if (b.requested_reviewers
-					&& b.requested_reviewers.find(r => r.login === currentUser.tag)) return 1
+					&& b.requested_reviewers.find(r => r.login === currentUser.user.login)) return 1
 				if (a.requested_reviewers
-					&& a.requested_reviewers.find(r => r.login === currentUser.tag)) return 1
+					&& a.requested_reviewers.find(r => r.login === currentUser.user.login)) return 1
 
 				// Pull requests currently being reviewed by other people
 				if ((b.CommentCount && b.CommentCount > 0) || (
 					b.Reviews
-					&& !b.Reviews.find(r => r.user?.login === currentUser.tag)
+					&& !b.Reviews.find(r => r.user?.login === currentUser.user.login)
 				)) return -1
 
 				if ((a.CommentCount && a.CommentCount > 0) || (
 					a.Reviews
-					&& !a.Reviews.find(r => r.user?.login === currentUser.tag)
+					&& !a.Reviews.find(r => r.user?.login === currentUser.user.login)
 				)) return 1
 
 				// Current user PR's
-				if (b.user?.login === currentUser.tag) return -1
-				else if (a.user?.login === currentUser.tag) return 1
+				if (b.user?.login === currentUser.user.login) return -1
+				else if (a.user?.login === currentUser.user.login) return 1
 
 				// Pull Requests that haven't been reviewed by anyone yet
 				if (b.CommentCount === 0

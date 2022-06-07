@@ -1,7 +1,7 @@
 <template>
 	<div class="selected-workspace-contents">
 		<div
-			v-if="currentUser.watchedRepositories.length"
+			v-if="currentUser.user.watching?.nodes.length"
 			class="watching-repositories flex flex-col mb-5"
 		>
 			<h3 class="text-xs uppercase tracking-tight m-0 p-5 pb-2">
@@ -9,8 +9,8 @@
 			</h3>
 
 			<router-link
-				v-for="repo in currentUser.watchedRepositories"
-				:key="repo.id"
+				v-for="repo in currentUser.user.watching.nodes"
+				:key="repo.name"
 				to="/"
 				class="text-item decoration-none text-sm py-1 hover:bg-gray-100 color-gray-800 pl-5 flex items-center"
 			>

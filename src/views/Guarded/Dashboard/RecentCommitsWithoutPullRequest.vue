@@ -83,7 +83,7 @@ export default defineComponent({
 				await this.commits.getRecentCommits(
 					this.navigation.workspace,
 					repo.name,
-					this.currentUser.tag
+					this.currentUser.user.login
 				)
 			}
 		}

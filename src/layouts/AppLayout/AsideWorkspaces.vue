@@ -1,21 +1,21 @@
 <template>
 	<aside class="workspaces mt-1">
 		<router-link
-			v-if="currentUser.userId"
+			v-if="currentUser.user.login"
 			to="/"
 			class="workspace workspace-carlosdevpereira"
-			:class="{selected: isSelected(currentUser.tag)}"
+			:class="{selected: isSelected(currentUser.user.login)}"
 		>
 			<img
-				:src="currentUser.avatar"
-				:alt="currentUser.tag"
-				:title="`@${currentUser.tag}`"
+				:src="currentUser.user.avatarUrl"
+				:alt="currentUser.user.login"
+				:title="`@${currentUser.user.login}`"
 			>
 		</router-link>
 
 		<router-link
-			v-for="organization in currentUser.organizations"
-			:key="organization.id"
+			v-for="organization in currentUser.user.organizations?.nodes"
+			:key="organization.login"
 			:to="{
 				name: 'WorkspaceDashboard',
 				params: { workspaceId: organization.login }
@@ -24,7 +24,7 @@
 			:class="{selected: isSelected(organization.login)}"
 		>
 			<img
-				:src="organization.avatar_url"
+				:src="organization.avatarUrl"
 				:alt="organization.login"
 				:title="`@${organization.login}`"
 			>
@@ -40,8 +40,6 @@ import { defineComponent } from '@vue/runtime-core'
 export default defineComponent({
 	setup() {
 		const currentUser = useCurrentUserStore()
-		currentUser.getOrganizations()
-
 		const navigation = useNavigationStore()
 
 		return {

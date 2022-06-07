@@ -8,7 +8,7 @@
 		<template #header>
 			<App-Brand />
 
-			<User-Menu v-if="currentUser.userId" />
+			<User-Menu v-if="currentUser.user.login" />
 		</template>
 
 		<template #sidebar>
@@ -60,7 +60,6 @@ export default defineComponent({
 
 	async created() {
 		await this.currentUser.getUser()
-		await this.currentUser.getTeams()
 
 		this.setNavigation()
 	},
@@ -68,7 +67,7 @@ export default defineComponent({
 	methods: {
 		setNavigation() {
 			if (!this.$route.params.workspaceId) {
-				this.navigation.workspace = this.currentUser.tag
+				this.navigation.workspace = this.currentUser.user.login
 				this.navigation.workspaceType = 'user'
 			} else {
 				this.navigation.workspace = this.$route.params.workspaceId.toString()
