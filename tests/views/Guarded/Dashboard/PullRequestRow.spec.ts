@@ -16,10 +16,7 @@ const getWrapper = (props: object) => {
 }
 
 describe.concurrent('Pull request row', () => {
-	it('renders the avatar of the pull request author', () => {
-		const wrapper = getWrapper({ number: 1, title: 'test_pull_request', htmlUrl: 'pr_url', createdAt: '2022-06-06 13:53:00', authorAvatar: 'avatar_url', authorTag: 'author_tag' })
-		expect(wrapper.find('.pull-request-author-avatar').exists()).toBe(true)
-	})
+	it.todo('renders the avatar of the pull request author')
 	it.todo('renders the tag of the pull request author')
 	it.todo('renders the number of the pull request')
 	it.todo('renders the title of the pull request')

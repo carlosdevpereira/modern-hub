@@ -1,5 +1,8 @@
 <template>
-	<div class="recent-commits-without-pull-request">
+	<div
+		v-if="commits.recentBranches.length"
+		class="recent-commits-without-pull-request mb-5"
+	>
 		<div
 			v-for="branch in commits.recentBranches"
 			:key="branch.name"
@@ -35,7 +38,8 @@ import type { RecentBranch } from '@/stores/CommitStore'
 import { useCommitStore } from '@/stores/CommitStore'
 import { useCurrentUserStore } from '@/stores/CurrentUserStore'
 import { useNavigationStore } from '@/stores/NavigationStore'
-import { useRepositoryStore, type AccessibleRepositories } from '@/stores/RepositoryStore'
+import { useRepositoryStore } from '@/stores/RepositoryStore'
+import type { Repository } from "@/typings/Repository.type"
 import { defineComponent } from '@vue/runtime-core'
 import { computed } from 'vue'
 
@@ -73,7 +77,7 @@ export default defineComponent({
 			window.open(`https://github.com/${branch.owner}/${branch.repo}/compare/${branch.name}?expand=1`, "_blank")
 		},
 
-		async fetchBranches(repositories: AccessibleRepositories) {
+		async fetchBranches(repositories: Repository[]) {
 			this.commits.recentBranches = []
 
 			for (let index = 0; index < repositories.length; index++) {

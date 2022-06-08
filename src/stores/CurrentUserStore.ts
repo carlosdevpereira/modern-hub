@@ -1,6 +1,6 @@
 import GithubApi from "@/api/graphql";
-import type { CurrentUser } from '@/api/graphql/GetCurrentUser.query';
 import GetCurrentUserQuery from '@/api/graphql/GetCurrentUser.query';
+import type { CurrentUser } from '@/typings/User.type';
 import { defineStore } from 'pinia';
 
 export const useCurrentUserStore = defineStore({
