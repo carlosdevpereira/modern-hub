@@ -1,49 +1,44 @@
-import type { Endpoints } from "@octokit/types";
+import GithubApi from "@/api/graphql";
+import GetCurrentUserQuery from '@/api/graphql/GetCurrentUser.query';
+import type { CurrentUser } from '@/typings/User.type';
 import { defineStore } from 'pinia';
-import $Github from '../api';
-
-type GithubUser = Endpoints["GET /user"]['response']['data']
-type UserTeams = Endpoints["GET /user/teams"]['response']['data']
-type UserOrganizations = Endpoints["GET /user/orgs"]['response']['data']
-type WatchedRepositories = Endpoints["GET /search/repositories"]['response']['data']['items']
 
 export const useCurrentUserStore = defineStore({
 	id: 'CurrentUser',
 
 	state: () => ({
-		currentUser: {} as GithubUser,
-		watchedRepositories: [] as WatchedRepositories,
-		organizations: [] as UserOrganizations,
-		teams: [] as UserTeams
+		user: {} as CurrentUser,
 	}),
 
 	getters: {
-		userId: state => state.currentUser.id,
-		tag: state => state.currentUser.login,
-		avatar: state => state.currentUser.avatar_url,
 		getOrganizationByName: state => (orgName: string) => {
-			return state.organizations.find(organization => organization.login === orgName)
+			return state.
+				user.
+				organizations.
+				nodes.
+				find(organization => organization.login === orgName)
+		},
+
+		teams: state => {
+			return (organization: string) => {
+				return state.user.
+					organizations?.
+					nodes.
+					filter(org => org.login === organization).
+					flatMap(organization => organization.teams.nodes)
+			}
 		}
 	},
 
 	actions: {
 		async getUser() {
-			if (this.currentUser.id) return
+			if (this.user.login) return
 
-			const response = await new $Github().rest.users.getAuthenticated()
-			this.currentUser = response.data
-		},
+			const response = await GithubApi().query({
+				query: GetCurrentUserQuery
+			})
 
-		async getOrganizations() {
-			const response = await new $Github().rest.orgs.listForAuthenticatedUser()
-
-			this.organizations = response.data
-		},
-
-		async getTeams() {
-			const userTeams = await new $Github().rest.teams.listForAuthenticatedUser()
-
-			this.teams = userTeams.data
+			this.user = response.data.viewer
 		},
 	},
 })

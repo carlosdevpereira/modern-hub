@@ -1,0 +1,3794 @@
+{
+	"__schema": {
+		"types": [
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "AbortQueuedMigrationsInput",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "AbortQueuedMigrationsPayload", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "AcceptEnterpriseAdministratorInvitationInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "AcceptEnterpriseAdministratorInvitationPayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "AcceptTopicSuggestionInput",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "AcceptTopicSuggestionPayload", "possibleTypes": null },
+			{
+				"kind": "INTERFACE",
+				"name": "Actor",
+				"possibleTypes": [
+					{ "name": "Bot" },
+					{ "name": "EnterpriseUserAccount" },
+					{ "name": "Mannequin" },
+					{ "name": "Organization" },
+					{ "name": "User" }
+				]
+			},
+			{ "kind": "OBJECT", "name": "ActorLocation", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "ActorType", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "AddAssigneesToAssignableInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "AddAssigneesToAssignablePayload",
+				"possibleTypes": null
+			},
+			{ "kind": "INPUT_OBJECT", "name": "AddCommentInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "AddCommentPayload", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "AddDiscussionCommentInput",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "AddDiscussionCommentPayload", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "AddEnterpriseSupportEntitlementInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "AddEnterpriseSupportEntitlementPayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "AddLabelsToLabelableInput",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "AddLabelsToLabelablePayload", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "AddProjectCardInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "AddProjectCardPayload", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "AddProjectColumnInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "AddProjectColumnPayload", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "AddProjectDraftIssueInput",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "AddProjectDraftIssuePayload", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "AddProjectNextItemInput",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "AddProjectNextItemPayload", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "AddPullRequestReviewCommentInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "AddPullRequestReviewCommentPayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "AddPullRequestReviewInput",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "AddPullRequestReviewPayload", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "AddPullRequestReviewThreadInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "AddPullRequestReviewThreadPayload",
+				"possibleTypes": null
+			},
+			{ "kind": "INPUT_OBJECT", "name": "AddReactionInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "AddReactionPayload", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "AddStarInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "AddStarPayload", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "AddUpvoteInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "AddUpvotePayload", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "AddVerifiableDomainInput",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "AddVerifiableDomainPayload", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "AddedToProjectEvent", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "App", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "ApproveDeploymentsInput",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "ApproveDeploymentsPayload", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "ApproveVerifiableDomainInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "ApproveVerifiableDomainPayload",
+				"possibleTypes": null
+			},
+			{ "kind": "INPUT_OBJECT", "name": "ArchiveRepositoryInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ArchiveRepositoryPayload", "possibleTypes": null },
+			{
+				"kind": "INTERFACE",
+				"name": "Assignable",
+				"possibleTypes": [{ "name": "Issue" }, { "name": "PullRequest" }]
+			},
+			{ "kind": "OBJECT", "name": "AssignedEvent", "possibleTypes": null },
+			{
+				"kind": "UNION",
+				"name": "Assignee",
+				"possibleTypes": [
+					{ "name": "Bot" },
+					{ "name": "Mannequin" },
+					{ "name": "Organization" },
+					{ "name": "User" }
+				]
+			},
+			{
+				"kind": "INTERFACE",
+				"name": "AuditEntry",
+				"possibleTypes": [
+					{ "name": "MembersCanDeleteReposClearAuditEntry" },
+					{ "name": "MembersCanDeleteReposDisableAuditEntry" },
+					{ "name": "MembersCanDeleteReposEnableAuditEntry" },
+					{ "name": "OauthApplicationCreateAuditEntry" },
+					{ "name": "OrgAddBillingManagerAuditEntry" },
+					{ "name": "OrgAddMemberAuditEntry" },
+					{ "name": "OrgBlockUserAuditEntry" },
+					{ "name": "OrgConfigDisableCollaboratorsOnlyAuditEntry" },
+					{ "name": "OrgConfigEnableCollaboratorsOnlyAuditEntry" },
+					{ "name": "OrgCreateAuditEntry" },
+					{ "name": "OrgDisableOauthAppRestrictionsAuditEntry" },
+					{ "name": "OrgDisableSamlAuditEntry" },
+					{ "name": "OrgDisableTwoFactorRequirementAuditEntry" },
+					{ "name": "OrgEnableOauthAppRestrictionsAuditEntry" },
+					{ "name": "OrgEnableSamlAuditEntry" },
+					{ "name": "OrgEnableTwoFactorRequirementAuditEntry" },
+					{ "name": "OrgInviteMemberAuditEntry" },
+					{ "name": "OrgInviteToBusinessAuditEntry" },
+					{ "name": "OrgOauthAppAccessApprovedAuditEntry" },
+					{ "name": "OrgOauthAppAccessDeniedAuditEntry" },
+					{ "name": "OrgOauthAppAccessRequestedAuditEntry" },
+					{ "name": "OrgRemoveBillingManagerAuditEntry" },
+					{ "name": "OrgRemoveMemberAuditEntry" },
+					{ "name": "OrgRemoveOutsideCollaboratorAuditEntry" },
+					{ "name": "OrgRestoreMemberAuditEntry" },
+					{ "name": "OrgUnblockUserAuditEntry" },
+					{ "name": "OrgUpdateDefaultRepositoryPermissionAuditEntry" },
+					{ "name": "OrgUpdateMemberAuditEntry" },
+					{ "name": "OrgUpdateMemberRepositoryCreationPermissionAuditEntry" },
+					{ "name": "OrgUpdateMemberRepositoryInvitationPermissionAuditEntry" },
+					{ "name": "PrivateRepositoryForkingDisableAuditEntry" },
+					{ "name": "PrivateRepositoryForkingEnableAuditEntry" },
+					{ "name": "RepoAccessAuditEntry" },
+					{ "name": "RepoAddMemberAuditEntry" },
+					{ "name": "RepoAddTopicAuditEntry" },
+					{ "name": "RepoArchivedAuditEntry" },
+					{ "name": "RepoChangeMergeSettingAuditEntry" },
+					{ "name": "RepoConfigDisableAnonymousGitAccessAuditEntry" },
+					{ "name": "RepoConfigDisableCollaboratorsOnlyAuditEntry" },
+					{ "name": "RepoConfigDisableContributorsOnlyAuditEntry" },
+					{ "name": "RepoConfigDisableSockpuppetDisallowedAuditEntry" },
+					{ "name": "RepoConfigEnableAnonymousGitAccessAuditEntry" },
+					{ "name": "RepoConfigEnableCollaboratorsOnlyAuditEntry" },
+					{ "name": "RepoConfigEnableContributorsOnlyAuditEntry" },
+					{ "name": "RepoConfigEnableSockpuppetDisallowedAuditEntry" },
+					{ "name": "RepoConfigLockAnonymousGitAccessAuditEntry" },
+					{ "name": "RepoConfigUnlockAnonymousGitAccessAuditEntry" },
+					{ "name": "RepoCreateAuditEntry" },
+					{ "name": "RepoDestroyAuditEntry" },
+					{ "name": "RepoRemoveMemberAuditEntry" },
+					{ "name": "RepoRemoveTopicAuditEntry" },
+					{ "name": "RepositoryVisibilityChangeDisableAuditEntry" },
+					{ "name": "RepositoryVisibilityChangeEnableAuditEntry" },
+					{ "name": "TeamAddMemberAuditEntry" },
+					{ "name": "TeamAddRepositoryAuditEntry" },
+					{ "name": "TeamChangeParentTeamAuditEntry" },
+					{ "name": "TeamRemoveMemberAuditEntry" },
+					{ "name": "TeamRemoveRepositoryAuditEntry" }
+				]
+			},
+			{
+				"kind": "UNION",
+				"name": "AuditEntryActor",
+				"possibleTypes": [{ "name": "Bot" }, { "name": "Organization" }, { "name": "User" }]
+			},
+			{ "kind": "INPUT_OBJECT", "name": "AuditLogOrder", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "AuditLogOrderField", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "AutoMergeDisabledEvent", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "AutoMergeEnabledEvent", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "AutoMergeRequest", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "AutoRebaseEnabledEvent", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "AutoSquashEnabledEvent", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "AutomaticBaseChangeFailedEvent",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "AutomaticBaseChangeSucceededEvent",
+				"possibleTypes": null
+			},
+			{ "kind": "SCALAR", "name": "Base64String", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "BaseRefChangedEvent", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "BaseRefDeletedEvent", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "BaseRefForcePushedEvent", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "Blame", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "BlameRange", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "Blob", "possibleTypes": null },
+			{ "kind": "SCALAR", "name": "Boolean", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "Bot", "possibleTypes": null },
+			{
+				"kind": "UNION",
+				"name": "BranchActorAllowanceActor",
+				"possibleTypes": [{ "name": "App" }, { "name": "Team" }, { "name": "User" }]
+			},
+			{ "kind": "OBJECT", "name": "BranchProtectionRule", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "BranchProtectionRuleConflict", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "BranchProtectionRuleConflictConnection",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "BranchProtectionRuleConflictEdge",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "BranchProtectionRuleConnection",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "BranchProtectionRuleEdge", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "BypassForcePushAllowance", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "BypassForcePushAllowanceConnection",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "BypassForcePushAllowanceEdge", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "BypassPullRequestAllowance", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "BypassPullRequestAllowanceConnection",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "BypassPullRequestAllowanceEdge",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "CVSS", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "CWE", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "CWEConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "CWEEdge", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "CancelEnterpriseAdminInvitationInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "CancelEnterpriseAdminInvitationPayload",
+				"possibleTypes": null
+			},
+			{ "kind": "INPUT_OBJECT", "name": "CancelSponsorshipInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "CancelSponsorshipPayload", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "ChangeUserStatusInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ChangeUserStatusPayload", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "CheckAnnotation", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "CheckAnnotationConnection", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "CheckAnnotationData", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "CheckAnnotationEdge", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "CheckAnnotationLevel", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "CheckAnnotationPosition", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "CheckAnnotationRange", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "CheckAnnotationSpan", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "CheckConclusionState", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "CheckRun", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "CheckRunAction", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "CheckRunConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "CheckRunEdge", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "CheckRunFilter", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "CheckRunOutput", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "CheckRunOutputImage", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "CheckRunType", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "CheckStatusState", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "CheckStep", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "CheckStepConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "CheckStepEdge", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "CheckSuite", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "CheckSuiteAutoTriggerPreference",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "CheckSuiteConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "CheckSuiteEdge", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "CheckSuiteFilter", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "ClearLabelsFromLabelableInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "ClearLabelsFromLabelablePayload",
+				"possibleTypes": null
+			},
+			{ "kind": "INPUT_OBJECT", "name": "CloneProjectInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "CloneProjectPayload", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "CloneTemplateRepositoryInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "CloneTemplateRepositoryPayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INTERFACE",
+				"name": "Closable",
+				"possibleTypes": [
+					{ "name": "Issue" },
+					{ "name": "Milestone" },
+					{ "name": "Project" },
+					{ "name": "ProjectNext" },
+					{ "name": "PullRequest" }
+				]
+			},
+			{ "kind": "INPUT_OBJECT", "name": "CloseIssueInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "CloseIssuePayload", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "ClosePullRequestInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ClosePullRequestPayload", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ClosedEvent", "possibleTypes": null },
+			{
+				"kind": "UNION",
+				"name": "Closer",
+				"possibleTypes": [{ "name": "Commit" }, { "name": "PullRequest" }]
+			},
+			{ "kind": "OBJECT", "name": "CodeOfConduct", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "CollaboratorAffiliation", "possibleTypes": null },
+			{
+				"kind": "INTERFACE",
+				"name": "Comment",
+				"possibleTypes": [
+					{ "name": "CommitComment" },
+					{ "name": "Discussion" },
+					{ "name": "DiscussionComment" },
+					{ "name": "GistComment" },
+					{ "name": "Issue" },
+					{ "name": "IssueComment" },
+					{ "name": "PullRequest" },
+					{ "name": "PullRequestReview" },
+					{ "name": "PullRequestReviewComment" },
+					{ "name": "TeamDiscussion" },
+					{ "name": "TeamDiscussionComment" }
+				]
+			},
+			{ "kind": "ENUM", "name": "CommentAuthorAssociation", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "CommentCannotUpdateReason", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "CommentDeletedEvent", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "Commit", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "CommitAuthor", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "CommitComment", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "CommitCommentConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "CommitCommentEdge", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "CommitCommentThread", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "CommitConnection", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "CommitContributionOrder",
+				"possibleTypes": null
+			},
+			{ "kind": "ENUM", "name": "CommitContributionOrderField", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "CommitContributionsByRepository",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "CommitEdge", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "CommitHistoryConnection", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "CommitMessage", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "CommittableBranch", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ConnectedEvent", "possibleTypes": null },
+			{
+				"kind": "INTERFACE",
+				"name": "Contribution",
+				"possibleTypes": [
+					{ "name": "CreatedCommitContribution" },
+					{ "name": "CreatedIssueContribution" },
+					{ "name": "CreatedPullRequestContribution" },
+					{ "name": "CreatedPullRequestReviewContribution" },
+					{ "name": "CreatedRepositoryContribution" },
+					{ "name": "JoinedGitHubContribution" },
+					{ "name": "RestrictedContribution" }
+				]
+			},
+			{ "kind": "OBJECT", "name": "ContributionCalendar", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ContributionCalendarDay", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ContributionCalendarMonth", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ContributionCalendarWeek", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "ContributionLevel", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "ContributionOrder", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ContributionsCollection", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "ConvertProjectCardNoteToIssueInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "ConvertProjectCardNoteToIssuePayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "ConvertPullRequestToDraftInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "ConvertPullRequestToDraftPayload",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "ConvertToDraftEvent", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ConvertedNoteToIssueEvent", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ConvertedToDiscussionEvent", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "CreateBranchProtectionRuleInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "CreateBranchProtectionRulePayload",
+				"possibleTypes": null
+			},
+			{ "kind": "INPUT_OBJECT", "name": "CreateCheckRunInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "CreateCheckRunPayload", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "CreateCheckSuiteInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "CreateCheckSuitePayload", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "CreateCommitOnBranchInput",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "CreateCommitOnBranchPayload", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "CreateDiscussionInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "CreateDiscussionPayload", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "CreateEnterpriseOrganizationInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "CreateEnterpriseOrganizationPayload",
+				"possibleTypes": null
+			},
+			{ "kind": "INPUT_OBJECT", "name": "CreateEnvironmentInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "CreateEnvironmentPayload", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "CreateIpAllowListEntryInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "CreateIpAllowListEntryPayload",
+				"possibleTypes": null
+			},
+			{ "kind": "INPUT_OBJECT", "name": "CreateIssueInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "CreateIssuePayload", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "CreateMigrationSourceInput",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "CreateMigrationSourcePayload", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "CreateProjectInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "CreateProjectPayload", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "CreatePullRequestInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "CreatePullRequestPayload", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "CreateRefInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "CreateRefPayload", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "CreateRepositoryInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "CreateRepositoryPayload", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "CreateSponsorsTierInput",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "CreateSponsorsTierPayload", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "CreateSponsorshipInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "CreateSponsorshipPayload", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "CreateTeamDiscussionCommentInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "CreateTeamDiscussionCommentPayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "CreateTeamDiscussionInput",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "CreateTeamDiscussionPayload", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "CreatedCommitContribution", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "CreatedCommitContributionConnection",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "CreatedCommitContributionEdge",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "CreatedIssueContribution", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "CreatedIssueContributionConnection",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "CreatedIssueContributionEdge", "possibleTypes": null },
+			{
+				"kind": "UNION",
+				"name": "CreatedIssueOrRestrictedContribution",
+				"possibleTypes": [
+					{ "name": "CreatedIssueContribution" },
+					{ "name": "RestrictedContribution" }
+				]
+			},
+			{
+				"kind": "OBJECT",
+				"name": "CreatedPullRequestContribution",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "CreatedPullRequestContributionConnection",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "CreatedPullRequestContributionEdge",
+				"possibleTypes": null
+			},
+			{
+				"kind": "UNION",
+				"name": "CreatedPullRequestOrRestrictedContribution",
+				"possibleTypes": [
+					{ "name": "CreatedPullRequestContribution" },
+					{ "name": "RestrictedContribution" }
+				]
+			},
+			{
+				"kind": "OBJECT",
+				"name": "CreatedPullRequestReviewContribution",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "CreatedPullRequestReviewContributionConnection",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "CreatedPullRequestReviewContributionEdge",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "CreatedRepositoryContribution",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "CreatedRepositoryContributionConnection",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "CreatedRepositoryContributionEdge",
+				"possibleTypes": null
+			},
+			{
+				"kind": "UNION",
+				"name": "CreatedRepositoryOrRestrictedContribution",
+				"possibleTypes": [
+					{ "name": "CreatedRepositoryContribution" },
+					{ "name": "RestrictedContribution" }
+				]
+			},
+			{ "kind": "OBJECT", "name": "CrossReferencedEvent", "possibleTypes": null },
+			{ "kind": "SCALAR", "name": "Date", "possibleTypes": null },
+			{ "kind": "SCALAR", "name": "DateTime", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "DeclineTopicSuggestionInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "DeclineTopicSuggestionPayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "ENUM",
+				"name": "DefaultRepositoryPermissionField",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INTERFACE",
+				"name": "Deletable",
+				"possibleTypes": [
+					{ "name": "CommitComment" },
+					{ "name": "Discussion" },
+					{ "name": "DiscussionComment" },
+					{ "name": "GistComment" },
+					{ "name": "IssueComment" },
+					{ "name": "PullRequestReview" },
+					{ "name": "PullRequestReviewComment" },
+					{ "name": "TeamDiscussion" },
+					{ "name": "TeamDiscussionComment" }
+				]
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "DeleteBranchProtectionRuleInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "DeleteBranchProtectionRulePayload",
+				"possibleTypes": null
+			},
+			{ "kind": "INPUT_OBJECT", "name": "DeleteDeploymentInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "DeleteDeploymentPayload", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "DeleteDiscussionCommentInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "DeleteDiscussionCommentPayload",
+				"possibleTypes": null
+			},
+			{ "kind": "INPUT_OBJECT", "name": "DeleteDiscussionInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "DeleteDiscussionPayload", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "DeleteEnvironmentInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "DeleteEnvironmentPayload", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "DeleteIpAllowListEntryInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "DeleteIpAllowListEntryPayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "DeleteIssueCommentInput",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "DeleteIssueCommentPayload", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "DeleteIssueInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "DeleteIssuePayload", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "DeleteProjectCardInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "DeleteProjectCardPayload", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "DeleteProjectColumnInput",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "DeleteProjectColumnPayload", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "DeleteProjectInput", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "DeleteProjectNextItemInput",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "DeleteProjectNextItemPayload", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "DeleteProjectPayload", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "DeletePullRequestReviewCommentInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "DeletePullRequestReviewCommentPayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "DeletePullRequestReviewInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "DeletePullRequestReviewPayload",
+				"possibleTypes": null
+			},
+			{ "kind": "INPUT_OBJECT", "name": "DeleteRefInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "DeleteRefPayload", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "DeleteTeamDiscussionCommentInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "DeleteTeamDiscussionCommentPayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "DeleteTeamDiscussionInput",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "DeleteTeamDiscussionPayload", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "DeleteVerifiableDomainInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "DeleteVerifiableDomainPayload",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "DemilestonedEvent", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "DependabotUpdate", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "DependabotUpdateError", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "DependencyGraphEcosystem", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "DeployKey", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "DeployKeyConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "DeployKeyEdge", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "DeployedEvent", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "Deployment", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "DeploymentConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "DeploymentEdge", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "DeploymentEnvironmentChangedEvent",
+				"possibleTypes": null
+			},
+			{ "kind": "INPUT_OBJECT", "name": "DeploymentOrder", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "DeploymentOrderField", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "DeploymentProtectionRule", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "DeploymentProtectionRuleConnection",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "DeploymentProtectionRuleEdge", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "DeploymentProtectionRuleType", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "DeploymentRequest", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "DeploymentRequestConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "DeploymentRequestEdge", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "DeploymentReview", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "DeploymentReviewConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "DeploymentReviewEdge", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "DeploymentReviewState", "possibleTypes": null },
+			{
+				"kind": "UNION",
+				"name": "DeploymentReviewer",
+				"possibleTypes": [{ "name": "Team" }, { "name": "User" }]
+			},
+			{ "kind": "OBJECT", "name": "DeploymentReviewerConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "DeploymentReviewerEdge", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "DeploymentState", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "DeploymentStatus", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "DeploymentStatusConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "DeploymentStatusEdge", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "DeploymentStatusState", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "DiffSide", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "DisablePullRequestAutoMergeInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "DisablePullRequestAutoMergePayload",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "DisconnectedEvent", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "Discussion", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "DiscussionCategory", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "DiscussionCategoryConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "DiscussionCategoryEdge", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "DiscussionComment", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "DiscussionCommentConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "DiscussionCommentEdge", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "DiscussionConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "DiscussionEdge", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "DiscussionOrder", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "DiscussionOrderField", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "DismissPullRequestReviewInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "DismissPullRequestReviewPayload",
+				"possibleTypes": null
+			},
+			{ "kind": "ENUM", "name": "DismissReason", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "DismissRepositoryVulnerabilityAlertInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "DismissRepositoryVulnerabilityAlertPayload",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "DraftIssue", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "DraftPullRequestReviewComment",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "DraftPullRequestReviewThread",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "EnablePullRequestAutoMergeInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "EnablePullRequestAutoMergePayload",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "Enterprise", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "EnterpriseAdministratorConnection",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "EnterpriseAdministratorEdge", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "EnterpriseAdministratorInvitation",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "EnterpriseAdministratorInvitationConnection",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "EnterpriseAdministratorInvitationEdge",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "EnterpriseAdministratorInvitationOrder",
+				"possibleTypes": null
+			},
+			{
+				"kind": "ENUM",
+				"name": "EnterpriseAdministratorInvitationOrderField",
+				"possibleTypes": null
+			},
+			{ "kind": "ENUM", "name": "EnterpriseAdministratorRole", "possibleTypes": null },
+			{
+				"kind": "INTERFACE",
+				"name": "EnterpriseAuditEntryData",
+				"possibleTypes": [
+					{ "name": "MembersCanDeleteReposClearAuditEntry" },
+					{ "name": "MembersCanDeleteReposDisableAuditEntry" },
+					{ "name": "MembersCanDeleteReposEnableAuditEntry" },
+					{ "name": "OrgInviteToBusinessAuditEntry" },
+					{ "name": "PrivateRepositoryForkingDisableAuditEntry" },
+					{ "name": "PrivateRepositoryForkingEnableAuditEntry" },
+					{ "name": "RepositoryVisibilityChangeDisableAuditEntry" },
+					{ "name": "RepositoryVisibilityChangeEnableAuditEntry" }
+				]
+			},
+			{ "kind": "OBJECT", "name": "EnterpriseBillingInfo", "possibleTypes": null },
+			{
+				"kind": "ENUM",
+				"name": "EnterpriseDefaultRepositoryPermissionSettingValue",
+				"possibleTypes": null
+			},
+			{
+				"kind": "ENUM",
+				"name": "EnterpriseEnabledDisabledSettingValue",
+				"possibleTypes": null
+			},
+			{ "kind": "ENUM", "name": "EnterpriseEnabledSettingValue", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "EnterpriseIdentityProvider", "possibleTypes": null },
+			{
+				"kind": "UNION",
+				"name": "EnterpriseMember",
+				"possibleTypes": [{ "name": "EnterpriseUserAccount" }, { "name": "User" }]
+			},
+			{ "kind": "OBJECT", "name": "EnterpriseMemberConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "EnterpriseMemberEdge", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "EnterpriseMemberOrder", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "EnterpriseMemberOrderField", "possibleTypes": null },
+			{
+				"kind": "ENUM",
+				"name": "EnterpriseMembersCanCreateRepositoriesSettingValue",
+				"possibleTypes": null
+			},
+			{
+				"kind": "ENUM",
+				"name": "EnterpriseMembersCanMakePurchasesSettingValue",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "EnterpriseOrganizationMembershipConnection",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "EnterpriseOrganizationMembershipEdge",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "EnterpriseOutsideCollaboratorConnection",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "EnterpriseOutsideCollaboratorEdge",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "EnterpriseOwnerInfo", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "EnterprisePendingMemberInvitationConnection",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "EnterprisePendingMemberInvitationEdge",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "EnterpriseRepositoryInfo", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "EnterpriseRepositoryInfoConnection",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "EnterpriseRepositoryInfoEdge", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "EnterpriseServerInstallation", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "EnterpriseServerInstallationConnection",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "EnterpriseServerInstallationEdge",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "EnterpriseServerInstallationOrder",
+				"possibleTypes": null
+			},
+			{
+				"kind": "ENUM",
+				"name": "EnterpriseServerInstallationOrderField",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "EnterpriseServerUserAccount", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "EnterpriseServerUserAccountConnection",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "EnterpriseServerUserAccountEdge",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "EnterpriseServerUserAccountEmail",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "EnterpriseServerUserAccountEmailConnection",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "EnterpriseServerUserAccountEmailEdge",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "EnterpriseServerUserAccountEmailOrder",
+				"possibleTypes": null
+			},
+			{
+				"kind": "ENUM",
+				"name": "EnterpriseServerUserAccountEmailOrderField",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "EnterpriseServerUserAccountOrder",
+				"possibleTypes": null
+			},
+			{
+				"kind": "ENUM",
+				"name": "EnterpriseServerUserAccountOrderField",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "EnterpriseServerUserAccountsUpload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "EnterpriseServerUserAccountsUploadConnection",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "EnterpriseServerUserAccountsUploadEdge",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "EnterpriseServerUserAccountsUploadOrder",
+				"possibleTypes": null
+			},
+			{
+				"kind": "ENUM",
+				"name": "EnterpriseServerUserAccountsUploadOrderField",
+				"possibleTypes": null
+			},
+			{
+				"kind": "ENUM",
+				"name": "EnterpriseServerUserAccountsUploadSyncState",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "EnterpriseUserAccount", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "EnterpriseUserAccountConnection",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "EnterpriseUserAccountEdge", "possibleTypes": null },
+			{
+				"kind": "ENUM",
+				"name": "EnterpriseUserAccountMembershipRole",
+				"possibleTypes": null
+			},
+			{ "kind": "ENUM", "name": "EnterpriseUserDeployment", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "Environment", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "EnvironmentConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "EnvironmentEdge", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ExternalIdentity", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ExternalIdentityAttribute", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ExternalIdentityConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ExternalIdentityEdge", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "ExternalIdentitySamlAttributes",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "ExternalIdentityScimAttributes",
+				"possibleTypes": null
+			},
+			{ "kind": "INPUT_OBJECT", "name": "FileAddition", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "FileChanges", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "FileDeletion", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "FileViewedState", "possibleTypes": null },
+			{ "kind": "SCALAR", "name": "Float", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "FollowOrganizationInput",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "FollowOrganizationPayload", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "FollowUserInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "FollowUserPayload", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "FollowerConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "FollowingConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "FundingLink", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "FundingPlatform", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "GenericHovercardContext", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "Gist", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "GistComment", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "GistCommentConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "GistCommentEdge", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "GistConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "GistEdge", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "GistFile", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "GistOrder", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "GistOrderField", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "GistPrivacy", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "GitActor", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "GitActorConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "GitActorEdge", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "GitHubMetadata", "possibleTypes": null },
+			{
+				"kind": "INTERFACE",
+				"name": "GitObject",
+				"possibleTypes": [
+					{ "name": "Blob" },
+					{ "name": "Commit" },
+					{ "name": "Tag" },
+					{ "name": "Tree" }
+				]
+			},
+			{ "kind": "SCALAR", "name": "GitObjectID", "possibleTypes": null },
+			{ "kind": "SCALAR", "name": "GitSSHRemote", "possibleTypes": null },
+			{
+				"kind": "INTERFACE",
+				"name": "GitSignature",
+				"possibleTypes": [
+					{ "name": "GpgSignature" },
+					{ "name": "SmimeSignature" },
+					{ "name": "UnknownSignature" }
+				]
+			},
+			{ "kind": "ENUM", "name": "GitSignatureState", "possibleTypes": null },
+			{ "kind": "SCALAR", "name": "GitTimestamp", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "GpgSignature", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "GrantEnterpriseOrganizationsMigratorRoleInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "GrantEnterpriseOrganizationsMigratorRolePayload",
+				"possibleTypes": null
+			},
+			{ "kind": "INPUT_OBJECT", "name": "GrantMigratorRoleInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "GrantMigratorRolePayload", "possibleTypes": null },
+			{ "kind": "SCALAR", "name": "HTML", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "HeadRefDeletedEvent", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "HeadRefForcePushedEvent", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "HeadRefRestoredEvent", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "Hovercard", "possibleTypes": null },
+			{
+				"kind": "INTERFACE",
+				"name": "HovercardContext",
+				"possibleTypes": [
+					{ "name": "GenericHovercardContext" },
+					{ "name": "OrganizationTeamsHovercardContext" },
+					{ "name": "OrganizationsHovercardContext" },
+					{ "name": "ReviewStatusHovercardContext" },
+					{ "name": "ViewerHovercardContext" }
+				]
+			},
+			{ "kind": "SCALAR", "name": "ID", "possibleTypes": null },
+			{
+				"kind": "ENUM",
+				"name": "IdentityProviderConfigurationState",
+				"possibleTypes": null
+			},
+			{ "kind": "SCALAR", "name": "Int", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "InviteEnterpriseAdminInput",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "InviteEnterpriseAdminPayload", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "IpAllowListEnabledSettingValue", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "IpAllowListEntry", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "IpAllowListEntryConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "IpAllowListEntryEdge", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "IpAllowListEntryOrder", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "IpAllowListEntryOrderField", "possibleTypes": null },
+			{
+				"kind": "ENUM",
+				"name": "IpAllowListForInstalledAppsEnabledSettingValue",
+				"possibleTypes": null
+			},
+			{
+				"kind": "UNION",
+				"name": "IpAllowListOwner",
+				"possibleTypes": [
+					{ "name": "App" },
+					{ "name": "Enterprise" },
+					{ "name": "Organization" }
+				]
+			},
+			{ "kind": "OBJECT", "name": "Issue", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "IssueClosedStateReason", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "IssueComment", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "IssueCommentConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "IssueCommentEdge", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "IssueCommentOrder", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "IssueCommentOrderField", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "IssueConnection", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "IssueContributionsByRepository",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "IssueEdge", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "IssueFilters", "possibleTypes": null },
+			{
+				"kind": "UNION",
+				"name": "IssueOrPullRequest",
+				"possibleTypes": [{ "name": "Issue" }, { "name": "PullRequest" }]
+			},
+			{ "kind": "INPUT_OBJECT", "name": "IssueOrder", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "IssueOrderField", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "IssueState", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "IssueStateReason", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "IssueTemplate", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "IssueTimelineConnection", "possibleTypes": null },
+			{
+				"kind": "UNION",
+				"name": "IssueTimelineItem",
+				"possibleTypes": [
+					{ "name": "AssignedEvent" },
+					{ "name": "ClosedEvent" },
+					{ "name": "Commit" },
+					{ "name": "CrossReferencedEvent" },
+					{ "name": "DemilestonedEvent" },
+					{ "name": "IssueComment" },
+					{ "name": "LabeledEvent" },
+					{ "name": "LockedEvent" },
+					{ "name": "MilestonedEvent" },
+					{ "name": "ReferencedEvent" },
+					{ "name": "RenamedTitleEvent" },
+					{ "name": "ReopenedEvent" },
+					{ "name": "SubscribedEvent" },
+					{ "name": "TransferredEvent" },
+					{ "name": "UnassignedEvent" },
+					{ "name": "UnlabeledEvent" },
+					{ "name": "UnlockedEvent" },
+					{ "name": "UnsubscribedEvent" },
+					{ "name": "UserBlockedEvent" }
+				]
+			},
+			{ "kind": "OBJECT", "name": "IssueTimelineItemEdge", "possibleTypes": null },
+			{
+				"kind": "UNION",
+				"name": "IssueTimelineItems",
+				"possibleTypes": [
+					{ "name": "AddedToProjectEvent" },
+					{ "name": "AssignedEvent" },
+					{ "name": "ClosedEvent" },
+					{ "name": "CommentDeletedEvent" },
+					{ "name": "ConnectedEvent" },
+					{ "name": "ConvertedNoteToIssueEvent" },
+					{ "name": "ConvertedToDiscussionEvent" },
+					{ "name": "CrossReferencedEvent" },
+					{ "name": "DemilestonedEvent" },
+					{ "name": "DisconnectedEvent" },
+					{ "name": "IssueComment" },
+					{ "name": "LabeledEvent" },
+					{ "name": "LockedEvent" },
+					{ "name": "MarkedAsDuplicateEvent" },
+					{ "name": "MentionedEvent" },
+					{ "name": "MilestonedEvent" },
+					{ "name": "MovedColumnsInProjectEvent" },
+					{ "name": "PinnedEvent" },
+					{ "name": "ReferencedEvent" },
+					{ "name": "RemovedFromProjectEvent" },
+					{ "name": "RenamedTitleEvent" },
+					{ "name": "ReopenedEvent" },
+					{ "name": "SubscribedEvent" },
+					{ "name": "TransferredEvent" },
+					{ "name": "UnassignedEvent" },
+					{ "name": "UnlabeledEvent" },
+					{ "name": "UnlockedEvent" },
+					{ "name": "UnmarkedAsDuplicateEvent" },
+					{ "name": "UnpinnedEvent" },
+					{ "name": "UnsubscribedEvent" },
+					{ "name": "UserBlockedEvent" }
+				]
+			},
+			{ "kind": "OBJECT", "name": "IssueTimelineItemsConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "IssueTimelineItemsEdge", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "IssueTimelineItemsItemType", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "JoinedGitHubContribution", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "Label", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "LabelConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "LabelEdge", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "LabelOrder", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "LabelOrderField", "possibleTypes": null },
+			{
+				"kind": "INTERFACE",
+				"name": "Labelable",
+				"possibleTypes": [
+					{ "name": "Discussion" },
+					{ "name": "Issue" },
+					{ "name": "PullRequest" }
+				]
+			},
+			{ "kind": "OBJECT", "name": "LabeledEvent", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "Language", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "LanguageConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "LanguageEdge", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "LanguageOrder", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "LanguageOrderField", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "License", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "LicenseRule", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "LinkRepositoryToProjectInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "LinkRepositoryToProjectPayload",
+				"possibleTypes": null
+			},
+			{ "kind": "INPUT_OBJECT", "name": "LockLockableInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "LockLockablePayload", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "LockReason", "possibleTypes": null },
+			{
+				"kind": "INTERFACE",
+				"name": "Lockable",
+				"possibleTypes": [
+					{ "name": "Discussion" },
+					{ "name": "Issue" },
+					{ "name": "PullRequest" }
+				]
+			},
+			{ "kind": "OBJECT", "name": "LockedEvent", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "Mannequin", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "MarkDiscussionCommentAsAnswerInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "MarkDiscussionCommentAsAnswerPayload",
+				"possibleTypes": null
+			},
+			{ "kind": "INPUT_OBJECT", "name": "MarkFileAsViewedInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "MarkFileAsViewedPayload", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "MarkPullRequestReadyForReviewInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "MarkPullRequestReadyForReviewPayload",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "MarkedAsDuplicateEvent", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "MarketplaceCategory", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "MarketplaceListing", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "MarketplaceListingConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "MarketplaceListingEdge", "possibleTypes": null },
+			{
+				"kind": "INTERFACE",
+				"name": "MemberStatusable",
+				"possibleTypes": [{ "name": "Organization" }, { "name": "Team" }]
+			},
+			{
+				"kind": "OBJECT",
+				"name": "MembersCanDeleteReposClearAuditEntry",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "MembersCanDeleteReposDisableAuditEntry",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "MembersCanDeleteReposEnableAuditEntry",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "MentionedEvent", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "MergeBranchInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "MergeBranchPayload", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "MergePullRequestInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "MergePullRequestPayload", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "MergeableState", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "MergedEvent", "possibleTypes": null },
+			{
+				"kind": "INTERFACE",
+				"name": "Migration",
+				"possibleTypes": [{ "name": "RepositoryMigration" }]
+			},
+			{ "kind": "OBJECT", "name": "MigrationSource", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "MigrationSourceType", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "MigrationState", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "Milestone", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "MilestoneConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "MilestoneEdge", "possibleTypes": null },
+			{
+				"kind": "UNION",
+				"name": "MilestoneItem",
+				"possibleTypes": [{ "name": "Issue" }, { "name": "PullRequest" }]
+			},
+			{ "kind": "INPUT_OBJECT", "name": "MilestoneOrder", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "MilestoneOrderField", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "MilestoneState", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "MilestonedEvent", "possibleTypes": null },
+			{
+				"kind": "INTERFACE",
+				"name": "Minimizable",
+				"possibleTypes": [
+					{ "name": "CommitComment" },
+					{ "name": "DiscussionComment" },
+					{ "name": "GistComment" },
+					{ "name": "IssueComment" },
+					{ "name": "PullRequestReviewComment" }
+				]
+			},
+			{ "kind": "INPUT_OBJECT", "name": "MinimizeCommentInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "MinimizeCommentPayload", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "MoveProjectCardInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "MoveProjectCardPayload", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "MoveProjectColumnInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "MoveProjectColumnPayload", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "MovedColumnsInProjectEvent", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "Mutation", "possibleTypes": null },
+			{
+				"kind": "INTERFACE",
+				"name": "Node",
+				"possibleTypes": [
+					{ "name": "AddedToProjectEvent" },
+					{ "name": "App" },
+					{ "name": "AssignedEvent" },
+					{ "name": "AutoMergeDisabledEvent" },
+					{ "name": "AutoMergeEnabledEvent" },
+					{ "name": "AutoRebaseEnabledEvent" },
+					{ "name": "AutoSquashEnabledEvent" },
+					{ "name": "AutomaticBaseChangeFailedEvent" },
+					{ "name": "AutomaticBaseChangeSucceededEvent" },
+					{ "name": "BaseRefChangedEvent" },
+					{ "name": "BaseRefDeletedEvent" },
+					{ "name": "BaseRefForcePushedEvent" },
+					{ "name": "Blob" },
+					{ "name": "Bot" },
+					{ "name": "BranchProtectionRule" },
+					{ "name": "BypassForcePushAllowance" },
+					{ "name": "BypassPullRequestAllowance" },
+					{ "name": "CWE" },
+					{ "name": "CheckRun" },
+					{ "name": "CheckSuite" },
+					{ "name": "ClosedEvent" },
+					{ "name": "CodeOfConduct" },
+					{ "name": "CommentDeletedEvent" },
+					{ "name": "Commit" },
+					{ "name": "CommitComment" },
+					{ "name": "CommitCommentThread" },
+					{ "name": "ConnectedEvent" },
+					{ "name": "ConvertToDraftEvent" },
+					{ "name": "ConvertedNoteToIssueEvent" },
+					{ "name": "ConvertedToDiscussionEvent" },
+					{ "name": "CrossReferencedEvent" },
+					{ "name": "DemilestonedEvent" },
+					{ "name": "DeployKey" },
+					{ "name": "DeployedEvent" },
+					{ "name": "Deployment" },
+					{ "name": "DeploymentEnvironmentChangedEvent" },
+					{ "name": "DeploymentReview" },
+					{ "name": "DeploymentStatus" },
+					{ "name": "DisconnectedEvent" },
+					{ "name": "Discussion" },
+					{ "name": "DiscussionCategory" },
+					{ "name": "DiscussionComment" },
+					{ "name": "DraftIssue" },
+					{ "name": "Enterprise" },
+					{ "name": "EnterpriseAdministratorInvitation" },
+					{ "name": "EnterpriseIdentityProvider" },
+					{ "name": "EnterpriseRepositoryInfo" },
+					{ "name": "EnterpriseServerInstallation" },
+					{ "name": "EnterpriseServerUserAccount" },
+					{ "name": "EnterpriseServerUserAccountEmail" },
+					{ "name": "EnterpriseServerUserAccountsUpload" },
+					{ "name": "EnterpriseUserAccount" },
+					{ "name": "Environment" },
+					{ "name": "ExternalIdentity" },
+					{ "name": "Gist" },
+					{ "name": "GistComment" },
+					{ "name": "HeadRefDeletedEvent" },
+					{ "name": "HeadRefForcePushedEvent" },
+					{ "name": "HeadRefRestoredEvent" },
+					{ "name": "IpAllowListEntry" },
+					{ "name": "Issue" },
+					{ "name": "IssueComment" },
+					{ "name": "Label" },
+					{ "name": "LabeledEvent" },
+					{ "name": "Language" },
+					{ "name": "License" },
+					{ "name": "LockedEvent" },
+					{ "name": "Mannequin" },
+					{ "name": "MarkedAsDuplicateEvent" },
+					{ "name": "MarketplaceCategory" },
+					{ "name": "MarketplaceListing" },
+					{ "name": "MembersCanDeleteReposClearAuditEntry" },
+					{ "name": "MembersCanDeleteReposDisableAuditEntry" },
+					{ "name": "MembersCanDeleteReposEnableAuditEntry" },
+					{ "name": "MentionedEvent" },
+					{ "name": "MergedEvent" },
+					{ "name": "MigrationSource" },
+					{ "name": "Milestone" },
+					{ "name": "MilestonedEvent" },
+					{ "name": "MovedColumnsInProjectEvent" },
+					{ "name": "OIDCProvider" },
+					{ "name": "OauthApplicationCreateAuditEntry" },
+					{ "name": "OrgAddBillingManagerAuditEntry" },
+					{ "name": "OrgAddMemberAuditEntry" },
+					{ "name": "OrgBlockUserAuditEntry" },
+					{ "name": "OrgConfigDisableCollaboratorsOnlyAuditEntry" },
+					{ "name": "OrgConfigEnableCollaboratorsOnlyAuditEntry" },
+					{ "name": "OrgCreateAuditEntry" },
+					{ "name": "OrgDisableOauthAppRestrictionsAuditEntry" },
+					{ "name": "OrgDisableSamlAuditEntry" },
+					{ "name": "OrgDisableTwoFactorRequirementAuditEntry" },
+					{ "name": "OrgEnableOauthAppRestrictionsAuditEntry" },
+					{ "name": "OrgEnableSamlAuditEntry" },
+					{ "name": "OrgEnableTwoFactorRequirementAuditEntry" },
+					{ "name": "OrgInviteMemberAuditEntry" },
+					{ "name": "OrgInviteToBusinessAuditEntry" },
+					{ "name": "OrgOauthAppAccessApprovedAuditEntry" },
+					{ "name": "OrgOauthAppAccessDeniedAuditEntry" },
+					{ "name": "OrgOauthAppAccessRequestedAuditEntry" },
+					{ "name": "OrgRemoveBillingManagerAuditEntry" },
+					{ "name": "OrgRemoveMemberAuditEntry" },
+					{ "name": "OrgRemoveOutsideCollaboratorAuditEntry" },
+					{ "name": "OrgRestoreMemberAuditEntry" },
+					{ "name": "OrgUnblockUserAuditEntry" },
+					{ "name": "OrgUpdateDefaultRepositoryPermissionAuditEntry" },
+					{ "name": "OrgUpdateMemberAuditEntry" },
+					{ "name": "OrgUpdateMemberRepositoryCreationPermissionAuditEntry" },
+					{ "name": "OrgUpdateMemberRepositoryInvitationPermissionAuditEntry" },
+					{ "name": "Organization" },
+					{ "name": "OrganizationIdentityProvider" },
+					{ "name": "OrganizationInvitation" },
+					{ "name": "Package" },
+					{ "name": "PackageFile" },
+					{ "name": "PackageTag" },
+					{ "name": "PackageVersion" },
+					{ "name": "PinnedDiscussion" },
+					{ "name": "PinnedEvent" },
+					{ "name": "PinnedIssue" },
+					{ "name": "PrivateRepositoryForkingDisableAuditEntry" },
+					{ "name": "PrivateRepositoryForkingEnableAuditEntry" },
+					{ "name": "Project" },
+					{ "name": "ProjectCard" },
+					{ "name": "ProjectColumn" },
+					{ "name": "ProjectNext" },
+					{ "name": "ProjectNextField" },
+					{ "name": "ProjectNextItem" },
+					{ "name": "ProjectNextItemFieldValue" },
+					{ "name": "ProjectView" },
+					{ "name": "PublicKey" },
+					{ "name": "PullRequest" },
+					{ "name": "PullRequestCommit" },
+					{ "name": "PullRequestCommitCommentThread" },
+					{ "name": "PullRequestReview" },
+					{ "name": "PullRequestReviewComment" },
+					{ "name": "PullRequestReviewThread" },
+					{ "name": "Push" },
+					{ "name": "PushAllowance" },
+					{ "name": "Reaction" },
+					{ "name": "ReadyForReviewEvent" },
+					{ "name": "Ref" },
+					{ "name": "ReferencedEvent" },
+					{ "name": "Release" },
+					{ "name": "ReleaseAsset" },
+					{ "name": "RemovedFromProjectEvent" },
+					{ "name": "RenamedTitleEvent" },
+					{ "name": "ReopenedEvent" },
+					{ "name": "RepoAccessAuditEntry" },
+					{ "name": "RepoAddMemberAuditEntry" },
+					{ "name": "RepoAddTopicAuditEntry" },
+					{ "name": "RepoArchivedAuditEntry" },
+					{ "name": "RepoChangeMergeSettingAuditEntry" },
+					{ "name": "RepoConfigDisableAnonymousGitAccessAuditEntry" },
+					{ "name": "RepoConfigDisableCollaboratorsOnlyAuditEntry" },
+					{ "name": "RepoConfigDisableContributorsOnlyAuditEntry" },
+					{ "name": "RepoConfigDisableSockpuppetDisallowedAuditEntry" },
+					{ "name": "RepoConfigEnableAnonymousGitAccessAuditEntry" },
+					{ "name": "RepoConfigEnableCollaboratorsOnlyAuditEntry" },
+					{ "name": "RepoConfigEnableContributorsOnlyAuditEntry" },
+					{ "name": "RepoConfigEnableSockpuppetDisallowedAuditEntry" },
+					{ "name": "RepoConfigLockAnonymousGitAccessAuditEntry" },
+					{ "name": "RepoConfigUnlockAnonymousGitAccessAuditEntry" },
+					{ "name": "RepoCreateAuditEntry" },
+					{ "name": "RepoDestroyAuditEntry" },
+					{ "name": "RepoRemoveMemberAuditEntry" },
+					{ "name": "RepoRemoveTopicAuditEntry" },
+					{ "name": "Repository" },
+					{ "name": "RepositoryInvitation" },
+					{ "name": "RepositoryMigration" },
+					{ "name": "RepositoryTopic" },
+					{ "name": "RepositoryVisibilityChangeDisableAuditEntry" },
+					{ "name": "RepositoryVisibilityChangeEnableAuditEntry" },
+					{ "name": "RepositoryVulnerabilityAlert" },
+					{ "name": "ReviewDismissalAllowance" },
+					{ "name": "ReviewDismissedEvent" },
+					{ "name": "ReviewRequest" },
+					{ "name": "ReviewRequestRemovedEvent" },
+					{ "name": "ReviewRequestedEvent" },
+					{ "name": "SavedReply" },
+					{ "name": "SecurityAdvisory" },
+					{ "name": "SponsorsActivity" },
+					{ "name": "SponsorsListing" },
+					{ "name": "SponsorsTier" },
+					{ "name": "Sponsorship" },
+					{ "name": "SponsorshipNewsletter" },
+					{ "name": "Status" },
+					{ "name": "StatusCheckRollup" },
+					{ "name": "StatusContext" },
+					{ "name": "SubscribedEvent" },
+					{ "name": "Tag" },
+					{ "name": "Team" },
+					{ "name": "TeamAddMemberAuditEntry" },
+					{ "name": "TeamAddRepositoryAuditEntry" },
+					{ "name": "TeamChangeParentTeamAuditEntry" },
+					{ "name": "TeamDiscussion" },
+					{ "name": "TeamDiscussionComment" },
+					{ "name": "TeamRemoveMemberAuditEntry" },
+					{ "name": "TeamRemoveRepositoryAuditEntry" },
+					{ "name": "Topic" },
+					{ "name": "TransferredEvent" },
+					{ "name": "Tree" },
+					{ "name": "UnassignedEvent" },
+					{ "name": "UnlabeledEvent" },
+					{ "name": "UnlockedEvent" },
+					{ "name": "UnmarkedAsDuplicateEvent" },
+					{ "name": "UnpinnedEvent" },
+					{ "name": "UnsubscribedEvent" },
+					{ "name": "User" },
+					{ "name": "UserBlockedEvent" },
+					{ "name": "UserContentEdit" },
+					{ "name": "UserStatus" },
+					{ "name": "VerifiableDomain" },
+					{ "name": "Workflow" },
+					{ "name": "WorkflowRun" }
+				]
+			},
+			{
+				"kind": "ENUM",
+				"name": "NotificationRestrictionSettingValue",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "OIDCProvider", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "OIDCProviderType", "possibleTypes": null },
+			{
+				"kind": "INTERFACE",
+				"name": "OauthApplicationAuditEntryData",
+				"possibleTypes": [
+					{ "name": "OauthApplicationCreateAuditEntry" },
+					{ "name": "OrgOauthAppAccessApprovedAuditEntry" },
+					{ "name": "OrgOauthAppAccessDeniedAuditEntry" },
+					{ "name": "OrgOauthAppAccessRequestedAuditEntry" }
+				]
+			},
+			{
+				"kind": "OBJECT",
+				"name": "OauthApplicationCreateAuditEntry",
+				"possibleTypes": null
+			},
+			{
+				"kind": "ENUM",
+				"name": "OauthApplicationCreateAuditEntryState",
+				"possibleTypes": null
+			},
+			{ "kind": "ENUM", "name": "OperationType", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "OrderDirection", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "OrgAddBillingManagerAuditEntry",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "OrgAddMemberAuditEntry", "possibleTypes": null },
+			{
+				"kind": "ENUM",
+				"name": "OrgAddMemberAuditEntryPermission",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "OrgBlockUserAuditEntry", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "OrgConfigDisableCollaboratorsOnlyAuditEntry",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "OrgConfigEnableCollaboratorsOnlyAuditEntry",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "OrgCreateAuditEntry", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "OrgCreateAuditEntryBillingPlan", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "OrgDisableOauthAppRestrictionsAuditEntry",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "OrgDisableSamlAuditEntry", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "OrgDisableTwoFactorRequirementAuditEntry",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "OrgEnableOauthAppRestrictionsAuditEntry",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "OrgEnableSamlAuditEntry", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "OrgEnableTwoFactorRequirementAuditEntry",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "OrgEnterpriseOwnerOrder",
+				"possibleTypes": null
+			},
+			{ "kind": "ENUM", "name": "OrgEnterpriseOwnerOrderField", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "OrgInviteMemberAuditEntry", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "OrgInviteToBusinessAuditEntry",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "OrgOauthAppAccessApprovedAuditEntry",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "OrgOauthAppAccessDeniedAuditEntry",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "OrgOauthAppAccessRequestedAuditEntry",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "OrgRemoveBillingManagerAuditEntry",
+				"possibleTypes": null
+			},
+			{
+				"kind": "ENUM",
+				"name": "OrgRemoveBillingManagerAuditEntryReason",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "OrgRemoveMemberAuditEntry", "possibleTypes": null },
+			{
+				"kind": "ENUM",
+				"name": "OrgRemoveMemberAuditEntryMembershipType",
+				"possibleTypes": null
+			},
+			{
+				"kind": "ENUM",
+				"name": "OrgRemoveMemberAuditEntryReason",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "OrgRemoveOutsideCollaboratorAuditEntry",
+				"possibleTypes": null
+			},
+			{
+				"kind": "ENUM",
+				"name": "OrgRemoveOutsideCollaboratorAuditEntryMembershipType",
+				"possibleTypes": null
+			},
+			{
+				"kind": "ENUM",
+				"name": "OrgRemoveOutsideCollaboratorAuditEntryReason",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "OrgRestoreMemberAuditEntry", "possibleTypes": null },
+			{
+				"kind": "UNION",
+				"name": "OrgRestoreMemberAuditEntryMembership",
+				"possibleTypes": [
+					{ "name": "OrgRestoreMemberMembershipOrganizationAuditEntryData" },
+					{ "name": "OrgRestoreMemberMembershipRepositoryAuditEntryData" },
+					{ "name": "OrgRestoreMemberMembershipTeamAuditEntryData" }
+				]
+			},
+			{
+				"kind": "OBJECT",
+				"name": "OrgRestoreMemberMembershipOrganizationAuditEntryData",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "OrgRestoreMemberMembershipRepositoryAuditEntryData",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "OrgRestoreMemberMembershipTeamAuditEntryData",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "OrgUnblockUserAuditEntry", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "OrgUpdateDefaultRepositoryPermissionAuditEntry",
+				"possibleTypes": null
+			},
+			{
+				"kind": "ENUM",
+				"name": "OrgUpdateDefaultRepositoryPermissionAuditEntryPermission",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "OrgUpdateMemberAuditEntry", "possibleTypes": null },
+			{
+				"kind": "ENUM",
+				"name": "OrgUpdateMemberAuditEntryPermission",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "OrgUpdateMemberRepositoryCreationPermissionAuditEntry",
+				"possibleTypes": null
+			},
+			{
+				"kind": "ENUM",
+				"name": "OrgUpdateMemberRepositoryCreationPermissionAuditEntryVisibility",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "OrgUpdateMemberRepositoryInvitationPermissionAuditEntry",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "Organization", "possibleTypes": null },
+			{
+				"kind": "UNION",
+				"name": "OrganizationAuditEntry",
+				"possibleTypes": [
+					{ "name": "MembersCanDeleteReposClearAuditEntry" },
+					{ "name": "MembersCanDeleteReposDisableAuditEntry" },
+					{ "name": "MembersCanDeleteReposEnableAuditEntry" },
+					{ "name": "OauthApplicationCreateAuditEntry" },
+					{ "name": "OrgAddBillingManagerAuditEntry" },
+					{ "name": "OrgAddMemberAuditEntry" },
+					{ "name": "OrgBlockUserAuditEntry" },
+					{ "name": "OrgConfigDisableCollaboratorsOnlyAuditEntry" },
+					{ "name": "OrgConfigEnableCollaboratorsOnlyAuditEntry" },
+					{ "name": "OrgCreateAuditEntry" },
+					{ "name": "OrgDisableOauthAppRestrictionsAuditEntry" },
+					{ "name": "OrgDisableSamlAuditEntry" },
+					{ "name": "OrgDisableTwoFactorRequirementAuditEntry" },
+					{ "name": "OrgEnableOauthAppRestrictionsAuditEntry" },
+					{ "name": "OrgEnableSamlAuditEntry" },
+					{ "name": "OrgEnableTwoFactorRequirementAuditEntry" },
+					{ "name": "OrgInviteMemberAuditEntry" },
+					{ "name": "OrgInviteToBusinessAuditEntry" },
+					{ "name": "OrgOauthAppAccessApprovedAuditEntry" },
+					{ "name": "OrgOauthAppAccessDeniedAuditEntry" },
+					{ "name": "OrgOauthAppAccessRequestedAuditEntry" },
+					{ "name": "OrgRemoveBillingManagerAuditEntry" },
+					{ "name": "OrgRemoveMemberAuditEntry" },
+					{ "name": "OrgRemoveOutsideCollaboratorAuditEntry" },
+					{ "name": "OrgRestoreMemberAuditEntry" },
+					{ "name": "OrgUnblockUserAuditEntry" },
+					{ "name": "OrgUpdateDefaultRepositoryPermissionAuditEntry" },
+					{ "name": "OrgUpdateMemberAuditEntry" },
+					{ "name": "OrgUpdateMemberRepositoryCreationPermissionAuditEntry" },
+					{ "name": "OrgUpdateMemberRepositoryInvitationPermissionAuditEntry" },
+					{ "name": "PrivateRepositoryForkingDisableAuditEntry" },
+					{ "name": "PrivateRepositoryForkingEnableAuditEntry" },
+					{ "name": "RepoAccessAuditEntry" },
+					{ "name": "RepoAddMemberAuditEntry" },
+					{ "name": "RepoAddTopicAuditEntry" },
+					{ "name": "RepoArchivedAuditEntry" },
+					{ "name": "RepoChangeMergeSettingAuditEntry" },
+					{ "name": "RepoConfigDisableAnonymousGitAccessAuditEntry" },
+					{ "name": "RepoConfigDisableCollaboratorsOnlyAuditEntry" },
+					{ "name": "RepoConfigDisableContributorsOnlyAuditEntry" },
+					{ "name": "RepoConfigDisableSockpuppetDisallowedAuditEntry" },
+					{ "name": "RepoConfigEnableAnonymousGitAccessAuditEntry" },
+					{ "name": "RepoConfigEnableCollaboratorsOnlyAuditEntry" },
+					{ "name": "RepoConfigEnableContributorsOnlyAuditEntry" },
+					{ "name": "RepoConfigEnableSockpuppetDisallowedAuditEntry" },
+					{ "name": "RepoConfigLockAnonymousGitAccessAuditEntry" },
+					{ "name": "RepoConfigUnlockAnonymousGitAccessAuditEntry" },
+					{ "name": "RepoCreateAuditEntry" },
+					{ "name": "RepoDestroyAuditEntry" },
+					{ "name": "RepoRemoveMemberAuditEntry" },
+					{ "name": "RepoRemoveTopicAuditEntry" },
+					{ "name": "RepositoryVisibilityChangeDisableAuditEntry" },
+					{ "name": "RepositoryVisibilityChangeEnableAuditEntry" },
+					{ "name": "TeamAddMemberAuditEntry" },
+					{ "name": "TeamAddRepositoryAuditEntry" },
+					{ "name": "TeamChangeParentTeamAuditEntry" },
+					{ "name": "TeamRemoveMemberAuditEntry" },
+					{ "name": "TeamRemoveRepositoryAuditEntry" }
+				]
+			},
+			{
+				"kind": "OBJECT",
+				"name": "OrganizationAuditEntryConnection",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INTERFACE",
+				"name": "OrganizationAuditEntryData",
+				"possibleTypes": [
+					{ "name": "MembersCanDeleteReposClearAuditEntry" },
+					{ "name": "MembersCanDeleteReposDisableAuditEntry" },
+					{ "name": "MembersCanDeleteReposEnableAuditEntry" },
+					{ "name": "OauthApplicationCreateAuditEntry" },
+					{ "name": "OrgAddBillingManagerAuditEntry" },
+					{ "name": "OrgAddMemberAuditEntry" },
+					{ "name": "OrgBlockUserAuditEntry" },
+					{ "name": "OrgConfigDisableCollaboratorsOnlyAuditEntry" },
+					{ "name": "OrgConfigEnableCollaboratorsOnlyAuditEntry" },
+					{ "name": "OrgCreateAuditEntry" },
+					{ "name": "OrgDisableOauthAppRestrictionsAuditEntry" },
+					{ "name": "OrgDisableSamlAuditEntry" },
+					{ "name": "OrgDisableTwoFactorRequirementAuditEntry" },
+					{ "name": "OrgEnableOauthAppRestrictionsAuditEntry" },
+					{ "name": "OrgEnableSamlAuditEntry" },
+					{ "name": "OrgEnableTwoFactorRequirementAuditEntry" },
+					{ "name": "OrgInviteMemberAuditEntry" },
+					{ "name": "OrgInviteToBusinessAuditEntry" },
+					{ "name": "OrgOauthAppAccessApprovedAuditEntry" },
+					{ "name": "OrgOauthAppAccessDeniedAuditEntry" },
+					{ "name": "OrgOauthAppAccessRequestedAuditEntry" },
+					{ "name": "OrgRemoveBillingManagerAuditEntry" },
+					{ "name": "OrgRemoveMemberAuditEntry" },
+					{ "name": "OrgRemoveOutsideCollaboratorAuditEntry" },
+					{ "name": "OrgRestoreMemberAuditEntry" },
+					{ "name": "OrgRestoreMemberMembershipOrganizationAuditEntryData" },
+					{ "name": "OrgUnblockUserAuditEntry" },
+					{ "name": "OrgUpdateDefaultRepositoryPermissionAuditEntry" },
+					{ "name": "OrgUpdateMemberAuditEntry" },
+					{ "name": "OrgUpdateMemberRepositoryCreationPermissionAuditEntry" },
+					{ "name": "OrgUpdateMemberRepositoryInvitationPermissionAuditEntry" },
+					{ "name": "PrivateRepositoryForkingDisableAuditEntry" },
+					{ "name": "PrivateRepositoryForkingEnableAuditEntry" },
+					{ "name": "RepoAccessAuditEntry" },
+					{ "name": "RepoAddMemberAuditEntry" },
+					{ "name": "RepoAddTopicAuditEntry" },
+					{ "name": "RepoArchivedAuditEntry" },
+					{ "name": "RepoChangeMergeSettingAuditEntry" },
+					{ "name": "RepoConfigDisableAnonymousGitAccessAuditEntry" },
+					{ "name": "RepoConfigDisableCollaboratorsOnlyAuditEntry" },
+					{ "name": "RepoConfigDisableContributorsOnlyAuditEntry" },
+					{ "name": "RepoConfigDisableSockpuppetDisallowedAuditEntry" },
+					{ "name": "RepoConfigEnableAnonymousGitAccessAuditEntry" },
+					{ "name": "RepoConfigEnableCollaboratorsOnlyAuditEntry" },
+					{ "name": "RepoConfigEnableContributorsOnlyAuditEntry" },
+					{ "name": "RepoConfigEnableSockpuppetDisallowedAuditEntry" },
+					{ "name": "RepoConfigLockAnonymousGitAccessAuditEntry" },
+					{ "name": "RepoConfigUnlockAnonymousGitAccessAuditEntry" },
+					{ "name": "RepoCreateAuditEntry" },
+					{ "name": "RepoDestroyAuditEntry" },
+					{ "name": "RepoRemoveMemberAuditEntry" },
+					{ "name": "RepoRemoveTopicAuditEntry" },
+					{ "name": "RepositoryVisibilityChangeDisableAuditEntry" },
+					{ "name": "RepositoryVisibilityChangeEnableAuditEntry" },
+					{ "name": "TeamAddMemberAuditEntry" },
+					{ "name": "TeamAddRepositoryAuditEntry" },
+					{ "name": "TeamChangeParentTeamAuditEntry" },
+					{ "name": "TeamRemoveMemberAuditEntry" },
+					{ "name": "TeamRemoveRepositoryAuditEntry" }
+				]
+			},
+			{ "kind": "OBJECT", "name": "OrganizationAuditEntryEdge", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "OrganizationConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "OrganizationEdge", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "OrganizationEnterpriseOwnerConnection",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "OrganizationEnterpriseOwnerEdge",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "OrganizationIdentityProvider", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "OrganizationInvitation", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "OrganizationInvitationConnection",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "OrganizationInvitationEdge", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "OrganizationInvitationRole", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "OrganizationInvitationType", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "OrganizationMemberConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "OrganizationMemberEdge", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "OrganizationMemberRole", "possibleTypes": null },
+			{
+				"kind": "ENUM",
+				"name": "OrganizationMembersCanCreateRepositoriesSettingValue",
+				"possibleTypes": null
+			},
+			{ "kind": "INPUT_OBJECT", "name": "OrganizationOrder", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "OrganizationOrderField", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "OrganizationTeamsHovercardContext",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "OrganizationsHovercardContext",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "Package", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "PackageConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "PackageEdge", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "PackageFile", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "PackageFileConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "PackageFileEdge", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "PackageFileOrder", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "PackageFileOrderField", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "PackageOrder", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "PackageOrderField", "possibleTypes": null },
+			{
+				"kind": "INTERFACE",
+				"name": "PackageOwner",
+				"possibleTypes": [
+					{ "name": "Organization" },
+					{ "name": "Repository" },
+					{ "name": "User" }
+				]
+			},
+			{ "kind": "OBJECT", "name": "PackageStatistics", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "PackageTag", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "PackageType", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "PackageVersion", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "PackageVersionConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "PackageVersionEdge", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "PackageVersionOrder", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "PackageVersionOrderField", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "PackageVersionStatistics", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "PageInfo", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "PatchStatus", "possibleTypes": null },
+			{
+				"kind": "UNION",
+				"name": "PermissionGranter",
+				"possibleTypes": [
+					{ "name": "Organization" },
+					{ "name": "Repository" },
+					{ "name": "Team" }
+				]
+			},
+			{ "kind": "OBJECT", "name": "PermissionSource", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "PinIssueInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "PinIssuePayload", "possibleTypes": null },
+			{
+				"kind": "UNION",
+				"name": "PinnableItem",
+				"possibleTypes": [{ "name": "Gist" }, { "name": "Repository" }]
+			},
+			{ "kind": "OBJECT", "name": "PinnableItemConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "PinnableItemEdge", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "PinnableItemType", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "PinnedDiscussion", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "PinnedDiscussionConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "PinnedDiscussionEdge", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "PinnedDiscussionGradient", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "PinnedDiscussionPattern", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "PinnedEvent", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "PinnedIssue", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "PinnedIssueConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "PinnedIssueEdge", "possibleTypes": null },
+			{ "kind": "SCALAR", "name": "PreciseDateTime", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "PrivateRepositoryForkingDisableAuditEntry",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "PrivateRepositoryForkingEnableAuditEntry",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "ProfileItemShowcase", "possibleTypes": null },
+			{
+				"kind": "INTERFACE",
+				"name": "ProfileOwner",
+				"possibleTypes": [{ "name": "Organization" }, { "name": "User" }]
+			},
+			{ "kind": "OBJECT", "name": "Project", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ProjectCard", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "ProjectCardArchivedState", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ProjectCardConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ProjectCardEdge", "possibleTypes": null },
+			{
+				"kind": "UNION",
+				"name": "ProjectCardItem",
+				"possibleTypes": [{ "name": "Issue" }, { "name": "PullRequest" }]
+			},
+			{ "kind": "ENUM", "name": "ProjectCardState", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ProjectColumn", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ProjectColumnConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ProjectColumnEdge", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "ProjectColumnPurpose", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ProjectConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ProjectEdge", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "ProjectItemType", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ProjectNext", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ProjectNextConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ProjectNextEdge", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ProjectNextField", "possibleTypes": null },
+			{
+				"kind": "INTERFACE",
+				"name": "ProjectNextFieldCommon",
+				"possibleTypes": [{ "name": "ProjectNextField" }]
+			},
+			{ "kind": "OBJECT", "name": "ProjectNextFieldConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ProjectNextFieldEdge", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "ProjectNextFieldType", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ProjectNextItem", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ProjectNextItemConnection", "possibleTypes": null },
+			{
+				"kind": "UNION",
+				"name": "ProjectNextItemContent",
+				"possibleTypes": [
+					{ "name": "DraftIssue" },
+					{ "name": "Issue" },
+					{ "name": "PullRequest" }
+				]
+			},
+			{ "kind": "OBJECT", "name": "ProjectNextItemEdge", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ProjectNextItemFieldValue", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "ProjectNextItemFieldValueConnection",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "ProjectNextItemFieldValueEdge",
+				"possibleTypes": null
+			},
+			{ "kind": "ENUM", "name": "ProjectNextOrderField", "possibleTypes": null },
+			{
+				"kind": "INTERFACE",
+				"name": "ProjectNextOwner",
+				"possibleTypes": [
+					{ "name": "Issue" },
+					{ "name": "Organization" },
+					{ "name": "PullRequest" },
+					{ "name": "User" }
+				]
+			},
+			{ "kind": "INPUT_OBJECT", "name": "ProjectOrder", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "ProjectOrderField", "possibleTypes": null },
+			{
+				"kind": "INTERFACE",
+				"name": "ProjectOwner",
+				"possibleTypes": [
+					{ "name": "Organization" },
+					{ "name": "Repository" },
+					{ "name": "User" }
+				]
+			},
+			{ "kind": "OBJECT", "name": "ProjectProgress", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "ProjectState", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "ProjectTemplate", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ProjectView", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ProjectViewConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ProjectViewEdge", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "ProjectViewLayout", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "PublicKey", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "PublicKeyConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "PublicKeyEdge", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "PullRequest", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "PullRequestChangedFile", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "PullRequestChangedFileConnection",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "PullRequestChangedFileEdge", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "PullRequestCommit", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "PullRequestCommitCommentThread",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "PullRequestCommitConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "PullRequestCommitEdge", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "PullRequestConnection", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "PullRequestContributionsByRepository",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "PullRequestEdge", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "PullRequestMergeMethod", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "PullRequestOrder", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "PullRequestOrderField", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "PullRequestReview", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "PullRequestReviewComment", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "PullRequestReviewCommentConnection",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "PullRequestReviewCommentEdge", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "PullRequestReviewCommentState", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "PullRequestReviewConnection", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "PullRequestReviewContributionsByRepository",
+				"possibleTypes": null
+			},
+			{ "kind": "ENUM", "name": "PullRequestReviewDecision", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "PullRequestReviewEdge", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "PullRequestReviewEvent", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "PullRequestReviewState", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "PullRequestReviewThread", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "PullRequestReviewThreadConnection",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "PullRequestReviewThreadEdge", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "PullRequestRevisionMarker", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "PullRequestState", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "PullRequestTemplate", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "PullRequestTimelineConnection",
+				"possibleTypes": null
+			},
+			{
+				"kind": "UNION",
+				"name": "PullRequestTimelineItem",
+				"possibleTypes": [
+					{ "name": "AssignedEvent" },
+					{ "name": "BaseRefDeletedEvent" },
+					{ "name": "BaseRefForcePushedEvent" },
+					{ "name": "ClosedEvent" },
+					{ "name": "Commit" },
+					{ "name": "CommitCommentThread" },
+					{ "name": "CrossReferencedEvent" },
+					{ "name": "DemilestonedEvent" },
+					{ "name": "DeployedEvent" },
+					{ "name": "DeploymentEnvironmentChangedEvent" },
+					{ "name": "HeadRefDeletedEvent" },
+					{ "name": "HeadRefForcePushedEvent" },
+					{ "name": "HeadRefRestoredEvent" },
+					{ "name": "IssueComment" },
+					{ "name": "LabeledEvent" },
+					{ "name": "LockedEvent" },
+					{ "name": "MergedEvent" },
+					{ "name": "MilestonedEvent" },
+					{ "name": "PullRequestReview" },
+					{ "name": "PullRequestReviewComment" },
+					{ "name": "PullRequestReviewThread" },
+					{ "name": "ReferencedEvent" },
+					{ "name": "RenamedTitleEvent" },
+					{ "name": "ReopenedEvent" },
+					{ "name": "ReviewDismissedEvent" },
+					{ "name": "ReviewRequestRemovedEvent" },
+					{ "name": "ReviewRequestedEvent" },
+					{ "name": "SubscribedEvent" },
+					{ "name": "UnassignedEvent" },
+					{ "name": "UnlabeledEvent" },
+					{ "name": "UnlockedEvent" },
+					{ "name": "UnsubscribedEvent" },
+					{ "name": "UserBlockedEvent" }
+				]
+			},
+			{ "kind": "OBJECT", "name": "PullRequestTimelineItemEdge", "possibleTypes": null },
+			{
+				"kind": "UNION",
+				"name": "PullRequestTimelineItems",
+				"possibleTypes": [
+					{ "name": "AddedToProjectEvent" },
+					{ "name": "AssignedEvent" },
+					{ "name": "AutoMergeDisabledEvent" },
+					{ "name": "AutoMergeEnabledEvent" },
+					{ "name": "AutoRebaseEnabledEvent" },
+					{ "name": "AutoSquashEnabledEvent" },
+					{ "name": "AutomaticBaseChangeFailedEvent" },
+					{ "name": "AutomaticBaseChangeSucceededEvent" },
+					{ "name": "BaseRefChangedEvent" },
+					{ "name": "BaseRefDeletedEvent" },
+					{ "name": "BaseRefForcePushedEvent" },
+					{ "name": "ClosedEvent" },
+					{ "name": "CommentDeletedEvent" },
+					{ "name": "ConnectedEvent" },
+					{ "name": "ConvertToDraftEvent" },
+					{ "name": "ConvertedNoteToIssueEvent" },
+					{ "name": "ConvertedToDiscussionEvent" },
+					{ "name": "CrossReferencedEvent" },
+					{ "name": "DemilestonedEvent" },
+					{ "name": "DeployedEvent" },
+					{ "name": "DeploymentEnvironmentChangedEvent" },
+					{ "name": "DisconnectedEvent" },
+					{ "name": "HeadRefDeletedEvent" },
+					{ "name": "HeadRefForcePushedEvent" },
+					{ "name": "HeadRefRestoredEvent" },
+					{ "name": "IssueComment" },
+					{ "name": "LabeledEvent" },
+					{ "name": "LockedEvent" },
+					{ "name": "MarkedAsDuplicateEvent" },
+					{ "name": "MentionedEvent" },
+					{ "name": "MergedEvent" },
+					{ "name": "MilestonedEvent" },
+					{ "name": "MovedColumnsInProjectEvent" },
+					{ "name": "PinnedEvent" },
+					{ "name": "PullRequestCommit" },
+					{ "name": "PullRequestCommitCommentThread" },
+					{ "name": "PullRequestReview" },
+					{ "name": "PullRequestReviewThread" },
+					{ "name": "PullRequestRevisionMarker" },
+					{ "name": "ReadyForReviewEvent" },
+					{ "name": "ReferencedEvent" },
+					{ "name": "RemovedFromProjectEvent" },
+					{ "name": "RenamedTitleEvent" },
+					{ "name": "ReopenedEvent" },
+					{ "name": "ReviewDismissedEvent" },
+					{ "name": "ReviewRequestRemovedEvent" },
+					{ "name": "ReviewRequestedEvent" },
+					{ "name": "SubscribedEvent" },
+					{ "name": "TransferredEvent" },
+					{ "name": "UnassignedEvent" },
+					{ "name": "UnlabeledEvent" },
+					{ "name": "UnlockedEvent" },
+					{ "name": "UnmarkedAsDuplicateEvent" },
+					{ "name": "UnpinnedEvent" },
+					{ "name": "UnsubscribedEvent" },
+					{ "name": "UserBlockedEvent" }
+				]
+			},
+			{
+				"kind": "OBJECT",
+				"name": "PullRequestTimelineItemsConnection",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "PullRequestTimelineItemsEdge", "possibleTypes": null },
+			{
+				"kind": "ENUM",
+				"name": "PullRequestTimelineItemsItemType",
+				"possibleTypes": null
+			},
+			{ "kind": "ENUM", "name": "PullRequestUpdateState", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "Push", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "PushAllowance", "possibleTypes": null },
+			{
+				"kind": "UNION",
+				"name": "PushAllowanceActor",
+				"possibleTypes": [{ "name": "App" }, { "name": "Team" }, { "name": "User" }]
+			},
+			{ "kind": "OBJECT", "name": "PushAllowanceConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "PushAllowanceEdge", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "Query", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "RateLimit", "possibleTypes": null },
+			{
+				"kind": "INTERFACE",
+				"name": "Reactable",
+				"possibleTypes": [
+					{ "name": "CommitComment" },
+					{ "name": "Discussion" },
+					{ "name": "DiscussionComment" },
+					{ "name": "Issue" },
+					{ "name": "IssueComment" },
+					{ "name": "PullRequest" },
+					{ "name": "PullRequestReview" },
+					{ "name": "PullRequestReviewComment" },
+					{ "name": "Release" },
+					{ "name": "TeamDiscussion" },
+					{ "name": "TeamDiscussionComment" }
+				]
+			},
+			{ "kind": "OBJECT", "name": "ReactingUserConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ReactingUserEdge", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "Reaction", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ReactionConnection", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "ReactionContent", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ReactionEdge", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ReactionGroup", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "ReactionOrder", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "ReactionOrderField", "possibleTypes": null },
+			{
+				"kind": "UNION",
+				"name": "Reactor",
+				"possibleTypes": [
+					{ "name": "Bot" },
+					{ "name": "Mannequin" },
+					{ "name": "Organization" },
+					{ "name": "User" }
+				]
+			},
+			{ "kind": "OBJECT", "name": "ReactorConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ReactorEdge", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ReadyForReviewEvent", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "Ref", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "RefConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "RefEdge", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "RefOrder", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "RefOrderField", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "RefUpdateRule", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ReferencedEvent", "possibleTypes": null },
+			{
+				"kind": "UNION",
+				"name": "ReferencedSubject",
+				"possibleTypes": [{ "name": "Issue" }, { "name": "PullRequest" }]
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "RegenerateEnterpriseIdentityProviderRecoveryCodesInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "RegenerateEnterpriseIdentityProviderRecoveryCodesPayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "RegenerateVerifiableDomainTokenInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "RegenerateVerifiableDomainTokenPayload",
+				"possibleTypes": null
+			},
+			{ "kind": "INPUT_OBJECT", "name": "RejectDeploymentsInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "RejectDeploymentsPayload", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "Release", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ReleaseAsset", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ReleaseAssetConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ReleaseAssetEdge", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ReleaseConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ReleaseEdge", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "ReleaseOrder", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "ReleaseOrderField", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "RemoveAssigneesFromAssignableInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "RemoveAssigneesFromAssignablePayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "RemoveEnterpriseAdminInput",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "RemoveEnterpriseAdminPayload", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "RemoveEnterpriseIdentityProviderInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "RemoveEnterpriseIdentityProviderPayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "RemoveEnterpriseOrganizationInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "RemoveEnterpriseOrganizationPayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "RemoveEnterpriseSupportEntitlementInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "RemoveEnterpriseSupportEntitlementPayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "RemoveLabelsFromLabelableInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "RemoveLabelsFromLabelablePayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "RemoveOutsideCollaboratorInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "RemoveOutsideCollaboratorPayload",
+				"possibleTypes": null
+			},
+			{ "kind": "INPUT_OBJECT", "name": "RemoveReactionInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "RemoveReactionPayload", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "RemoveStarInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "RemoveStarPayload", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "RemoveUpvoteInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "RemoveUpvotePayload", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "RemovedFromProjectEvent", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "RenamedTitleEvent", "possibleTypes": null },
+			{
+				"kind": "UNION",
+				"name": "RenamedTitleSubject",
+				"possibleTypes": [{ "name": "Issue" }, { "name": "PullRequest" }]
+			},
+			{ "kind": "INPUT_OBJECT", "name": "ReopenIssueInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ReopenIssuePayload", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "ReopenPullRequestInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ReopenPullRequestPayload", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ReopenedEvent", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "RepoAccessAuditEntry", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "RepoAccessAuditEntryVisibility", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "RepoAddMemberAuditEntry", "possibleTypes": null },
+			{
+				"kind": "ENUM",
+				"name": "RepoAddMemberAuditEntryVisibility",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "RepoAddTopicAuditEntry", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "RepoArchivedAuditEntry", "possibleTypes": null },
+			{
+				"kind": "ENUM",
+				"name": "RepoArchivedAuditEntryVisibility",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "RepoChangeMergeSettingAuditEntry",
+				"possibleTypes": null
+			},
+			{
+				"kind": "ENUM",
+				"name": "RepoChangeMergeSettingAuditEntryMergeType",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "RepoConfigDisableAnonymousGitAccessAuditEntry",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "RepoConfigDisableCollaboratorsOnlyAuditEntry",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "RepoConfigDisableContributorsOnlyAuditEntry",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "RepoConfigDisableSockpuppetDisallowedAuditEntry",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "RepoConfigEnableAnonymousGitAccessAuditEntry",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "RepoConfigEnableCollaboratorsOnlyAuditEntry",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "RepoConfigEnableContributorsOnlyAuditEntry",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "RepoConfigEnableSockpuppetDisallowedAuditEntry",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "RepoConfigLockAnonymousGitAccessAuditEntry",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "RepoConfigUnlockAnonymousGitAccessAuditEntry",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "RepoCreateAuditEntry", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "RepoCreateAuditEntryVisibility", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "RepoDestroyAuditEntry", "possibleTypes": null },
+			{
+				"kind": "ENUM",
+				"name": "RepoDestroyAuditEntryVisibility",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "RepoRemoveMemberAuditEntry", "possibleTypes": null },
+			{
+				"kind": "ENUM",
+				"name": "RepoRemoveMemberAuditEntryVisibility",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "RepoRemoveTopicAuditEntry", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "ReportedContentClassifiers", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "Repository", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "RepositoryAffiliation", "possibleTypes": null },
+			{
+				"kind": "INTERFACE",
+				"name": "RepositoryAuditEntryData",
+				"possibleTypes": [
+					{ "name": "OrgRestoreMemberMembershipRepositoryAuditEntryData" },
+					{ "name": "PrivateRepositoryForkingDisableAuditEntry" },
+					{ "name": "PrivateRepositoryForkingEnableAuditEntry" },
+					{ "name": "RepoAccessAuditEntry" },
+					{ "name": "RepoAddMemberAuditEntry" },
+					{ "name": "RepoAddTopicAuditEntry" },
+					{ "name": "RepoArchivedAuditEntry" },
+					{ "name": "RepoChangeMergeSettingAuditEntry" },
+					{ "name": "RepoConfigDisableAnonymousGitAccessAuditEntry" },
+					{ "name": "RepoConfigDisableCollaboratorsOnlyAuditEntry" },
+					{ "name": "RepoConfigDisableContributorsOnlyAuditEntry" },
+					{ "name": "RepoConfigDisableSockpuppetDisallowedAuditEntry" },
+					{ "name": "RepoConfigEnableAnonymousGitAccessAuditEntry" },
+					{ "name": "RepoConfigEnableCollaboratorsOnlyAuditEntry" },
+					{ "name": "RepoConfigEnableContributorsOnlyAuditEntry" },
+					{ "name": "RepoConfigEnableSockpuppetDisallowedAuditEntry" },
+					{ "name": "RepoConfigLockAnonymousGitAccessAuditEntry" },
+					{ "name": "RepoConfigUnlockAnonymousGitAccessAuditEntry" },
+					{ "name": "RepoCreateAuditEntry" },
+					{ "name": "RepoDestroyAuditEntry" },
+					{ "name": "RepoRemoveMemberAuditEntry" },
+					{ "name": "RepoRemoveTopicAuditEntry" },
+					{ "name": "TeamAddRepositoryAuditEntry" },
+					{ "name": "TeamRemoveRepositoryAuditEntry" }
+				]
+			},
+			{ "kind": "OBJECT", "name": "RepositoryCodeowners", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "RepositoryCodeownersError", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "RepositoryCollaboratorConnection",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "RepositoryCollaboratorEdge", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "RepositoryConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "RepositoryContactLink", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "RepositoryContributionType", "possibleTypes": null },
+			{
+				"kind": "INTERFACE",
+				"name": "RepositoryDiscussionAuthor",
+				"possibleTypes": [{ "name": "Organization" }, { "name": "User" }]
+			},
+			{
+				"kind": "INTERFACE",
+				"name": "RepositoryDiscussionCommentAuthor",
+				"possibleTypes": [{ "name": "Organization" }, { "name": "User" }]
+			},
+			{ "kind": "OBJECT", "name": "RepositoryEdge", "possibleTypes": null },
+			{
+				"kind": "INTERFACE",
+				"name": "RepositoryInfo",
+				"possibleTypes": [{ "name": "Repository" }]
+			},
+			{ "kind": "OBJECT", "name": "RepositoryInteractionAbility", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "RepositoryInteractionLimit", "possibleTypes": null },
+			{
+				"kind": "ENUM",
+				"name": "RepositoryInteractionLimitExpiry",
+				"possibleTypes": null
+			},
+			{
+				"kind": "ENUM",
+				"name": "RepositoryInteractionLimitOrigin",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "RepositoryInvitation", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "RepositoryInvitationConnection",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "RepositoryInvitationEdge", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "RepositoryInvitationOrder",
+				"possibleTypes": null
+			},
+			{ "kind": "ENUM", "name": "RepositoryInvitationOrderField", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "RepositoryLockReason", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "RepositoryMigration", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "RepositoryMigrationConnection",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "RepositoryMigrationEdge", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "RepositoryMigrationOrder",
+				"possibleTypes": null
+			},
+			{
+				"kind": "ENUM",
+				"name": "RepositoryMigrationOrderDirection",
+				"possibleTypes": null
+			},
+			{ "kind": "ENUM", "name": "RepositoryMigrationOrderField", "possibleTypes": null },
+			{
+				"kind": "INTERFACE",
+				"name": "RepositoryNode",
+				"possibleTypes": [
+					{ "name": "CommitComment" },
+					{ "name": "CommitCommentThread" },
+					{ "name": "DependabotUpdate" },
+					{ "name": "Discussion" },
+					{ "name": "DiscussionCategory" },
+					{ "name": "Issue" },
+					{ "name": "IssueComment" },
+					{ "name": "PinnedDiscussion" },
+					{ "name": "PullRequest" },
+					{ "name": "PullRequestCommitCommentThread" },
+					{ "name": "PullRequestReview" },
+					{ "name": "PullRequestReviewComment" },
+					{ "name": "RepositoryVulnerabilityAlert" }
+				]
+			},
+			{ "kind": "INPUT_OBJECT", "name": "RepositoryOrder", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "RepositoryOrderField", "possibleTypes": null },
+			{
+				"kind": "INTERFACE",
+				"name": "RepositoryOwner",
+				"possibleTypes": [{ "name": "Organization" }, { "name": "User" }]
+			},
+			{ "kind": "ENUM", "name": "RepositoryPermission", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "RepositoryPrivacy", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "RepositoryTopic", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "RepositoryTopicConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "RepositoryTopicEdge", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "RepositoryVisibility", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "RepositoryVisibilityChangeDisableAuditEntry",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "RepositoryVisibilityChangeEnableAuditEntry",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "RepositoryVulnerabilityAlert", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "RepositoryVulnerabilityAlertConnection",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "RepositoryVulnerabilityAlertEdge",
+				"possibleTypes": null
+			},
+			{
+				"kind": "ENUM",
+				"name": "RepositoryVulnerabilityAlertState",
+				"possibleTypes": null
+			},
+			{ "kind": "INPUT_OBJECT", "name": "RequestReviewsInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "RequestReviewsPayload", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "RequestableCheckStatusState", "possibleTypes": null },
+			{
+				"kind": "UNION",
+				"name": "RequestedReviewer",
+				"possibleTypes": [{ "name": "Mannequin" }, { "name": "Team" }, { "name": "User" }]
+			},
+			{
+				"kind": "INTERFACE",
+				"name": "RequirableByPullRequest",
+				"possibleTypes": [{ "name": "CheckRun" }, { "name": "StatusContext" }]
+			},
+			{
+				"kind": "OBJECT",
+				"name": "RequiredStatusCheckDescription",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "RequiredStatusCheckInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "RerequestCheckSuiteInput",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "RerequestCheckSuitePayload", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "ResolveReviewThreadInput",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "ResolveReviewThreadPayload", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "RestrictedContribution", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ReviewDismissalAllowance", "possibleTypes": null },
+			{
+				"kind": "UNION",
+				"name": "ReviewDismissalAllowanceActor",
+				"possibleTypes": [{ "name": "App" }, { "name": "Team" }, { "name": "User" }]
+			},
+			{
+				"kind": "OBJECT",
+				"name": "ReviewDismissalAllowanceConnection",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "ReviewDismissalAllowanceEdge", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ReviewDismissedEvent", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ReviewRequest", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ReviewRequestConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ReviewRequestEdge", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ReviewRequestRemovedEvent", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ReviewRequestedEvent", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "ReviewStatusHovercardContext", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "RevokeEnterpriseOrganizationsMigratorRoleInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "RevokeEnterpriseOrganizationsMigratorRolePayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "RevokeMigratorRoleInput",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "RevokeMigratorRolePayload", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "RoleInOrganization", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "SamlDigestAlgorithm", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "SamlSignatureAlgorithm", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "SavedReply", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "SavedReplyConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "SavedReplyEdge", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "SavedReplyOrder", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "SavedReplyOrderField", "possibleTypes": null },
+			{
+				"kind": "UNION",
+				"name": "SearchResultItem",
+				"possibleTypes": [
+					{ "name": "App" },
+					{ "name": "Discussion" },
+					{ "name": "Issue" },
+					{ "name": "MarketplaceListing" },
+					{ "name": "Organization" },
+					{ "name": "PullRequest" },
+					{ "name": "Repository" },
+					{ "name": "User" }
+				]
+			},
+			{ "kind": "OBJECT", "name": "SearchResultItemConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "SearchResultItemEdge", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "SearchType", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "SecurityAdvisory", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "SecurityAdvisoryClassification", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "SecurityAdvisoryConnection", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "SecurityAdvisoryEcosystem", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "SecurityAdvisoryEdge", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "SecurityAdvisoryIdentifier", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "SecurityAdvisoryIdentifierFilter",
+				"possibleTypes": null
+			},
+			{ "kind": "ENUM", "name": "SecurityAdvisoryIdentifierType", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "SecurityAdvisoryOrder", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "SecurityAdvisoryOrderField", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "SecurityAdvisoryPackage", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "SecurityAdvisoryPackageVersion",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "SecurityAdvisoryReference", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "SecurityAdvisorySeverity", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "SecurityVulnerability", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "SecurityVulnerabilityConnection",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "SecurityVulnerabilityEdge", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "SecurityVulnerabilityOrder",
+				"possibleTypes": null
+			},
+			{
+				"kind": "ENUM",
+				"name": "SecurityVulnerabilityOrderField",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "SetEnterpriseIdentityProviderInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "SetEnterpriseIdentityProviderPayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "SetOrganizationInteractionLimitInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "SetOrganizationInteractionLimitPayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "SetRepositoryInteractionLimitInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "SetRepositoryInteractionLimitPayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "SetUserInteractionLimitInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "SetUserInteractionLimitPayload",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "SmimeSignature", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "SortBy", "possibleTypes": null },
+			{
+				"kind": "UNION",
+				"name": "Sponsor",
+				"possibleTypes": [{ "name": "Organization" }, { "name": "User" }]
+			},
+			{ "kind": "OBJECT", "name": "SponsorConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "SponsorEdge", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "SponsorOrder", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "SponsorOrderField", "possibleTypes": null },
+			{
+				"kind": "INTERFACE",
+				"name": "Sponsorable",
+				"possibleTypes": [{ "name": "Organization" }, { "name": "User" }]
+			},
+			{
+				"kind": "UNION",
+				"name": "SponsorableItem",
+				"possibleTypes": [{ "name": "Organization" }, { "name": "User" }]
+			},
+			{ "kind": "OBJECT", "name": "SponsorableItemConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "SponsorableItemEdge", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "SponsorableOrder", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "SponsorableOrderField", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "SponsorsActivity", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "SponsorsActivityAction", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "SponsorsActivityConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "SponsorsActivityEdge", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "SponsorsActivityOrder", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "SponsorsActivityOrderField", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "SponsorsActivityPeriod", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "SponsorsGoal", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "SponsorsGoalKind", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "SponsorsListing", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "SponsorsTier", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "SponsorsTierAdminInfo", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "SponsorsTierConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "SponsorsTierEdge", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "SponsorsTierOrder", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "SponsorsTierOrderField", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "Sponsorship", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "SponsorshipConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "SponsorshipEdge", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "SponsorshipNewsletter", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "SponsorshipNewsletterConnection",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "SponsorshipNewsletterEdge", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "SponsorshipNewsletterOrder",
+				"possibleTypes": null
+			},
+			{
+				"kind": "ENUM",
+				"name": "SponsorshipNewsletterOrderField",
+				"possibleTypes": null
+			},
+			{ "kind": "INPUT_OBJECT", "name": "SponsorshipOrder", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "SponsorshipOrderField", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "SponsorshipPrivacy", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "StarOrder", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "StarOrderField", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "StargazerConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "StargazerEdge", "possibleTypes": null },
+			{
+				"kind": "INTERFACE",
+				"name": "Starrable",
+				"possibleTypes": [{ "name": "Gist" }, { "name": "Repository" }, { "name": "Topic" }]
+			},
+			{ "kind": "OBJECT", "name": "StarredRepositoryConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "StarredRepositoryEdge", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "StartRepositoryMigrationInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "StartRepositoryMigrationPayload",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "Status", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "StatusCheckRollup", "possibleTypes": null },
+			{
+				"kind": "UNION",
+				"name": "StatusCheckRollupContext",
+				"possibleTypes": [{ "name": "CheckRun" }, { "name": "StatusContext" }]
+			},
+			{
+				"kind": "OBJECT",
+				"name": "StatusCheckRollupContextConnection",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "StatusCheckRollupContextEdge", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "StatusContext", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "StatusState", "possibleTypes": null },
+			{ "kind": "SCALAR", "name": "String", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "SubmitPullRequestReviewInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "SubmitPullRequestReviewPayload",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "Submodule", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "SubmoduleConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "SubmoduleEdge", "possibleTypes": null },
+			{
+				"kind": "INTERFACE",
+				"name": "Subscribable",
+				"possibleTypes": [
+					{ "name": "Commit" },
+					{ "name": "Discussion" },
+					{ "name": "Issue" },
+					{ "name": "PullRequest" },
+					{ "name": "Repository" },
+					{ "name": "Team" },
+					{ "name": "TeamDiscussion" }
+				]
+			},
+			{ "kind": "OBJECT", "name": "SubscribedEvent", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "SubscriptionState", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "SuggestedReviewer", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "Tag", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "Team", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "TeamAddMemberAuditEntry", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "TeamAddRepositoryAuditEntry", "possibleTypes": null },
+			{
+				"kind": "INTERFACE",
+				"name": "TeamAuditEntryData",
+				"possibleTypes": [
+					{ "name": "OrgRestoreMemberMembershipTeamAuditEntryData" },
+					{ "name": "TeamAddMemberAuditEntry" },
+					{ "name": "TeamAddRepositoryAuditEntry" },
+					{ "name": "TeamChangeParentTeamAuditEntry" },
+					{ "name": "TeamRemoveMemberAuditEntry" },
+					{ "name": "TeamRemoveRepositoryAuditEntry" }
+				]
+			},
+			{
+				"kind": "OBJECT",
+				"name": "TeamChangeParentTeamAuditEntry",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "TeamConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "TeamDiscussion", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "TeamDiscussionComment", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "TeamDiscussionCommentConnection",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "TeamDiscussionCommentEdge", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "TeamDiscussionCommentOrder",
+				"possibleTypes": null
+			},
+			{
+				"kind": "ENUM",
+				"name": "TeamDiscussionCommentOrderField",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "TeamDiscussionConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "TeamDiscussionEdge", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "TeamDiscussionOrder", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "TeamDiscussionOrderField", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "TeamEdge", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "TeamMemberConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "TeamMemberEdge", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "TeamMemberOrder", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "TeamMemberOrderField", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "TeamMemberRole", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "TeamMembershipType", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "TeamOrder", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "TeamOrderField", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "TeamPrivacy", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "TeamRemoveMemberAuditEntry", "possibleTypes": null },
+			{
+				"kind": "OBJECT",
+				"name": "TeamRemoveRepositoryAuditEntry",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "TeamRepositoryConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "TeamRepositoryEdge", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "TeamRepositoryOrder", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "TeamRepositoryOrderField", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "TeamRole", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "TextMatch", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "TextMatchHighlight", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "Topic", "possibleTypes": null },
+			{
+				"kind": "INTERFACE",
+				"name": "TopicAuditEntryData",
+				"possibleTypes": [
+					{ "name": "RepoAddTopicAuditEntry" },
+					{ "name": "RepoRemoveTopicAuditEntry" }
+				]
+			},
+			{ "kind": "ENUM", "name": "TopicSuggestionDeclineReason", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "TrackedIssueStates", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "TransferIssueInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "TransferIssuePayload", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "TransferredEvent", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "Tree", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "TreeEntry", "possibleTypes": null },
+			{ "kind": "SCALAR", "name": "URI", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UnarchiveRepositoryInput",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "UnarchiveRepositoryPayload", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "UnassignedEvent", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UnfollowOrganizationInput",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "UnfollowOrganizationPayload", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "UnfollowUserInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "UnfollowUserPayload", "possibleTypes": null },
+			{
+				"kind": "INTERFACE",
+				"name": "UniformResourceLocatable",
+				"possibleTypes": [
+					{ "name": "Bot" },
+					{ "name": "CheckRun" },
+					{ "name": "ClosedEvent" },
+					{ "name": "Commit" },
+					{ "name": "ConvertToDraftEvent" },
+					{ "name": "CrossReferencedEvent" },
+					{ "name": "Gist" },
+					{ "name": "Issue" },
+					{ "name": "Mannequin" },
+					{ "name": "MergedEvent" },
+					{ "name": "Milestone" },
+					{ "name": "Organization" },
+					{ "name": "PullRequest" },
+					{ "name": "PullRequestCommit" },
+					{ "name": "ReadyForReviewEvent" },
+					{ "name": "Release" },
+					{ "name": "Repository" },
+					{ "name": "RepositoryTopic" },
+					{ "name": "ReviewDismissedEvent" },
+					{ "name": "TeamDiscussion" },
+					{ "name": "TeamDiscussionComment" },
+					{ "name": "User" }
+				]
+			},
+			{ "kind": "OBJECT", "name": "UnknownSignature", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "UnlabeledEvent", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UnlinkRepositoryFromProjectInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "UnlinkRepositoryFromProjectPayload",
+				"possibleTypes": null
+			},
+			{ "kind": "INPUT_OBJECT", "name": "UnlockLockableInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "UnlockLockablePayload", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "UnlockedEvent", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UnmarkDiscussionCommentAsAnswerInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "UnmarkDiscussionCommentAsAnswerPayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UnmarkFileAsViewedInput",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "UnmarkFileAsViewedPayload", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UnmarkIssueAsDuplicateInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "UnmarkIssueAsDuplicatePayload",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "UnmarkedAsDuplicateEvent", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "UnminimizeCommentInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "UnminimizeCommentPayload", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "UnpinIssueInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "UnpinIssuePayload", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "UnpinnedEvent", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UnresolveReviewThreadInput",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "UnresolveReviewThreadPayload", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "UnsubscribedEvent", "possibleTypes": null },
+			{
+				"kind": "INTERFACE",
+				"name": "Updatable",
+				"possibleTypes": [
+					{ "name": "CommitComment" },
+					{ "name": "Discussion" },
+					{ "name": "DiscussionComment" },
+					{ "name": "GistComment" },
+					{ "name": "Issue" },
+					{ "name": "IssueComment" },
+					{ "name": "Project" },
+					{ "name": "ProjectNext" },
+					{ "name": "PullRequest" },
+					{ "name": "PullRequestReview" },
+					{ "name": "PullRequestReviewComment" },
+					{ "name": "TeamDiscussion" },
+					{ "name": "TeamDiscussionComment" }
+				]
+			},
+			{
+				"kind": "INTERFACE",
+				"name": "UpdatableComment",
+				"possibleTypes": [
+					{ "name": "CommitComment" },
+					{ "name": "DiscussionComment" },
+					{ "name": "GistComment" },
+					{ "name": "Issue" },
+					{ "name": "IssueComment" },
+					{ "name": "PullRequest" },
+					{ "name": "PullRequestReview" },
+					{ "name": "PullRequestReviewComment" },
+					{ "name": "TeamDiscussion" },
+					{ "name": "TeamDiscussionComment" }
+				]
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdateBranchProtectionRuleInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "UpdateBranchProtectionRulePayload",
+				"possibleTypes": null
+			},
+			{ "kind": "INPUT_OBJECT", "name": "UpdateCheckRunInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "UpdateCheckRunPayload", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdateCheckSuitePreferencesInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "UpdateCheckSuitePreferencesPayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdateDiscussionCommentInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "UpdateDiscussionCommentPayload",
+				"possibleTypes": null
+			},
+			{ "kind": "INPUT_OBJECT", "name": "UpdateDiscussionInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "UpdateDiscussionPayload", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdateEnterpriseAdministratorRoleInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "UpdateEnterpriseAdministratorRolePayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdateEnterpriseAllowPrivateRepositoryForkingSettingInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "UpdateEnterpriseAllowPrivateRepositoryForkingSettingPayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdateEnterpriseDefaultRepositoryPermissionSettingInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "UpdateEnterpriseDefaultRepositoryPermissionSettingPayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "UpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingPayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdateEnterpriseMembersCanCreateRepositoriesSettingInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "UpdateEnterpriseMembersCanCreateRepositoriesSettingPayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdateEnterpriseMembersCanDeleteIssuesSettingInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "UpdateEnterpriseMembersCanDeleteIssuesSettingPayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdateEnterpriseMembersCanDeleteRepositoriesSettingInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "UpdateEnterpriseMembersCanDeleteRepositoriesSettingPayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdateEnterpriseMembersCanInviteCollaboratorsSettingInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "UpdateEnterpriseMembersCanInviteCollaboratorsSettingPayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdateEnterpriseMembersCanMakePurchasesSettingInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "UpdateEnterpriseMembersCanMakePurchasesSettingPayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "UpdateEnterpriseMembersCanUpdateProtectedBranchesSettingPayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdateEnterpriseMembersCanViewDependencyInsightsSettingInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "UpdateEnterpriseMembersCanViewDependencyInsightsSettingPayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdateEnterpriseOrganizationProjectsSettingInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "UpdateEnterpriseOrganizationProjectsSettingPayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdateEnterpriseOwnerOrganizationRoleInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "UpdateEnterpriseOwnerOrganizationRolePayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdateEnterpriseProfileInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "UpdateEnterpriseProfilePayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdateEnterpriseRepositoryProjectsSettingInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "UpdateEnterpriseRepositoryProjectsSettingPayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdateEnterpriseTeamDiscussionsSettingInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "UpdateEnterpriseTeamDiscussionsSettingPayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "UpdateEnterpriseTwoFactorAuthenticationRequiredSettingPayload",
+				"possibleTypes": null
+			},
+			{ "kind": "INPUT_OBJECT", "name": "UpdateEnvironmentInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "UpdateEnvironmentPayload", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdateIpAllowListEnabledSettingInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "UpdateIpAllowListEnabledSettingPayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdateIpAllowListEntryInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "UpdateIpAllowListEntryPayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdateIpAllowListForInstalledAppsEnabledSettingInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "UpdateIpAllowListForInstalledAppsEnabledSettingPayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdateIssueCommentInput",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "UpdateIssueCommentPayload", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "UpdateIssueInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "UpdateIssuePayload", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdateNotificationRestrictionSettingInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "UpdateNotificationRestrictionSettingPayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdateOrganizationAllowPrivateRepositoryForkingSettingInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "UpdateOrganizationAllowPrivateRepositoryForkingSettingPayload",
+				"possibleTypes": null
+			},
+			{ "kind": "INPUT_OBJECT", "name": "UpdateProjectCardInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "UpdateProjectCardPayload", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdateProjectColumnInput",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "UpdateProjectColumnPayload", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdateProjectDraftIssueInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "UpdateProjectDraftIssuePayload",
+				"possibleTypes": null
+			},
+			{ "kind": "INPUT_OBJECT", "name": "UpdateProjectInput", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "UpdateProjectNextInput", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdateProjectNextItemFieldInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "UpdateProjectNextItemFieldPayload",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "UpdateProjectNextPayload", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "UpdateProjectPayload", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdatePullRequestBranchInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "UpdatePullRequestBranchPayload",
+				"possibleTypes": null
+			},
+			{ "kind": "INPUT_OBJECT", "name": "UpdatePullRequestInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "UpdatePullRequestPayload", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdatePullRequestReviewCommentInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "UpdatePullRequestReviewCommentPayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdatePullRequestReviewInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "UpdatePullRequestReviewPayload",
+				"possibleTypes": null
+			},
+			{ "kind": "INPUT_OBJECT", "name": "UpdateRefInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "UpdateRefPayload", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "UpdateRepositoryInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "UpdateRepositoryPayload", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdateSponsorshipPreferencesInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "UpdateSponsorshipPreferencesPayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdateSubscriptionInput",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "UpdateSubscriptionPayload", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdateTeamDiscussionCommentInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "UpdateTeamDiscussionCommentPayload",
+				"possibleTypes": null
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdateTeamDiscussionInput",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "UpdateTeamDiscussionPayload", "possibleTypes": null },
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "UpdateTeamsRepositoryInput",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "UpdateTeamsRepositoryPayload", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "UpdateTopicsInput", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "UpdateTopicsPayload", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "User", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "UserBlockDuration", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "UserBlockedEvent", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "UserConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "UserContentEdit", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "UserContentEditConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "UserContentEditEdge", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "UserEdge", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "UserEmailMetadata", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "UserStatus", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "UserStatusConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "UserStatusEdge", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "UserStatusOrder", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "UserStatusOrderField", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "VerifiableDomain", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "VerifiableDomainConnection", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "VerifiableDomainEdge", "possibleTypes": null },
+			{ "kind": "INPUT_OBJECT", "name": "VerifiableDomainOrder", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "VerifiableDomainOrderField", "possibleTypes": null },
+			{
+				"kind": "UNION",
+				"name": "VerifiableDomainOwner",
+				"possibleTypes": [{ "name": "Enterprise" }, { "name": "Organization" }]
+			},
+			{
+				"kind": "INPUT_OBJECT",
+				"name": "VerifyVerifiableDomainInput",
+				"possibleTypes": null
+			},
+			{
+				"kind": "OBJECT",
+				"name": "VerifyVerifiableDomainPayload",
+				"possibleTypes": null
+			},
+			{ "kind": "OBJECT", "name": "ViewerHovercardContext", "possibleTypes": null },
+			{
+				"kind": "INTERFACE",
+				"name": "Votable",
+				"possibleTypes": [{ "name": "Discussion" }, { "name": "DiscussionComment" }]
+			},
+			{ "kind": "OBJECT", "name": "Workflow", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "WorkflowRun", "possibleTypes": null },
+			{ "kind": "SCALAR", "name": "X509Certificate", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "__Directive", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "__DirectiveLocation", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "__EnumValue", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "__Field", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "__InputValue", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "__Schema", "possibleTypes": null },
+			{ "kind": "OBJECT", "name": "__Type", "possibleTypes": null },
+			{ "kind": "ENUM", "name": "__TypeKind", "possibleTypes": null }
+		]
+	}
+}

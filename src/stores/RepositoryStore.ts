@@ -1,69 +1,84 @@
-import type { Endpoints } from "@octokit/types";
+import GithubApi from "@/api/graphql";
+import GetOrganizationRepositories from '@/api/graphql/GetOrganizationRepositories.query';
+import GetOrganizationTeamRepositories from '@/api/graphql/GetOrganizationTeamRepositories.query';
+import GetUserRepositoriesQuery from '@/api/graphql/GetUserRepositories.query';
+import type { PullRequest, Repository } from "@/typings/Repository.type";
 import { defineStore } from 'pinia';
-import $Github from '../api';
-
-type WorkspaceType = 'user' | 'org'
-
-export type AccessibleRepositories = Endpoints["GET /search/repositories"]['response']['data']['items']
 
 export const useRepositoryStore = defineStore({
 	id: 'Repositories',
 
 	state: () => ({
-		repositories: [] as AccessibleRepositories,
+		repositories: [] as Repository[],
 	}),
 
-	getters: {},
+	getters: {
+		pullRequestComments: () => (pullRequest: PullRequest) => {
+			let pullRequestComments = pullRequest.comments.totalCount
+
+			pullRequest.reviews.nodes.forEach((review) => {
+				pullRequestComments += review.comments.totalCount
+			})
+
+			return pullRequestComments
+		}
+	},
 
 	actions: {
-		async getRepositories(workspaceName: string, workspaceType: WorkspaceType = 'user') {
-			if (workspaceName === '') throw new Error('Workspace name is required to retrieve repositories')
+		async getUserRepositories(user: string) {
+			if (user === '') throw new Error('User tag is required to retrieve repositories')
 
-			const response = await new $Github().request('GET /search/repositories', {
-				q: `${workspaceType}:${workspaceName}`,
-				sort: 'updated',
-				order: 'desc',
-				per_page: 100
+			const response = await GithubApi().query({
+				query: GetUserRepositoriesQuery,
+				variables: {
+					user
+				}
 			})
 
-			this.repositories = response.data.items
+			const repositories: Repository[] = response.data.user.
+				repositories.
+				edges.
+				flatMap((e: { node: Repository }) => e.node)
+
+			this.repositories = repositories
 		},
 
-		async getTeamRepositories(organizationName: string, teamSlug: string) {
-			if (teamSlug === '') throw new Error('Team slug is required to retrieve repositories')
+		async getOrganizationRepositories(organization: string) {
+			if (organization === '') throw new Error('Organization tag is required to retrieve repositories')
 
-			const teamRepositoriesResponse = await new $Github().request('GET /orgs/{org}/teams/{team_slug}/repos', {
-				org: organizationName,
-				team_slug: teamSlug,
-				per_page: 100
+			const response = await GithubApi().query({
+				query: GetOrganizationRepositories,
+				variables: {
+					organization
+				}
 			})
 
-			let currentPage = 1
-			let isIncomplete = true
-			const allRepos = [] as AccessibleRepositories
+			const repositories: Repository[] = response.data.organization.
+				repositories.
+				edges.
+				flatMap((e: { node: Repository }) => e.node)
 
-			do {
-				const searchRepositories = await new $Github().request('GET /search/repositories', {
-					q: `org:${organizationName}`,
-					sort: 'updated',
-					order: 'desc',
-					page: currentPage,
-					per_page: 100
-				})
+			this.repositories = repositories
+		},
 
-				allRepos.push(...searchRepositories.data.items.filter(repo => {
-					return !!teamRepositoriesResponse.data.find(teamRepo => teamRepo.id === repo.id)
-				}))
+		async getOrganizationTeamRepositories(organization: string, team: string) {
+			if (organization === '') throw new Error('Organization tag is required to retrieve repositories')
 
-				if (searchRepositories.data.incomplete_results) {
-					currentPage += 1
-				} else {
-					isIncomplete = false
+			const response = await GithubApi().query({
+				query: GetOrganizationTeamRepositories,
+				variables: {
+					organization,
+					team
 				}
+			})
 
-			} while (isIncomplete)
+			const repositories: Repository[] = response.data.organization.
+				team.
+				repositories.
+				edges.
+				flatMap((e: { node: Repository }) => e.node)
 
-			this.repositories = allRepos
+			this.repositories = repositories
 		},
 	},
 })

@@ -4,15 +4,15 @@
 		theme="text"
 	>
 		<img
-			:src="currentUser.avatar"
-			:alt="currentUser.tag"
+			:src="currentUser.user.avatarUrl"
+			:alt="currentUser.user.login"
 		>
 	</Button>
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/runtime-core'
 import { useCurrentUserStore } from '@/stores/CurrentUserStore'
+import { defineComponent } from '@vue/runtime-core'
 
 export default defineComponent({
 	setup() {

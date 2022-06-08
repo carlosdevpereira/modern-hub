@@ -5,28 +5,28 @@
 		</h2>
 
 		<PullRequestRow
-			v-for="pullRequest in pullRequests.orderedReviewablePullRequests"
-			:key="pullRequest.id"
+			v-for="pullRequest in prioritySortedPullRequests"
+			:key="pullRequest.number"
 			:title="pullRequest.title"
 			:number="pullRequest.number"
-			:status="pullRequest.Status"
-			:is-draft="pullRequest.draft"
-			:reviewers="pullRequest.Reviewers"
-			:html-url="pullRequest.html_url"
-			:comments="pullRequest.CommentCount"
-			:created-at="pullRequest.created_at"
-			:author-tag="pullRequest.user?.login?.toString()"
-			:author-avatar="pullRequest.user?.avatar_url?.toString()"
+			:status="pullRequest.reviewDecision"
+			:is-draft="pullRequest.isDraft"
+			:reviews="pullRequest.reviews"
+			:html-url="pullRequest.url"
+			:comments="repositoryStore.pullRequestComments(pullRequest)"
+			:created-at="pullRequest.createdAt"
+			:author-tag="pullRequest.author.login"
+			:author-avatar="pullRequest.author.avatarUrl"
 		/>
 	</div>
 </template>
 
 <script lang="ts">
+import { useCurrentUserStore } from '@/stores/CurrentUserStore';
 import { useNavigationStore } from '@/stores/NavigationStore';
-import { usePullRequestStore } from '@/stores/PullRequestStore';
 import { useRepositoryStore } from '@/stores/RepositoryStore';
-import { computed } from '@vue/reactivity';
 import { defineComponent } from '@vue/runtime-core';
+import { computed } from 'vue';
 import PullRequestRow from './PullRequestRow.vue';
 
 export default defineComponent({
@@ -35,33 +35,67 @@ export default defineComponent({
 	},
 
 	setup() {
+		const currentUser = useCurrentUserStore();
 		const navigation = useNavigationStore();
 		const repositoryStore = useRepositoryStore();
-		const pullRequests = usePullRequestStore();
 		const accessibleRepositories = computed(() => repositoryStore.repositories);
+
+		const pullRequests = computed(() => {
+			return repositoryStore.repositories.flatMap(r => r.pullRequests.nodes)
+		})
+
+		const prioritySortedPullRequests = computed(() => {
+			return [...pullRequests.value].sort((a, b) => {
+				// Draft PR's always appear last
+				if (b.isDraft) return -1
+				else if (a.isDraft) return 1
+
+				// Approved PR's reviewed by the current user
+				if (b.reviewDecision === 'APPROVED' && (b.reviews.nodes && b.reviews.nodes.find(r => r.author.login === currentUser.user.login))) return -1
+				if (a.reviewDecision === 'APPROVED' && (a.reviews.nodes && a.reviews.nodes.find(r => r.author.login === currentUser.user.login))) return 1
+
+				// Pull Requests that are waiting for
+				// the current user review specifically
+				if (b.reviewRequests.nodes
+					&& b.reviewRequests.nodes
+						.filter(r => r.requestedReviewer.id)
+						.find(r => r.requestedReviewer.login === currentUser.user.login)) return 1
+				if (a.reviewRequests.nodes
+					&& a.reviewRequests.nodes
+						.filter(r => r.requestedReviewer.id)
+						.find(r => r.requestedReviewer.login === currentUser.user.login)) return 1
+
+				// Pull requests currently being reviewed by other people
+				if ((repositoryStore.pullRequestComments(b) > 0) || (
+					b.reviews.nodes
+					&& !b.reviews.nodes.find(r => r.author.login === currentUser.user.login)
+				)) return -1
+
+				if ((repositoryStore.pullRequestComments(a) > 0) || (
+					a.reviews.nodes
+					&& !a.reviews.nodes.find(r => r.author.login === currentUser.user.login)
+				)) return 1
+
+				// Current user PR's
+				if (b.author.login === currentUser.user.login) return -1
+				else if (a.author.login === currentUser.user.login) return 1
+
+				// Pull Requests that haven't been reviewed by anyone yet
+				if (repositoryStore.pullRequestComments(b) === 0
+					&& (!b.reviews.nodes || b.reviews.nodes.length === 0)) return -1
+				else if (repositoryStore.pullRequestComments(a) === 0
+					&& (!a.reviews.nodes || a.reviews.nodes.length === 0)) return 1
+
+				return 0
+			})
+		})
 
 		return {
 			navigation,
-			pullRequests,
+			repositoryStore,
 			accessibleRepositories,
+			prioritySortedPullRequests
 		};
 	},
-
-	watch: {
-		accessibleRepositories: {
-			immediate: true,
-
-			async handler(repositories) {
-				if (this.navigation.workspace === "") return;
-
-				this.pullRequests.reviewable = []
-
-				await this.pullRequests.getReviewablePullRequests(
-					this.navigation.workspace,
-					repositories
-				);
-			}
-		}
-	}
 })
 </script>

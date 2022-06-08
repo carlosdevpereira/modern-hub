@@ -5,13 +5,13 @@
 		</h3>
 
 		<router-link
-			v-for="(repo) in repositories.repositories"
+			v-for="(repo) in repositoryStore.repositories"
 			:key="repo.id"
 			to="/"
 			class="text-item decoration-none text-sm py-1 hover:bg-gray-100 color-gray-800 pl-5 flex items-center capitalize"
 		>
 			<Icon
-				:name="repo.private ? 'git-repository-private-fill' : 'git-repository-line'"
+				:name="repo.isPrivate ? 'git-repository-private-fill' : 'git-repository-line'"
 				class="mr-2"
 			/>
 
@@ -24,17 +24,18 @@
 import { useCurrentUserStore } from '@/stores/CurrentUserStore'
 import { useNavigationStore } from '@/stores/NavigationStore'
 import { useRepositoryStore } from '@/stores/RepositoryStore'
-import { computed } from '@vue/reactivity'
 import { defineComponent } from '@vue/runtime-core'
+import { computed } from 'vue'
 
 export default defineComponent({
 	setup() {
 		const currentUser = useCurrentUserStore()
 		const navigation = useNavigationStore()
-		const repositories = useRepositoryStore()
+		const repositoryStore = useRepositoryStore()
 
 		const navigationProps = computed(() => {
 			return {
+				type: navigation.workspaceType,
 				workspace: navigation.workspace,
 				team: navigation.team
 			}
@@ -43,9 +44,9 @@ export default defineComponent({
 		return {
 			currentUser,
 			navigation,
-			repositories,
+			repositoryStore,
 
-			navigationProps
+			navigationProps,
 		}
 	},
 
@@ -54,13 +55,21 @@ export default defineComponent({
 			immediate: true,
 
 			handler(navigation) {
-				this.repositories.repositories = []
+				this.repositoryStore.repositories = []
+				if (!navigation.workspace) return
 
-				if (navigation.team !== '') {
-					this.repositories.getTeamRepositories(navigation.workspace, navigation.team)
-				} else if (navigation.workspace) {
-					this.repositories.
-						getRepositories(navigation.workspace, this.navigation.workspaceType)
+				if(navigation.type === 'user') {
+					this.repositoryStore.getUserRepositories(navigation.workspace)
+				} else if (navigation.type === 'org') {
+					if (!navigation.team) {
+						this.
+							repositoryStore.
+							getOrganizationRepositories(navigation.workspace)
+					} else {
+						this.
+							repositoryStore.
+							getOrganizationTeamRepositories(navigation.workspace, navigation.team)
+					}
 				}
 			}
 		}
