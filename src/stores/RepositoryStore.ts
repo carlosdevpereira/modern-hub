@@ -1,8 +1,8 @@
 import GithubApi from "@/api/graphql";
 import GetOrganizationRepositories from '@/api/graphql/GetOrganizationRepositories.query';
 import GetOrganizationTeamRepositories from '@/api/graphql/GetOrganizationTeamRepositories.query';
-import type { Repository } from '@/api/graphql/GetUserRepositories.query';
 import GetUserRepositoriesQuery from '@/api/graphql/GetUserRepositories.query';
+import type { PullRequest, Repository } from "@/typings/Repository.type";
 import { defineStore } from 'pinia';
 
 export const useRepositoryStore = defineStore({
@@ -12,7 +12,17 @@ export const useRepositoryStore = defineStore({
 		repositories: [] as Repository[],
 	}),
 
-	getters: {},
+	getters: {
+		pullRequestComments: () => (pullRequest: PullRequest) => {
+			let pullRequestComments = pullRequest.comments.totalCount
+
+			pullRequest.reviews.nodes.forEach((review) => {
+				pullRequestComments += review.comments.totalCount
+			})
+
+			return pullRequestComments
+		}
+	},
 
 	actions: {
 		async getUserRepositories(user: string) {
@@ -25,7 +35,12 @@ export const useRepositoryStore = defineStore({
 				}
 			})
 
-			this.repositories = response.data.user.repositories.edges
+			const repositories: Repository[] = response.data.user.
+				repositories.
+				edges.
+				flatMap((e: { node: Repository }) => e.node)
+
+			this.repositories = repositories
 		},
 
 		async getOrganizationRepositories(organization: string) {
@@ -38,7 +53,12 @@ export const useRepositoryStore = defineStore({
 				}
 			})
 
-			this.repositories = response.data.organization.repositories.edges
+			const repositories: Repository[] = response.data.organization.
+				repositories.
+				edges.
+				flatMap((e: { node: Repository }) => e.node)
+
+			this.repositories = repositories
 		},
 
 		async getOrganizationTeamRepositories(organization: string, team: string) {
@@ -52,7 +72,13 @@ export const useRepositoryStore = defineStore({
 				}
 			})
 
-			this.repositories = response.data.organization.team.repositories.edges
+			const repositories: Repository[] = response.data.organization.
+				team.
+				repositories.
+				edges.
+				flatMap((e: { node: Repository }) => e.node)
+
+			this.repositories = repositories
 		},
 	},
 })

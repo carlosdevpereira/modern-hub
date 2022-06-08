@@ -46,9 +46,9 @@
 			<div class="-space-x-3 mr-2 items-center">
 				<img
 					v-for="(review, index) in reviewers"
-					:key="review.id"
-					:src="review.user?.avatar_url"
-					:title="review.user?.login"
+					:key="index"
+					:src="review.author.avatarUrl"
+					:title="review.author.login"
 					class="relative w-7 h-7 ring-2 ring-gray-200 rounded-full dark:border-gray-800"
 					:class="reviewerClasses(review, index)"
 				>
@@ -73,13 +73,16 @@
 </template>
 
 <script lang="ts">
-import type { GithubPullRequestReview } from '@/typings/PullRequest.type';
+import type { PullRequestReviews } from '@/typings/Repository.type';
 import type { PropType } from '@vue/runtime-core';
 import { defineComponent } from '@vue/runtime-core';
 import dayjs from 'dayjs';
 import RelativeTimePlugin from 'dayjs/plugin/relativeTime';
+import { uniqBy } from 'lodash';
 
 dayjs.extend(RelativeTimePlugin)
+
+const reviewersStatusOrder = ['CHANGES_REQUESTED', 'APPROVED', 'DISMISSED', 'COMMENTED']
 
 export default defineComponent({
 	props: {
@@ -128,13 +131,45 @@ export default defineComponent({
 			default: 0
 		},
 
-		reviewers: {
-			type: Array as PropType<GithubPullRequestReview[]>,
-			default: () => []
+		reviews: {
+			type: Object as PropType<PullRequestReviews>,
+			default: () => { 0 }
 		}
 	},
 
 	computed: {
+		reviewers() {
+			const sortedReviews = [...this.reviews.nodes].sort((a, b) => {
+				if (b.updatedAt && a.updatedAt) {
+					const bDate = new Date(b.updatedAt)
+					const aDate = new Date(a.updatedAt)
+					return bDate.getTime() - aDate.getTime();
+				}
+
+				return 0
+			})
+
+			const uniqueReviews = uniqBy(sortedReviews, (review) => {
+				return review.author.login
+			})
+
+			const sortedReviewsByStatus = uniqueReviews.sort((a, b) => {
+				if (reviewersStatusOrder.indexOf(b.state) > -1
+					&& reviewersStatusOrder.indexOf(a.state) > -1) {
+					return reviewersStatusOrder.indexOf(b.state)
+						- reviewersStatusOrder.indexOf(a.state)
+				}
+
+				return 999
+			})
+
+			return sortedReviewsByStatus
+		},
+
+		totalReviews() {
+			return this.reviews.totalCount
+		},
+
 		timeSinceItWasCreated() {
 			return dayjs().to(dayjs(this.createdAt))
 		},
@@ -143,8 +178,8 @@ export default defineComponent({
 			let classes = []
 
 			if (this.isDraft) classes.push('opacity-45')
-			if (this.status === 'Approved') classes.push('!bg-green-100 !hover:bg-green-200')
-			if (this.status === 'Changes requested') classes.push('!bg-yellow-100 !hover:bg-yellow-200')
+			if (this.status === 'APPROVED') classes.push('!bg-green-100 !hover:bg-green-200')
+			if (this.status === 'CHANGES_REQUESTED') classes.push('!bg-yellow-100 !hover:bg-yellow-200')
 
 			return classes
 		},

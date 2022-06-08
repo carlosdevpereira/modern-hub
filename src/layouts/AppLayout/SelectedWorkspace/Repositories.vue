@@ -6,16 +6,16 @@
 
 		<router-link
 			v-for="(repo) in repositoryStore.repositories"
-			:key="repo.node.id"
+			:key="repo.id"
 			to="/"
 			class="text-item decoration-none text-sm py-1 hover:bg-gray-100 color-gray-800 pl-5 flex items-center capitalize"
 		>
 			<Icon
-				:name="repo.node.isPrivate ? 'git-repository-private-fill' : 'git-repository-line'"
+				:name="repo.isPrivate ? 'git-repository-private-fill' : 'git-repository-line'"
 				class="mr-2"
 			/>
 
-			{{ repo.node.name }}
+			{{ repo.name }}
 		</router-link>
 	</div>
 </template>

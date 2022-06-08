@@ -1,48 +1,5 @@
 import gql from 'graphql-tag'
 
-export interface Repository {
-    node: UserRepository
-}
-
-export interface UserRepository {
-    id: string
-    name: string
-    isPrivate: boolean
-    collaborators: { nodes: UserRepositoryCollaborator[] }
-    pullRequests: { nodes: RepositoryPullRequest[] }
-}
-
-export interface UserRepositoryCollaborator {
-    name: string
-    login: string
-    avatarUrl: string
-}
-
-export interface RepositoryPullRequest {
-    baseRefName: string
-    isDraft: boolean,
-    number: number
-    state: string
-    title: string
-    updatedAt: string
-    url: string
-    author: { avatarUrl: string, login: string }
-    comments: { totalCount: number }
-    participants: { totalCount: number, nodes: PullRequestParticipant[] }
-    reviews: { nodes: PullRequestReview[] }
-}
-
-export interface PullRequestParticipant {
-    avatarUrl: string
-    login: string
-}
-
-export interface PullRequestReview {
-    state: string
-    updatedAt: string
-    author: { avatarUrl: string, login: string }
-}
-
 const query = gql(`
     query GetUserRepositories($user: String!) {
         user(login: $user) {
@@ -76,17 +33,34 @@ const query = gql(`
                         name
                       }
                     }
-                    state
+                    reviewDecision
                     title
                     updatedAt
+                    createdAt
                     url
                     reviews(last: 30) {
+                      totalCount
                       nodes {
                         state
                         updatedAt
+                        authorAssociation
                         author {
                           avatarUrl(size: 50)
                           login
+                        }
+                        comments {
+                          totalCount
+                        }
+                      }
+                    }
+                    reviewRequests(last: 15) {
+                      nodes {
+                        requestedReviewer {
+                          ... on User {
+                            id
+                            name
+                            login
+                          }
                         }
                       }
                     }

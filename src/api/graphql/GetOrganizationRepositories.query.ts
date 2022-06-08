@@ -33,30 +33,40 @@ const query = gql(`
                       name
                     }
                   }
-                  state
+                  reviewDecision
                   title
                   updatedAt
+                  createdAt
                   url
                   reviews(last: 30) {
+                    totalCount
                     nodes {
                       state
                       updatedAt
+                      authorAssociation
                       author {
                         avatarUrl(size: 50)
                         login
+                      }
+                      comments {
+                        totalCount
+                      }
+                    }
+                  }
+                  reviewRequests(last: 15) {
+                    nodes {
+                      requestedReviewer {
+                        ... on User {
+                          id
+                          name
+                          login
+                        }
                       }
                     }
                   }
                 }
               }
             }
-          }
-        }
-        membersWithRole(first: 50) {
-          nodes {
-            avatarUrl(size: 50)
-            name
-            login
           }
         }
       }
