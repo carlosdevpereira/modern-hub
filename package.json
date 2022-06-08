@@ -45,6 +45,6 @@
 		"unplugin-auto-import": "^0.8.7",
 		"vite": "^2.9.10",
 		"vitest": "^0.14.1",
-		"vue-tsc": "^0.37.0"
+		"vue-tsc": "^0.37.3"
 	}
 }
