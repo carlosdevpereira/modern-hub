@@ -33,7 +33,6 @@
 <script lang="ts">
 import { useCurrentUserStore } from '@/stores/CurrentUserStore'
 import { useNavigationStore } from '@/stores/NavigationStore'
-import { useTeamStore } from '@/stores/TeamStore'
 import { defineComponent } from '@vue/runtime-core'
 import { computed } from 'vue'
 
@@ -41,7 +40,6 @@ export default defineComponent({
 	setup() {
 		const currentUser = useCurrentUserStore()
 		const navigation = useNavigationStore()
-		const teams = useTeamStore()
 
 		const workspaceTeams = computed(() => {
 			return currentUser.
@@ -56,7 +54,6 @@ export default defineComponent({
 		return {
 			currentUser,
 			navigation,
-			teams,
 			workspaceTeams
 		}
 	},
