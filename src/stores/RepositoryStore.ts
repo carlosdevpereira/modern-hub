@@ -1,5 +1,6 @@
 import GithubApi from "@/api/graphql";
 import GetOrganizationRepositories from '@/api/graphql/GetOrganizationRepositories.query';
+import GetOrganizationTeamRepositories from '@/api/graphql/GetOrganizationTeamRepositories.query';
 import type { Repository } from '@/api/graphql/GetUserRepositories.query';
 import GetUserRepositoriesQuery from '@/api/graphql/GetUserRepositories.query';
 import { defineStore } from 'pinia';
@@ -38,6 +39,20 @@ export const useRepositoryStore = defineStore({
 			})
 
 			this.repositories = response.data.organization.repositories.edges
+		},
+
+		async getOrganizationTeamRepositories(organization: string, team: string) {
+			if (organization === '') throw new Error('Organization tag is required to retrieve repositories')
+
+			const response = await GithubApi().query({
+				query: GetOrganizationTeamRepositories,
+				variables: {
+					organization,
+					team
+				}
+			})
+
+			this.repositories = response.data.organization.team.repositories.edges
 		},
 	},
 })

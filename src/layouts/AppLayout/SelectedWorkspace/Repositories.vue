@@ -5,7 +5,7 @@
 		</h3>
 
 		<router-link
-			v-for="(repo) in repositories.repositories"
+			v-for="(repo) in repositoryStore.repositories"
 			:key="repo.node.id"
 			to="/"
 			class="text-item decoration-none text-sm py-1 hover:bg-gray-100 color-gray-800 pl-5 flex items-center capitalize"
@@ -31,7 +31,7 @@ export default defineComponent({
 	setup() {
 		const currentUser = useCurrentUserStore()
 		const navigation = useNavigationStore()
-		const repositories = useRepositoryStore()
+		const repositoryStore = useRepositoryStore()
 
 		const navigationProps = computed(() => {
 			return {
@@ -44,9 +44,9 @@ export default defineComponent({
 		return {
 			currentUser,
 			navigation,
-			repositories,
+			repositoryStore,
 
-			navigationProps
+			navigationProps,
 		}
 	},
 
@@ -55,13 +55,21 @@ export default defineComponent({
 			immediate: true,
 
 			handler(navigation) {
-				this.repositories.repositories = []
+				this.repositoryStore.repositories = []
 				if (!navigation.workspace) return
 
 				if(navigation.type === 'user') {
-					this.repositories.getUserRepositories(navigation.workspace)
+					this.repositoryStore.getUserRepositories(navigation.workspace)
 				} else if (navigation.type === 'org') {
-					this.repositories.getOrganizationRepositories(navigation.workspace)
+					if (!navigation.team) {
+						this.
+							repositoryStore.
+							getOrganizationRepositories(navigation.workspace)
+					} else {
+						this.
+							repositoryStore.
+							getOrganizationTeamRepositories(navigation.workspace, navigation.team)
+					}
 				}
 			}
 		}
