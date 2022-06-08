@@ -36,8 +36,8 @@ import { useCommitStore } from '@/stores/CommitStore'
 import { useCurrentUserStore } from '@/stores/CurrentUserStore'
 import { useNavigationStore } from '@/stores/NavigationStore'
 import { useRepositoryStore, type AccessibleRepositories } from '@/stores/RepositoryStore'
-import { computed } from '@vue/reactivity'
 import { defineComponent } from '@vue/runtime-core'
+import { computed } from 'vue'
 
 export default defineComponent({
 	setup() {

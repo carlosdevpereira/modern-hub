@@ -34,8 +34,8 @@
 import { useCurrentUserStore } from '@/stores/CurrentUserStore'
 import { useNavigationStore } from '@/stores/NavigationStore'
 import { useTeamStore } from '@/stores/TeamStore'
-import { computed } from '@vue/reactivity'
 import { defineComponent } from '@vue/runtime-core'
+import { computed } from 'vue'
 
 export default defineComponent({
 	setup() {
@@ -45,7 +45,7 @@ export default defineComponent({
 
 		const workspaceTeams = computed(() => {
 			return currentUser.
-				teams?.
+				teams(navigation.workspace)?.
 				filter(t =>
 					t.members?.
 						nodes.

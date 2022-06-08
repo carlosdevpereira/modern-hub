@@ -4,7 +4,7 @@
 		theme="text"
 	>
 		<img
-			:src="currentUser.avatar"
+			:src="currentUser.user.avatarUrl"
 			:alt="currentUser.user.login"
 		>
 	</Button>

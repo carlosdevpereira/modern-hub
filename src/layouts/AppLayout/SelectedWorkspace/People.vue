@@ -27,8 +27,8 @@
 import { useCurrentUserStore } from '@/stores/CurrentUserStore'
 import { useNavigationStore } from '@/stores/NavigationStore'
 import { usePeopleStore } from '@/stores/PeopleStore'
-import { computed } from '@vue/reactivity'
 import { defineComponent } from '@vue/runtime-core'
+import { computed } from 'vue'
 
 export default defineComponent({
 	setup() {

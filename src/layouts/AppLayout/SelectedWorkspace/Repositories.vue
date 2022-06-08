@@ -6,16 +6,16 @@
 
 		<router-link
 			v-for="(repo) in repositories.repositories"
-			:key="repo.id"
+			:key="repo.node.id"
 			to="/"
 			class="text-item decoration-none text-sm py-1 hover:bg-gray-100 color-gray-800 pl-5 flex items-center capitalize"
 		>
 			<Icon
-				:name="repo.private ? 'git-repository-private-fill' : 'git-repository-line'"
+				:name="repo.node.isPrivate ? 'git-repository-private-fill' : 'git-repository-line'"
 				class="mr-2"
 			/>
 
-			{{ repo.name }}
+			{{ repo.node.name }}
 		</router-link>
 	</div>
 </template>
@@ -24,8 +24,8 @@
 import { useCurrentUserStore } from '@/stores/CurrentUserStore'
 import { useNavigationStore } from '@/stores/NavigationStore'
 import { useRepositoryStore } from '@/stores/RepositoryStore'
-import { computed } from '@vue/reactivity'
 import { defineComponent } from '@vue/runtime-core'
+import { computed } from 'vue'
 
 export default defineComponent({
 	setup() {
@@ -35,6 +35,7 @@ export default defineComponent({
 
 		const navigationProps = computed(() => {
 			return {
+				type: navigation.workspaceType,
 				workspace: navigation.workspace,
 				team: navigation.team
 			}
@@ -55,12 +56,12 @@ export default defineComponent({
 
 			handler(navigation) {
 				this.repositories.repositories = []
+				if (!navigation.workspace) return
 
-				if (navigation.team !== '') {
-					this.repositories.getTeamRepositories(navigation.workspace, navigation.team)
-				} else if (navigation.workspace) {
-					this.repositories.
-						getRepositories(navigation.workspace, this.navigation.workspaceType)
+				if(navigation.type === 'user') {
+					this.repositories.getUserRepositories(navigation.workspace)
+				} else if (navigation.type === 'org') {
+					this.repositories.getOrganizationRepositories(navigation.workspace)
 				}
 			}
 		}

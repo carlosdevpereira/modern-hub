@@ -20,10 +20,13 @@ export const useCurrentUserStore = defineStore({
 		},
 
 		teams: state => {
-			return state.user.
-				organizations?.
-				nodes.
-				flatMap(organization => organization.teams.nodes)
+			return (organization: string) => {
+				return state.user.
+					organizations?.
+					nodes.
+					filter(org => org.login === organization).
+					flatMap(organization => organization.teams.nodes)
+			}
 		}
 	},
 

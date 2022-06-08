@@ -1,69 +1,43 @@
-import type { Endpoints } from "@octokit/types";
+import GithubApi from "@/api/graphql";
+import GetOrganizationRepositories from '@/api/graphql/GetOrganizationRepositories.query';
+import type { Repository } from '@/api/graphql/GetUserRepositories.query';
+import GetUserRepositoriesQuery from '@/api/graphql/GetUserRepositories.query';
 import { defineStore } from 'pinia';
-import $Github from '../api';
-
-type WorkspaceType = 'user' | 'org'
-
-export type AccessibleRepositories = Endpoints["GET /search/repositories"]['response']['data']['items']
 
 export const useRepositoryStore = defineStore({
 	id: 'Repositories',
 
 	state: () => ({
-		repositories: [] as AccessibleRepositories,
+		repositories: [] as Repository[],
 	}),
 
 	getters: {},
 
 	actions: {
-		async getRepositories(workspaceName: string, workspaceType: WorkspaceType = 'user') {
-			if (workspaceName === '') throw new Error('Workspace name is required to retrieve repositories')
+		async getUserRepositories(user: string) {
+			if (user === '') throw new Error('User tag is required to retrieve repositories')
 
-			const response = await new $Github().request('GET /search/repositories', {
-				q: `${workspaceType}:${workspaceName}`,
-				sort: 'updated',
-				order: 'desc',
-				per_page: 100
+			const response = await GithubApi().query({
+				query: GetUserRepositoriesQuery,
+				variables: {
+					user
+				}
 			})
 
-			this.repositories = response.data.items
+			this.repositories = response.data.user.repositories.edges
 		},
 
-		async getTeamRepositories(organizationName: string, teamSlug: string) {
-			if (teamSlug === '') throw new Error('Team slug is required to retrieve repositories')
+		async getOrganizationRepositories(organization: string) {
+			if (organization === '') throw new Error('Organization tag is required to retrieve repositories')
 
-			const teamRepositoriesResponse = await new $Github().request('GET /orgs/{org}/teams/{team_slug}/repos', {
-				org: organizationName,
-				team_slug: teamSlug,
-				per_page: 100
+			const response = await GithubApi().query({
+				query: GetOrganizationRepositories,
+				variables: {
+					organization
+				}
 			})
 
-			let currentPage = 1
-			let isIncomplete = true
-			const allRepos = [] as AccessibleRepositories
-
-			do {
-				const searchRepositories = await new $Github().request('GET /search/repositories', {
-					q: `org:${organizationName}`,
-					sort: 'updated',
-					order: 'desc',
-					page: currentPage,
-					per_page: 100
-				})
-
-				allRepos.push(...searchRepositories.data.items.filter(repo => {
-					return !!teamRepositoriesResponse.data.find(teamRepo => teamRepo.id === repo.id)
-				}))
-
-				if (searchRepositories.data.incomplete_results) {
-					currentPage += 1
-				} else {
-					isIncomplete = false
-				}
-
-			} while (isIncomplete)
-
-			this.repositories = allRepos
+			this.repositories = response.data.organization.repositories.edges
 		},
 	},
 })
