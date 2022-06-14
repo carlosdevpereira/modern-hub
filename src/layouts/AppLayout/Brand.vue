@@ -12,8 +12,6 @@
 </template>
 
 <style lang="scss">
-@use 'sass:color';
-
 @import '@/assets/scss/variables';
 
 .modern-hub-icon {

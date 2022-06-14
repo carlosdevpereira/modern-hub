@@ -3,7 +3,7 @@
 		<router-link
 			v-if="currentUser.user.login"
 			to="/"
-			class="workspace workspace-carlosdevpereira"
+			class="workspace workspace-current-user"
 			:class="{selected: isSelected(currentUser.user.login)}"
 		>
 			<img
@@ -20,7 +20,7 @@
 				name: 'WorkspaceDashboard',
 				params: { workspaceId: organization.login }
 			}"
-			class="workspace workspace-knokhealthcare"
+			class="workspace"
 			:class="{selected: isSelected(organization.login)}"
 		>
 			<img

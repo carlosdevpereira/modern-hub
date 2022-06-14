@@ -15,29 +15,29 @@
 				<div class="flex color-slate-400 items-center">
 					<small
 						v-if="isDraft"
-						class="text-xs font-extrabold tracking-wide mr-1 uppercase"
+						class="pull-request-is-draft text-xs font-extrabold tracking-wide mr-1 uppercase"
 					>
 						Draft
 					</small>
 
-					<small class="text-xs font-extrabold tracking-wide mr-2">#{{ number }}</small>
+					<small class="pull-request-number text-xs font-extrabold tracking-wide mr-2">#{{ number }}</small>
 
 					<small
 						v-if="status"
-						class="capitalize font-bold mr-2"
+						class="pull-request-status capitalize font-bold mr-2"
 					>
 						{{ status.toLowerCase() }}
 					</small>
 				</div>
 
-				<h2 class="text-sm capitalize m-0">
+				<h2 class="pull-request-title text-sm capitalize m-0">
 					{{ title }}
 				</h2>
 
 				<small class="text-xs">
 					Opened
-					<strong>{{ timeSinceItWasCreated }}</strong>
-					by <strong>@{{ authorTag }}</strong>
+					<strong class="pull-request-relative-time">{{ timeSinceItWasCreated }}</strong>
+					by <strong class="pull-request-author-tag">@{{ authorTag }}</strong>
 				</small>
 			</div>
 		</div>
@@ -49,21 +49,21 @@
 					:key="index"
 					:src="review.author.avatarUrl"
 					:title="review.author.login"
-					class="relative w-7 h-7 ring-2 ring-gray-200 rounded-full dark:border-gray-800"
+					class="pull-request-reviewer relative w-7 h-7 ring-2 ring-gray-200 rounded-full dark:border-gray-800"
 					:class="reviewerClasses(review, index)"
 				>
 			</div>
 
 			<div
 				v-if="comments > 0"
-				class="mr-4 relative"
+				class="pull-request-comments mr-4 relative"
 			>
 				<Icon
 					name="discuss-line"
 					class="text-xl"
 				/>
 				<span class="items-center flex justify-center absolute -bottom-0 -right-1 text-xs font-bold text-center w-3 h-3 bg-yellow-500 rounded-full">
-					<small>{{ comments }}</small>
+					<small class="comments-count">{{ comments }}</small>
 				</span>
 			</div>
 
@@ -133,7 +133,7 @@ export default defineComponent({
 
 		reviews: {
 			type: Object as PropType<PullRequestReviews>,
-			default: () => { 0 }
+			default: () => ({})
 		}
 	},
 
@@ -164,10 +164,6 @@ export default defineComponent({
 			})
 
 			return sortedReviewsByStatus
-		},
-
-		totalReviews() {
-			return this.reviews.totalCount
 		},
 
 		timeSinceItWasCreated() {
