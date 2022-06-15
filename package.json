@@ -50,7 +50,7 @@
 		"unocss": "^0.39.0",
 		"unplugin-auto-import": "^0.8.8",
 		"vite": "^2.9.12",
-		"vitest": "^0.14.2",
+		"vitest": "^0.15.0",
 		"vue-tsc": "^0.37.7",
 		"vue-apollo": "^3.1.0"
 	}
