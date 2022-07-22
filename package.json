@@ -48,7 +48,7 @@
 		"stylelint-config-recess-order": "^3.0.0",
 		"typescript": "~4.7.4",
 		"unocss": "^0.43.2",
-		"unplugin-auto-import": "^0.9.3",
+		"unplugin-auto-import": "^0.9.4",
 		"vite": "^2.9.14",
 		"vitest": "^0.17.1",
 		"vue-tsc": "^0.38.5",
