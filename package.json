@@ -34,7 +34,7 @@
 		"apollo-client": "^2.6.10",
 		"apollo-link": "^1.2.14",
 		"apollo-link-http": "^1.5.17",
-		"c8": "^7.11.3",
+		"c8": "^7.12.0",
 		"dayjs": "^1.11.3",
 		"eslint": "^8.20.0",
 		"eslint-plugin-vue": "^8.2.0",
