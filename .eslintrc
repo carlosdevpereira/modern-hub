@@ -8,6 +8,13 @@
 	"env": {
 		"vue/setup-compiler-macros": true
 	},
+	"globals": {
+		"$ref": "readonly",
+		"$computed": "readonly",
+		"$shallowRef": "readonly",
+		"$customRef": "readonly",
+		"$toRef": "readonly"
+	},
 	"rules": {
 		"object-curly-spacing": ["error", "always"],
 		"operator-linebreak": ["error", "before"],

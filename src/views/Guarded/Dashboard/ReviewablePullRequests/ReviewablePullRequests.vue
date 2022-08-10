@@ -4,6 +4,23 @@
 			Reviews
 		</h2>
 
+		<section class="flex mb-3">
+			<Dropdown
+				:label="enabledAuthorsLabel"
+				theme="text-solid"
+				variant="primary"
+				:title="enabledAuthors.join(', \n')"
+				:disabled="!pullRequestAuthors.length"
+			>
+				<Checkbox
+					v-for="author in pullRequestAuthors"
+					:key="author.login"
+					v-model="pullRequestAuthorSelection[author.login]"
+					:label="author.login"
+				/>
+			</Dropdown>
+		</section>
+
 		<PullRequestRow
 			v-for="pullRequest in prioritySortedPullRequests"
 			:key="pullRequest.number"
@@ -26,7 +43,9 @@ import { useCurrentUserStore } from '@/stores/CurrentUserStore';
 import { useNavigationStore } from '@/stores/NavigationStore';
 import { useRepositoryStore } from '@/stores/RepositoryStore';
 import { defineComponent } from '@vue/runtime-core';
-import { computed } from 'vue';
+import { uniqBy } from 'lodash';
+import { computed, reactive } from 'vue';
+import { useRoute } from 'vue-router';
 import PullRequestRow from './PullRequestRow.vue';
 
 export default defineComponent({
@@ -44,8 +63,61 @@ export default defineComponent({
 			return repositoryStore.repositories.flatMap(r => r.pullRequests.nodes)
 		})
 
+		const pullRequestAuthors = computed(() => {
+			return uniqBy(pullRequests.value.map(pr => pr.author), (author) => {
+				return author.login
+			}).sort((a, b) => {
+				if (a.login.toLowerCase() < b.login.toLowerCase()) {
+					return -1;
+				}
+				if (a.login.toLowerCase() > b.login.toLowerCase()) {
+					return 1;
+				}
+				return 0;
+			})
+		})
+
+		const pullRequestAuthorSelection: {
+			[authorName: string]: boolean;
+		} = reactive({})
+
+		const currentRoute = useRoute()
+		const enabledAuthors = computed(() => {
+			if (currentRoute.query.authors) {
+				currentRoute.query.authors?.toString().split(',').forEach((author) => {
+					pullRequestAuthorSelection[author] = true
+				})
+			}
+
+			return Object.
+				keys(pullRequestAuthorSelection).
+				filter(key => pullRequestAuthorSelection[key] === true).sort((a, b) => {
+					if (a.toLowerCase() < b.toLowerCase()) {
+						return -1;
+					}
+					if (a.toLowerCase() > b.toLowerCase()) {
+						return 1;
+					}
+					return 0;
+				})
+		})
+
+		const maxAuthorsInLabel = 2
+		const enabledAuthorsLabel = computed(() => {
+			if (enabledAuthors.value.length === 0) return 'Authors'
+			if (enabledAuthors.value.length <= maxAuthorsInLabel) return enabledAuthors.value.join(', ')
+
+			return enabledAuthors.value.slice(0, maxAuthorsInLabel).join(', ') + ` + ${enabledAuthors.value.length-maxAuthorsInLabel}`
+		})
+
+		const filteredPullRequests = computed(() => {
+			if (!enabledAuthors.value.length) return pullRequests.value
+
+			return pullRequests.value.filter(pr => enabledAuthors.value.includes(pr.author.login))
+		})
+
 		const prioritySortedPullRequests = computed(() => {
-			return [...pullRequests.value].sort((a, b) => {
+			return [...filteredPullRequests.value].sort((a, b) => {
 				// Draft PR's always appear last
 				if (b.isDraft) return -1
 				else if (a.isDraft) return 1
@@ -94,8 +166,21 @@ export default defineComponent({
 			navigation,
 			repositoryStore,
 			accessibleRepositories,
-			prioritySortedPullRequests
+			prioritySortedPullRequests,
+			pullRequestAuthorSelection,
+			pullRequestAuthors,
+			enabledAuthors,
+			enabledAuthorsLabel
 		};
 	},
+
+	watch: {
+		enabledAuthors(authors) {
+			if (!authors) return
+			const newAuthorsStr = authors.join(',')
+			if (this.$route.query.authors === newAuthorsStr) return
+			this.$router.replace({ query: { authors: newAuthorsStr } })
+		}
+	}
 })
 </script>
