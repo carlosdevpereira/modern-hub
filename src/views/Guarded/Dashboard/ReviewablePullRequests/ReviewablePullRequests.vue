@@ -6,17 +6,18 @@
 
 		<section class="flex mb-3">
 			<Dropdown
-				:label="enabledAuthorsLabel"
+				:label="selectedAuthorsLabel"
 				theme="text-solid"
 				variant="primary"
-				:title="enabledAuthors.join(', \n')"
+				:title="selectedAuthors.join(', \n')"
 				:disabled="!pullRequestAuthors.length"
 			>
 				<Checkbox
 					v-for="author in pullRequestAuthors"
 					:key="author.login"
-					v-model="pullRequestAuthorSelection[author.login]"
+					:model-value="selectedAuthors?.includes(author.login)"
 					:label="author.login"
+					@update:model-value="(val:boolean) => authorSelected(author.login, val)"
 				/>
 			</Dropdown>
 		</section>
@@ -30,7 +31,7 @@
 			:is-draft="pullRequest.isDraft"
 			:reviews="pullRequest.reviews"
 			:html-url="pullRequest.url"
-			:comments="repositoryStore.pullRequestComments(pullRequest)"
+			:comments="RepositoriesStore.pullRequestComments(pullRequest)"
 			:created-at="pullRequest.createdAt"
 			:author-tag="pullRequest.author.login"
 			:author-avatar="pullRequest.author.avatarUrl"
@@ -44,8 +45,6 @@ import { useNavigationStore } from '@/stores/NavigationStore';
 import { useRepositoryStore } from '@/stores/RepositoryStore';
 import { defineComponent } from '@vue/runtime-core';
 import { uniqBy } from 'lodash';
-import { computed, reactive } from 'vue';
-import { useRoute } from 'vue-router';
 import PullRequestRow from './PullRequestRow.vue';
 
 export default defineComponent({
@@ -53,18 +52,25 @@ export default defineComponent({
 		PullRequestRow
 	},
 
-	setup() {
-		const currentUser = useCurrentUserStore();
-		const navigation = useNavigationStore();
-		const repositoryStore = useRepositoryStore();
-		const accessibleRepositories = computed(() => repositoryStore.repositories);
+	data() {
+		return {
+			RepositoriesStore: useRepositoryStore(),
+			CurrentUserStore: useCurrentUserStore(),
+			NavigationStore: useNavigationStore(),
+		}
+	},
 
-		const pullRequests = computed(() => {
-			return repositoryStore.repositories.flatMap(r => r.pullRequests.nodes)
-		})
+	computed: {
+		accessibleRepositories() {
+			return this.RepositoriesStore.repositories
+		},
 
-		const pullRequestAuthors = computed(() => {
-			return uniqBy(pullRequests.value.map(pr => pr.author), (author) => {
+		pullRequests() {
+			return this.RepositoriesStore.repositories.flatMap(r => r.pullRequests.nodes)
+		},
+
+		pullRequestAuthors() {
+			return uniqBy(this.pullRequests.map(pr => pr.author), (author) => {
 				return author.login
 			}).sort((a, b) => {
 				if (a.login.toLowerCase() < b.login.toLowerCase()) {
@@ -75,111 +81,94 @@ export default defineComponent({
 				}
 				return 0;
 			})
-		})
+		},
 
-		const pullRequestAuthorSelection: {
-			[authorName: string]: boolean;
-		} = reactive({})
+		selectedAuthors() {
+			return this.$route.query.authors ? this.$route.query.authors.toString().split(',') : []
+		},
 
-		const currentRoute = useRoute()
-		const enabledAuthors = computed(() => {
-			if (currentRoute.query.authors) {
-				currentRoute.query.authors?.toString().split(',').forEach((author) => {
-					pullRequestAuthorSelection[author] = true
-				})
-			}
+		selectedAuthorsLabel() {
+			const maxAuthorsInLabel = 2
+			if (this.selectedAuthors.length === 0) return 'Authors'
+			if (this.selectedAuthors.length <= maxAuthorsInLabel) return this.selectedAuthors.join(',')
 
-			return Object.
-				keys(pullRequestAuthorSelection).
-				filter(key => pullRequestAuthorSelection[key] === true).sort((a, b) => {
-					if (a.toLowerCase() < b.toLowerCase()) {
-						return -1;
-					}
-					if (a.toLowerCase() > b.toLowerCase()) {
-						return 1;
-					}
-					return 0;
-				})
-		})
+			return this.selectedAuthors.slice(0, maxAuthorsInLabel).join(', ') + ` + ${this.selectedAuthors.length-maxAuthorsInLabel}`
+		},
 
-		const maxAuthorsInLabel = 2
-		const enabledAuthorsLabel = computed(() => {
-			if (enabledAuthors.value.length === 0) return 'Authors'
-			if (enabledAuthors.value.length <= maxAuthorsInLabel) return enabledAuthors.value.join(', ')
+		filteredPullRequests() {
+			if (!this.selectedAuthors.length) return this.pullRequests
 
-			return enabledAuthors.value.slice(0, maxAuthorsInLabel).join(', ') + ` + ${enabledAuthors.value.length-maxAuthorsInLabel}`
-		})
+			return this.pullRequests.filter(pr => this.selectedAuthors.includes(pr.author.login))
+		},
 
-		const filteredPullRequests = computed(() => {
-			if (!enabledAuthors.value.length) return pullRequests.value
-
-			return pullRequests.value.filter(pr => enabledAuthors.value.includes(pr.author.login))
-		})
-
-		const prioritySortedPullRequests = computed(() => {
-			return [...filteredPullRequests.value].sort((a, b) => {
+		prioritySortedPullRequests() {
+			return [...this.filteredPullRequests].sort((a, b) => {
 				// Draft PR's always appear last
 				if (b.isDraft) return -1
 				else if (a.isDraft) return 1
 
 				// Approved PR's reviewed by the current user
-				if (b.reviewDecision === 'APPROVED' && (b.reviews.nodes && b.reviews.nodes.find(r => r.author.login === currentUser.user.login))) return -1
-				if (a.reviewDecision === 'APPROVED' && (a.reviews.nodes && a.reviews.nodes.find(r => r.author.login === currentUser.user.login))) return 1
+				if (b.reviewDecision === 'APPROVED' && (b.reviews.nodes && b.reviews.nodes.find(r => r.author.login === this.CurrentUserStore.user.login))) return -1
+				if (a.reviewDecision === 'APPROVED' && (a.reviews.nodes && a.reviews.nodes.find(r => r.author.login === this.CurrentUserStore.user.login))) return 1
 
 				// Pull Requests that are waiting for
 				// the current user review specifically
 				if (b.reviewRequests.nodes
 					&& b.reviewRequests.nodes
 						.filter(r => r.requestedReviewer.id)
-						.find(r => r.requestedReviewer.login === currentUser.user.login)) return 1
+						.find(r =>
+							r.requestedReviewer.login
+							=== this.CurrentUserStore.user.login)
+				) return 1
 				if (a.reviewRequests.nodes
 					&& a.reviewRequests.nodes
 						.filter(r => r.requestedReviewer.id)
-						.find(r => r.requestedReviewer.login === currentUser.user.login)) return 1
+						.find(r =>
+							r.requestedReviewer.login
+							=== this.CurrentUserStore.user.login)
+				) return 1
 
 				// Pull requests currently being reviewed by other people
-				if ((repositoryStore.pullRequestComments(b) > 0) || (
+				if ((this.RepositoriesStore.pullRequestComments(b) > 0) || (
 					b.reviews.nodes
-					&& !b.reviews.nodes.find(r => r.author.login === currentUser.user.login)
+					&& !b.reviews.nodes.find(r =>
+						r.author.login
+						=== this.CurrentUserStore.user.login
+					)
 				)) return -1
 
-				if ((repositoryStore.pullRequestComments(a) > 0) || (
+				if ((this.RepositoriesStore.pullRequestComments(a) > 0) || (
 					a.reviews.nodes
-					&& !a.reviews.nodes.find(r => r.author.login === currentUser.user.login)
+					&& !a.reviews.nodes.find(r =>
+						r.author.login
+						=== this.CurrentUserStore.user.login)
 				)) return 1
 
 				// Current user PR's
-				if (b.author.login === currentUser.user.login) return -1
-				else if (a.author.login === currentUser.user.login) return 1
+				if (b.author.login === this.CurrentUserStore.user.login) return -1
+				else if (a.author.login === this.CurrentUserStore.user.login) return 1
 
 				// Pull Requests that haven't been reviewed by anyone yet
-				if (repositoryStore.pullRequestComments(b) === 0
+				if (this.RepositoriesStore.pullRequestComments(b) === 0
 					&& (!b.reviews.nodes || b.reviews.nodes.length === 0)) return -1
-				else if (repositoryStore.pullRequestComments(a) === 0
+				else if (this.RepositoriesStore.pullRequestComments(a) === 0
 					&& (!a.reviews.nodes || a.reviews.nodes.length === 0)) return 1
 
 				return 0
 			})
-		})
+		},
 
-		return {
-			navigation,
-			repositoryStore,
-			accessibleRepositories,
-			prioritySortedPullRequests,
-			pullRequestAuthorSelection,
-			pullRequestAuthors,
-			enabledAuthors,
-			enabledAuthorsLabel
-		};
 	},
 
-	watch: {
-		enabledAuthors(authors) {
-			if (!authors) return
-			const newAuthorsStr = authors.join(',')
-			if (this.$route.query.authors === newAuthorsStr) return
-			this.$router.replace({ query: { authors: newAuthorsStr } })
+	methods: {
+		authorSelected(author:string, selected: boolean) {
+			if (selected) {
+				const authorsToSave = [...this.selectedAuthors, author].join(',')
+				this.$router.replace({ query: { authors: authorsToSave } })
+			} else {
+				const authorsToSave = this.selectedAuthors.filter(a => a !== author).join(',')
+				this.$router.replace({ query: { authors: authorsToSave } })
+			}
 		}
 	}
 })
