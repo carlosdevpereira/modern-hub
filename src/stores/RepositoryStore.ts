@@ -38,7 +38,9 @@ export const useRepositoryStore = defineStore({
 			const repositories: Repository[] = response.data.user.
 				repositories.
 				edges.
-				flatMap((e: { node: Repository }) => e.node)
+				flatMap((e: { node: Repository }) => {
+					return { ...e.node, url: 'https://github.com/' + user + '/' + e.node.name }
+				})
 
 			this.repositories = repositories
 		},
@@ -56,7 +58,9 @@ export const useRepositoryStore = defineStore({
 			const repositories: Repository[] = response.data.organization.
 				repositories.
 				edges.
-				flatMap((e: { node: Repository }) => e.node)
+				flatMap((e: { node: Repository }) => {
+					return { ...e.node, url: 'https://github.com/' + organization + '/' + e.node.name }
+				})
 
 			this.repositories = repositories
 		},
@@ -76,7 +80,9 @@ export const useRepositoryStore = defineStore({
 				team.
 				repositories.
 				edges.
-				flatMap((e: { node: Repository }) => e.node)
+				flatMap((e: { node: Repository }) => {
+					return { ...e.node, url: 'https://github.com/' + organization + '/' + e.node.name }
+				})
 
 			this.repositories = repositories
 		},

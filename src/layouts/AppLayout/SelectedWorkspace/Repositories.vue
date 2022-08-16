@@ -4,10 +4,11 @@
 			Repositories
 		</h3>
 
-		<router-link
+		<a
 			v-for="(repo) in repositoryStore.repositories"
 			:key="repo.id"
-			to="/"
+			target="_blank"
+			:href="repo.url"
 			class="text-item decoration-none text-sm py-1 hover:bg-gray-100 color-gray-800 pl-5 flex items-center capitalize"
 		>
 			<Icon
@@ -16,7 +17,7 @@
 			/>
 
 			{{ repo.name }}
-		</router-link>
+		</a>
 	</div>
 </template>
 
