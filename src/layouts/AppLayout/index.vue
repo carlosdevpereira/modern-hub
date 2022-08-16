@@ -6,9 +6,11 @@
 		class="app-layout"
 	>
 		<template #header>
-			<App-Brand />
+			<div class="flex w-full justify-between">
+				<App-Brand />
 
-			<User-Menu v-if="currentUser.user.login" />
+				<User-Menu v-if="currentUser.user.login" />
+			</div>
 		</template>
 
 		<template #sidebar>

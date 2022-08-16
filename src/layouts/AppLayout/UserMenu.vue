@@ -1,13 +1,24 @@
 <template>
-	<Button
+	<Dropdown
 		class="user-menu"
 		theme="text"
+		variant="secondary"
 	>
-		<img
-			:src="currentUser.user.avatarUrl"
-			:alt="currentUser.user.login"
+		<template #button>
+			<img
+				:src="currentUser.user.avatarUrl"
+				:alt="currentUser.user.login"
+			>
+		</template>
+
+		<Button
+			theme="text"
+			class="mr-dropdown-option"
+			@click="logout"
 		>
-	</Button>
+			Logout
+		</Button>
+	</Dropdown>
 </template>
 
 <script lang="ts">
@@ -19,17 +30,25 @@ export default defineComponent({
 		const currentUser = useCurrentUserStore()
 
 		return { currentUser }
+	},
+
+	methods: {
+		logout() {
+			localStorage.removeItem('_access_token_')
+			this.$router.push({ name: 'Login' })
+		}
 	}
 })
 </script>
 
 <style lang="scss">
-.mr-button.size-md.user-menu {
+.mr-button:not([disabled='true']).size-md.user-menu {
 	position: absolute;
-	top: 10px;
-	right: 1rem;
+	top: 50%;
+	right: 0.5rem;
 	padding: 0;
 	border-radius: 50%;
+	transform: translateY(-50%) !important;
 
 	img {
 		width: 50px;
