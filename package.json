@@ -16,7 +16,7 @@
 		"vue-router": "^4.1.2"
 	},
 	"devDependencies": {
-		"@carlosdevpereira/mr-components": "^1.7.3",
+		"@carlosdevpereira/mr-components": "^1.9.1",
 		"@octokit/rest": "^18.12.0",
 		"@octokit/types": "^6.40.0",
 		"@pinia/testing": "0.0.12",
