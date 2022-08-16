@@ -7,10 +7,11 @@
 			People
 		</h3>
 
-		<router-link
+		<a
 			v-for="person in people.people"
 			:key="person.id"
-			to="/"
+			target="_blank"
+			:href="person.html_url"
 			class="text-item decoration-none text-sm py-1 hover:bg-gray-100 color-gray-800 pl-5 flex items-center"
 		>
 			<img
@@ -19,7 +20,7 @@
 			>
 
 			{{ person.login }}
-		</router-link>
+		</a>
 	</div>
 </template>
 
