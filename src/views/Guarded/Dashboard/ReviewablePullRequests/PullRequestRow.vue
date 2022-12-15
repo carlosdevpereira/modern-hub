@@ -37,6 +37,7 @@
 				<small class="text-xs">
 					Opened
 					<strong class="pull-request-relative-time">{{ timeSinceItWasCreated }}</strong>
+					in <strong class="pull-request-repository">{{ repositoryName }}</strong>
 					by <strong class="pull-request-author-tag">@{{ authorTag }}</strong>
 				</small>
 			</div>
@@ -99,6 +100,11 @@ export default defineComponent({
 		status: {
 			type: String,
 			default: ''
+		},
+
+		repositoryName: {
+			type: String,
+			required: true
 		},
 
 		isDraft: {

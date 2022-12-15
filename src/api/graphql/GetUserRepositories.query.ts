@@ -20,6 +20,11 @@ const query = gql(`
                       login
                     }
                     baseRefName
+					additions
+					deletions
+					repository {
+					  name
+					}
                     comments {
                       totalCount
                     }

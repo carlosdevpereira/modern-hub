@@ -15,6 +15,9 @@ export interface PullRequest {
 	headRefName: string
 	isDraft: boolean,
 	number: number
+	additions: number
+	deletions: number
+	repository: { name: string }
 	reviewDecision: string
 	title: string
 	updatedAt: string

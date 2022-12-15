@@ -9,6 +9,7 @@ export const useRepositoryStore = defineStore({
 	id: 'Repositories',
 
 	state: () => ({
+		loading: false,
 		repositories: [] as Repository[],
 	}),
 
@@ -28,63 +29,87 @@ export const useRepositoryStore = defineStore({
 		async getUserRepositories(user: string) {
 			if (user === '') throw new Error('User tag is required to retrieve repositories')
 
-			const response = await GithubApi().query({
-				query: GetUserRepositoriesQuery,
-				variables: {
-					user
-				}
-			})
+			try {
+				this.loading = true
 
-			const repositories: Repository[] = response.data.user.
-				repositories.
-				edges.
-				flatMap((e: { node: Repository }) => {
-					return { ...e.node, url: 'https://github.com/' + user + '/' + e.node.name }
+				const response = await GithubApi().query({
+					query: GetUserRepositoriesQuery,
+					variables: {
+						user
+					}
 				})
 
-			this.repositories = repositories
+				const repositories: Repository[] = response.data.user.
+					repositories.
+					edges.
+					flatMap((e: { node: Repository }) => {
+						return { ...e.node, url: 'https://github.com/' + user + '/' + e.node.name }
+					})
+
+				this.repositories = repositories
+			} finally {
+				setTimeout(() => {
+					this.loading = false
+				}, 500)
+			}
 		},
 
 		async getOrganizationRepositories(organization: string) {
 			if (organization === '') throw new Error('Organization tag is required to retrieve repositories')
 
-			const response = await GithubApi().query({
-				query: GetOrganizationRepositories,
-				variables: {
-					organization
-				}
-			})
+			try {
+				this.loading = true
 
-			const repositories: Repository[] = response.data.organization.
-				repositories.
-				edges.
-				flatMap((e: { node: Repository }) => {
-					return { ...e.node, url: 'https://github.com/' + organization + '/' + e.node.name }
+				const response = await GithubApi().query({
+					query: GetOrganizationRepositories,
+					variables: {
+						organization
+					}
 				})
 
-			this.repositories = repositories
+				const repositories: Repository[] = response.data.organization.
+					repositories.
+					edges.
+					flatMap((e: { node: Repository }) => {
+						return { ...e.node, url: 'https://github.com/' + organization + '/' + e.node.name }
+					})
+
+				this.repositories = repositories
+			} finally {
+				setTimeout(() => {
+					this.loading = false
+				}, 500)
+			}
 		},
 
 		async getOrganizationTeamRepositories(organization: string, team: string) {
 			if (organization === '') throw new Error('Organization tag is required to retrieve repositories')
 
-			const response = await GithubApi().query({
-				query: GetOrganizationTeamRepositories,
-				variables: {
-					organization,
-					team
-				}
-			})
+			try {
+				this.loading = true
 
-			const repositories: Repository[] = response.data.organization.
-				team.
-				repositories.
-				edges.
-				flatMap((e: { node: Repository }) => {
-					return { ...e.node, url: 'https://github.com/' + organization + '/' + e.node.name }
+				const response = await GithubApi().query({
+					query: GetOrganizationTeamRepositories,
+					variables: {
+						organization,
+						team
+					}
 				})
 
-			this.repositories = repositories
+				const repositories: Repository[] = response.data.organization.
+					team.
+					repositories.
+					edges.
+					flatMap((e: { node: Repository }) => {
+						return { ...e.node, url: 'https://github.com/' + organization + '/' + e.node.name }
+					})
+
+				this.repositories = repositories
+			} finally {
+				setTimeout(() => {
+					this.loading = false
+				}, 500)
+			}
 		},
 	},
 })
