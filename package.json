@@ -43,7 +43,7 @@
 		"graphql-tag": "^2.12.6",
 		"jsdom": "^19.0.0",
 		"lodash": "^4.17.21",
-		"octokit": "^1.8.1",
+		"octokit": "^2.0.13",
 		"sass": "^1.54.5",
 		"stylelint": "^14.10.0",
 		"stylelint-config-recess-order": "^3.0.0",
