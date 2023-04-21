@@ -18,7 +18,7 @@
 	"devDependencies": {
 		"@carlosdevpereira/mr-components": "^1.10.0",
 		"@octokit/rest": "^18.12.0",
-		"@octokit/types": "^6.40.0",
+		"@octokit/types": "^9.1.1",
 		"@pinia/testing": "0.0.12",
 		"@types/jsdom": "^16.2.14",
 		"@types/lodash": "^4.14.182",
