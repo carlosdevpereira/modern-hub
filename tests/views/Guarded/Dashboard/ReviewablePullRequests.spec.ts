@@ -6,7 +6,11 @@ describe.concurrent('Pull-request list', () => {
 	const wrapper = shallowMount(ReviewablePullRequests, {
 		global: {
 			plugins: [createTestingPinia()],
-
+			mocks: {
+				$route: {
+					query: {}
+				}
+			},
 			stubs: {
 				Button: true,
 				Icon: true

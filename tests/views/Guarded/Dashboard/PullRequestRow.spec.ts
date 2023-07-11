@@ -8,6 +8,11 @@ dayjs.extend(RelativeTimePlugin)
 const getWrapper = (props: object) => {
 	const wrapper = shallowMount(PullRequestRow, {
 		global: {
+			mocks: {
+				$route: {
+					query: {}
+				}
+			},
 			stubs: {
 				Icon: true
 			},
@@ -46,7 +51,7 @@ describe.concurrent('Pull request row', () => {
 
 	it('renders the status of the pull request', () => {
 		const pullRequestStatus = wrapper.get('.pull-request-status')
-		expect(pullRequestStatus.text()).toBe("approved")
+		expect(pullRequestStatus.text()).toBe("changes_requested")
 	})
 
 	it('displays when the pull request was opened', () => {

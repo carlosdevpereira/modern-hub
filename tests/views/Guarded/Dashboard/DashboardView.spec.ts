@@ -8,7 +8,11 @@ describe.concurrent('Dashboard View', () => {
 	const wrapper = shallowMount(DashboardView, {
 		global: {
 			plugins: [createTestingPinia()],
-
+			mocks: {
+				$route: {
+					query: {}
+				}
+			},
 			stubs: {
 				RecentCommitsWithoutPullRequest,
 				ReviewablePullRequests,
