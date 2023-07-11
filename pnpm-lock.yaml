@@ -23,8 +23,8 @@ devDependencies:
     specifier: ^18.12.0
     version: 18.12.0
   '@octokit/types':
-    specifier: ^6.40.0
-    version: 6.41.0
+    specifier: ^11.1.0
+    version: 11.1.0
   '@pinia/testing':
     specifier: 0.0.12
     version: 0.0.12(pinia@2.0.18)(vue@3.2.37)
@@ -851,6 +851,10 @@ packages:
     resolution: {integrity: sha512-VsXyi8peyRq9PqIz/tpqiL2w3w80OgVMwBHltTml3LmVvXiphgeqmY9mvBw9Wu7e0QWk/fqD37ux8yP5uVekyQ==}
     dev: true
 
+  /@octokit/openapi-types@18.0.0:
+    resolution: {integrity: sha512-V8GImKs3TeQRxRtXFpG2wl19V7444NIOTDF24AWuIbmNaNYOQMWRbjcGDXV5B+0n887fgDcuMNOmlul+k+oJtw==}
+    dev: true
+
   /@octokit/plugin-paginate-rest@2.21.3(@octokit/core@3.6.0):
     resolution: {integrity: sha512-aCZTEf0y2h3OLbrgKkrfFdjRL6eSOo8komneVQJnYecAxIej7Bafor2xhuDJOIFau4pk0i/P28/XgtbyPF0ZHw==}
     peerDependencies:
@@ -948,6 +952,12 @@ packages:
       '@octokit/plugin-rest-endpoint-methods': 5.16.2(@octokit/core@3.6.0)
     transitivePeerDependencies:
       - encoding
+    dev: true
+
+  /@octokit/types@11.1.0:
+    resolution: {integrity: sha512-Fz0+7GyLm/bHt8fwEqgvRBWwIV1S6wRRyq+V6exRKLVWaKGsuy6H9QFYeBVDV7rK6fO3XwHgQOPxv+cLj2zpXQ==}
+    dependencies:
+      '@octokit/openapi-types': 18.0.0
     dev: true
 
   /@octokit/types@6.41.0:
