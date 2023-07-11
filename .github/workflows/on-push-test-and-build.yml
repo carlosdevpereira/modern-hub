@@ -1,36 +1,36 @@
 name: Build
 
 on:
-    push:
-        branches:
-            - '**'
+  push:
+    branches:
+      - "**"
 
 jobs:
-    test:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v3
-            - uses: actions/setup-node@v3
-              with:
-                  node-version: '16'
-                  cache: 'npm'
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+          cache: "npm"
 
-            - name: Install dependencies 📦
-              run: npm ci
+      - name: Install dependencies 📦
+        run: pnpm install
 
-            - name: Execute unit tests 🧪
-              run: npm run test:unit:coverage
+      - name: Execute unit tests 🧪
+        run: npm run test:unit:coverage
 
-            - name: Upload test coverage 🧪
-              if: ${{ github.actor != 'dependabot[bot]' }}
-              uses: codecov/codecov-action@v3
-              with:
-                  token: ${{ secrets.CODECOV_TOKEN }}
-                  fail_ci_if_error: true
-                  files: ./coverage/clover.xml,./coverage/lcov.info
-                  flags: unittests
-                  name: codecov-umbrella
-                  verbose: true
+      - name: Upload test coverage 🧪
+        if: ${{ github.actor != 'dependabot[bot]' }}
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: true
+          files: ./coverage/clover.xml,./coverage/lcov.info
+          flags: unittests
+          name: codecov-umbrella
+          verbose: true
 
-            - name: Build App
-              run: npm run build
+      - name: Build App
+        run: npm run build
