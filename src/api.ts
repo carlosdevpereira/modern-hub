@@ -1,4 +1,4 @@
-import { Octokit } from 'https://cdn.skypack.dev/@octokit/rest'
+import { Octokit } from 'https://cdn.skypack.dev/@octokit/rest@19'
 import type { Octokit as OctokitInstance } from 'octokit'
 
 export interface Api {
